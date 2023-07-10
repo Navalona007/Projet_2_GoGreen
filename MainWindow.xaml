@@ -1,0 +1,21 @@
+﻿<Window x:Class="Projet_2_GoGreen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projet_2_GoGreen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FFC1E9B7">
+        <Image HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="460" Source="/nature-sprout-dirt-young-seedling.jpg"/>
+        <Image HorizontalAlignment="Left" Height="450" Margin="400,-68,0,0" VerticalAlignment="Top" Width="450" Source="/Go Green.png"/>
+        <Button x:Name="bt_start" Content="CLIQUEZ POUR COMMENCER !" HorizontalAlignment="Left" Height="44" Margin="492,338,0,0" VerticalAlignment="Top" Width="266" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_start_Click" FontFamily="Constantia">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
