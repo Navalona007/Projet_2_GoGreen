@@ -6,19 +6,45 @@
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
         Title="Authentification" Height="450" Width="800">
-    <Grid Background="#FFD6F9E5">
+    <Grid  Background="#FFD6F9E5">
 
 
-        <Path StrokeThickness="1" Margin="0,50,33,87" Fill="#FF5AE4A8" Stretch="Fill" HorizontalAlignment="Right" Width="343">
+        <Path StrokeThickness="1" Margin="424,68,33,69" Fill="#FF5AE4A8" Stretch="Fill">
             <Path.Data>
                 <RectangleGeometry Rect="0,0,340,300" RadiusX="20" RadiusY="20"/>
             </Path.Data>
         </Path>
 
 
-        <Label Content="Identifiant :" HorizontalAlignment="Right" Height="33" Margin="0,147,252,0" VerticalAlignment="Top" Width="100" Foreground="Black" FontWeight="Bold"/>
-        <Label Content="Mot de passe :" HorizontalAlignment="Right" Height="33" Margin="0,199,252,0" VerticalAlignment="Top" Width="100" Background="Transparent" Foreground="Black" FontWeight="Bold"/>
-        <PasswordBox x:Name="pwd_auth" HorizontalAlignment="Right" Margin="0,198,68,0" VerticalAlignment="Top" Width="184" Height="24" Password="" BorderBrush="{x:Null}">
+        <Label Content="Identifiant :" Margin="0,165,248,0" Foreground="Black" FontWeight="Bold" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+        <Label Content="Mot de passe :" Margin="0,205,253,0" Background="Transparent" Foreground="Black" FontWeight="Bold" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95"/>
+        <TextBox x:Name="tb_login" HorizontalAlignment="Right" Margin="0,164,64,0" TextWrapping="Wrap" Width="184" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Top">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="bt_connect" Content="Se connecter" HorizontalAlignment="Right" Margin="0,273,114,0" Width="87" Click="bt_connect_Click" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF17925D" Background="White" Height="28" VerticalAlignment="Top">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Vous n'avez pas de compte?" HorizontalAlignment="Right" Margin="0,310,129,0" Width="159" FontStyle="Italic" Height="31" VerticalAlignment="Top"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Right" Margin="0,312,70,0" Width="59" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click" Height="23" VerticalAlignment="Top"/>
+        <Image Margin="0,88,168,281" Source="/user_1.png" HorizontalAlignment="Right" Width="60"/>
+        <Path StrokeThickness="1.5" Margin="140,129,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="175" Height="175" VerticalAlignment="Top">
+            <Path.Fill>
+                <ImageBrush ImageSource="/Go Green.png"/>
+            </Path.Fill>
+            <Path.Data>
+                <RectangleGeometry Rect="0,0,200,200" RadiusX="100" RadiusY="100"/>
+            </Path.Data>
+        </Path>
+        <Label x:Name="lb_message" Content="" HorizontalAlignment="Right" Margin="0,243,93,0" Width="135" FontSize="10" FontStyle="Italic" Height="23" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="pwd_auth" Password="" BorderBrush="{x:Null}" Margin="0,204,64,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Right" Width="184">
             <PasswordBox.Style>
                 <Style TargetType="{x:Type PasswordBox}">
                     <Setter Property="Template">
@@ -33,32 +59,6 @@
                 </Style>
             </PasswordBox.Style>
         </PasswordBox>
-        <TextBox x:Name="tb_login" HorizontalAlignment="Right" Margin="0,146,68,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" Height="24" BorderBrush="{x:Null}">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <Button x:Name="bt_connect" Content="Se connecter" HorizontalAlignment="Right" Height="28" Margin="0,255,118,0" VerticalAlignment="Top" Width="87" Click="bt_connect_Click" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF17925D" Background="White">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Label Content="Vous n'avez pas de compte?" HorizontalAlignment="Right" Height="31" Margin="0,292,133,0" VerticalAlignment="Top" Width="159" FontStyle="Italic"/>
-        <Button Content="S'inscrire" HorizontalAlignment="Right" Height="23" Margin="0,294,74,0" VerticalAlignment="Top" Width="70" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click"/>
-        <Image Height="65" Margin="0,70,168,0" VerticalAlignment="Top" Source="/user_1.png" HorizontalAlignment="Right" Width="60"/>
-        <Path StrokeThickness="1.5" Margin="140,129,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="175" Height="175" VerticalAlignment="Top">
-            <Path.Fill>
-                <ImageBrush ImageSource="/Go Green.png"/>
-            </Path.Fill>
-            <Path.Data>
-                <RectangleGeometry Rect="0,0,200,200" RadiusX="100" RadiusY="100"/>
-            </Path.Data>
-        </Path>
-        <Label x:Name="lb_message" Content="" HorizontalAlignment="Right" Height="23" Margin="0,225,93,0" VerticalAlignment="Top" Width="135" FontSize="10" FontStyle="Italic"/>
 
 
     </Grid>
