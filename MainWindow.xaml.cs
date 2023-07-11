@@ -35,9 +35,12 @@ namespace Projet_2_GoGreen
             administrateur.Show();
             //this.Hide();
 
-            this.Hide();
+            //this.Hide();
             Test_op test_op = new Test_op();
             test_op.Show();
+
+            Inscription inscription=new Inscription();
+            inscription.Show();
 
         }
     }
