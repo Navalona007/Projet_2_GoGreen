@@ -30,9 +30,15 @@ namespace Projet_2_GoGreen
             Authentification authentification = new Authentification();
             authentification.Show();
 
+
             Administrateur administrateur = new Administrateur();
             administrateur.Show();
             //this.Hide();
+
+            this.Hide();
+            Test_op test_op = new Test_op();
+            test_op.Show();
+
         }
     }
 }
