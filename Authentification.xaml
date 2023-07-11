@@ -67,21 +67,6 @@
             </Path.Data>
         </Path>
         <Label x:Name="lb_message" Content="" HorizontalAlignment="Right" Margin="0,243,93,0" Width="135" FontSize="10" FontStyle="Italic" Height="23" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="pwd_auth" Password="" BorderBrush="{x:Null}" Margin="0,204,64,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Right" Width="184">
-            <PasswordBox.Style>
-                <Style TargetType="{x:Type PasswordBox}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type PasswordBox}">
-                                <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </PasswordBox.Style>
-        </PasswordBox>
 
 
     </Grid>
