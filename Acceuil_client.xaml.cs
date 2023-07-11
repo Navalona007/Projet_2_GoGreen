@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projet_2_GoGreen
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Acceuil_client.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Acceuil_client : Window
     {
-        public MainWindow()
+        public Acceuil_client()
         {
             InitializeComponent();
-        }
-
-        private void bt_start_Click(object sender, RoutedEventArgs e)
-        {
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
-            Test_op test_op = new Test_op();
-            test_op.Show();
         }
     }
 }
