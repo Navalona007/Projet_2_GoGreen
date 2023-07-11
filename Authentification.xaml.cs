@@ -23,5 +23,15 @@ namespace Projet_2_GoGreen
         {
             InitializeComponent();
         }
+
+        private void bt_connect_Click(object sender, RoutedEventArgs e)
+        {
+            //affichage message sur lb_message au cas ou identifiant et mot de passe contient erreur
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

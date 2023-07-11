@@ -107,5 +107,23 @@
   <ItemGroup>
     <Resource Include="Go Green.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vecteezy_trees-growing-in-the-hands-of-humans-help-to-plant-seedlings-conserve-nature-and-plant-trees_1997504.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vecteezy_abstract-geometric-shapes-composition-background-blue-and_20244171.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vecteezy_vector-flat-landscape-illustration-of-mountains-with-forest_22629631.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user_125835.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
