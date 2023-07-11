@@ -13,5 +13,6 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
