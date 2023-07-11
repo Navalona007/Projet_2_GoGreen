@@ -10,28 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projet_2_GoGreen
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Test_op.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Test_op : Window
     {
-        public MainWindow()
+        public Test_op()
         {
             InitializeComponent();
         }
 
-        private void bt_start_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
-            Test_op test_op = new Test_op();
-            test_op.Show();
+
         }
     }
 }
