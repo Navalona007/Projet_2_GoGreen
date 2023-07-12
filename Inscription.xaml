@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
         <Label Content="INSCRIPTION" HorizontalAlignment="Left" Margin="568,5,0,0" VerticalAlignment="Top" Width="115" FontWeight="Bold" Foreground="#FF5DB28D" Height="31" FontSize="16"/>
         <Label Content="En tant que " HorizontalAlignment="Left" Margin="486,37,0,0" VerticalAlignment="Top" Width="84" Height="22" FontSize="9"/>
-        <RadioButton Content="Administrateur" HorizontalAlignment="Left" Margin="666,41,0,0" VerticalAlignment="Top" Width="108" Height="15" FontSize="9"/>
-        <RadioButton Content="Client" HorizontalAlignment="Left" Margin="575,41,0,0" VerticalAlignment="Top" Width="66" Height="15" FontSize="9"/>
+        <RadioButton x:Name="rb_admin" Content="Administrateur" HorizontalAlignment="Left" Margin="666,41,0,0" VerticalAlignment="Top" Width="108" Height="15" FontSize="9"/>
+        <RadioButton x:Name="rb_client" Content="Client" HorizontalAlignment="Left" Margin="575,41,0,0" VerticalAlignment="Top" Width="66" Height="15" FontSize="9"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="482,59,0,0" VerticalAlignment="Top" Height="25" Width="63" FontWeight="Bold" Foreground="#FF67B593" RenderTransformOrigin="0.51,0.034" FontSize="9"/>
         <Label Content="Prénom (s)" HorizontalAlignment="Left" Margin="482,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.562,-0.112" Height="23" Width="88" FontWeight="Bold" Foreground="#FF67B593" FontSize="9"/>
         <Label Content="Mail" HorizontalAlignment="Left" Margin="486,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.075,0.09" Height="21" Width="56" FontWeight="Bold" Foreground="#FF67B593" FontSize="9"/>

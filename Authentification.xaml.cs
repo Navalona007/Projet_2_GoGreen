@@ -21,13 +21,12 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Authentification : Window
     {
+
         NpgsqlConnection conn = new NpgsqlConnection("Host=localhost; Port=5432; Database=gg_db;Username=postgres;Password=1234");
         public Authentification()
         {
             InitializeComponent();
-
         }
-
 
         public static NpgsqlConnection GetConnection()
         {
@@ -37,7 +36,6 @@ namespace Projet_2_GoGreen
         string password;
         string defaultLogin = "admin";
         string defaultPassword = "admin";
-
 
         private void bt_connect_Click(object sender, RoutedEventArgs e)
         {
@@ -96,16 +94,25 @@ namespace Projet_2_GoGreen
                 MessageBox.Show("Veuillez remplir tous les champs de connexion", "Erreur");
             }
         }
-
+        //private static List
 
 
         public void CompareLoginPassword()
         {
+            admin = new AdminClass();
+            operateur = new OperateurClass();
+            client = new ClientClass();
+
+            
+
+            
+
             // Vérification si le login et le mot de passe correspondent aux valeurs par défaut
-            if (login == defaultLogin && password == defaultPassword)
+            if (true)
             {
                 lb_message.Content = "correct";
                 lb_message.Foreground = Brushes.Green;
+
                 //basculer vers une nouvelle fenetre
             }
             else
@@ -125,7 +132,6 @@ namespace Projet_2_GoGreen
         {
 
         }
-
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         static string CalculateMD5Hash(string input)

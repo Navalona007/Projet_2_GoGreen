@@ -20,6 +20,7 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Administrateur : Window
     {
+        NpgsqlConnection conx;
         public Administrateur()
         {
             InitializeComponent();
@@ -31,7 +32,29 @@ namespace Projet_2_GoGreen
 
         private void bt_add_oper_Click(object sender, RoutedEventArgs e)
         {
+            string nom = tb_nom_oper.Text;
+            string prenom = tb_prenom_oper.Text;
+            string mail = tb_email_oper.Text;
+            string mobile = tb_mobile_oper.Text;
+            if (string.IsNullOrEmpty(nom))
+            {
+                lb_message_oper.Content = "remplir les champs obligatoires!";
+            }
+            else { 
+            try
+            {
+                connectDB();
 
+                    string requ = "INSERT INTO opérateur_de_saisi(statut_opérateurid, lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
+                                    +" VALUES( , ?, ?, ?, ?, ?, ?); ";
+                conx.CreateCommand();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            }
         }
         private void connectDB()
         {
@@ -39,7 +62,7 @@ namespace Projet_2_GoGreen
             conx.Open();
             if (conx.State == System.Data.ConnectionState.Open)
             {
-                tb_nom_oper.Text = "connecter";
+                lb_message_oper.Content = "connecter";
             }
         }
 
