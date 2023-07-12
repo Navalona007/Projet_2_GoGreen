@@ -196,7 +196,7 @@
             </TabItem>
         </TabControl>
 
-        <materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>
+       <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
         <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="415,-1,0,0" VerticalAlignment="Top" Height="28" Width="124"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="392,2,0,0" VerticalAlignment="Top" Width="51" Source="/user_1.png"/>
 

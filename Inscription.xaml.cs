@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Projet_2_GoGreen
 {
     /// <summary>
@@ -20,15 +21,34 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Inscription : Window
     {
+
         private NpgsqlConnection GetConnection()
         {
             return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=muri789456123;Database=gg_db");
         }
+
+      
         public Inscription()
         {
             InitializeComponent();
         }
 
+        // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
+        private string CalculateMD5Hash(string input)
+        {
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        } //end CalculateMD5Hash
+               
         public List<int> list_reference()
         {
             var conn = GetConnection();
@@ -167,21 +187,7 @@ namespace Projet_2_GoGreen
                
             }
         }
-        // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
-        static string CalculateMD5Hash(string input)
-        {
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("x2"));
-                }
-                return sb.ToString();
-            }
-        } //end CalculateMD5Hash
+
 
         private void bt_annuler_inscription_Click(object sender, RoutedEventArgs e)
         {
