@@ -21,90 +21,18 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Inscription : Window
     {
-        NpgsqlConnection conx;
+
+        private NpgsqlConnection GetConnection()
+        {
+            return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=muri789456123;Database=gg_db");
+        }
+
+      
         public Inscription()
         {
             InitializeComponent();
-            connectDB();
         }
 
-        private void connectDB()
-        {
-            conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=admin13;Database=gg_db;");
-            conx.Open();
-            if (conx.State == System.Data.ConnectionState.Open)
-            {
-                Console.WriteLine("database connect success");
-            }
-            else
-            {
-                Console.WriteLine("echec connection database");
-            }
-        }
-
-        public void addInscription()
-        {
-            string name = tb_nom_inscription.Text;
-            string lastname = tb_prenom_inscription.Text;
-            string mail = tb_mail_inscription.Text;
-            string mdp = tb_mdp_inscription.Text;
-            string confirm_mdp = tb_confirmer_mdp_inscription.Text;
-            string reference = tb_reference_inscription.Text;
-            string hashedPassword = "";
-
-            if(reference != null)
-            {
-                connectDB();
-                int i = 1;
-                var cmd = conx.CreateCommand();
-                //var res = cmd.AllResultTypesAreUnknown;
-                var res = new List<String>();
-                cmd.CommandText = "SELECT count(*) FROM public.reference_entreprise ;";
-                
-                NpgsqlDataReader readcount = cmd.ExecuteReader();
-                
-                //int count = readcount.; 
-                do
-                {
-                    cmd.CommandText = "SELECT label_ref 	FROM public.reference_entreprise Where id=" + i + ";";
-                    NpgsqlDataReader reader =  cmd.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-                    
-                    i++;
-                } while (i<3);
-                
-            }
-
-            if (mdp == confirm_mdp)
-            {
-                hashedPassword = (string)CalculateMD5Hash(mdp);
-                Console.Out.WriteLine("Mot de passe haché en MD5 : " + hashedPassword);
-            }
-            else
-            {
-                Console.Out.WriteLine("erreur mot de passe");
-            }
-
-
-            if ((bool)rb_admin.IsChecked)
-            {
-                try
-                {
-                    connectDB();
-
-                    string requ = @"INSERT INTO public.administateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin)"
-                                + "VALUES( ' 1', '" + name + "', '" + lastname + "', '" + mail + "', '" + hashedPassword + "'); ";
-                    var cmd = conx.CreateCommand();
-                    cmd.CommandText = requ;
-                    cmd.ExecuteNonQuery();
-                    conx.Wait();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
         {
@@ -120,30 +48,160 @@ namespace Projet_2_GoGreen
                 return sb.ToString();
             }
         } //end CalculateMD5Hash
-        private void isExist()
+               
+        public List<int> list_reference()
         {
+            var conn = GetConnection();
+            conn.Open();
+            
+            List<int> liste_reference = new List<int>();
+            String query = "SELECT * FROM reference_entreprise";
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-        }
-        private void insertReference()
-        {
-            string reference = tb_reference_inscription.Text ;
-
-            try
+            NpgsqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                connectDB();
-                var cmd = conx.CreateCommand();
-                cmd.CommandText = @"INSERT INTO public.reference_entreprise(label_ref) VALUES('"+reference+"'); ";
-                cmd.ExecuteNonQuery();
-                conx.Wait();
-
+                liste_reference.Add((int)reader["id"]);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }           
+
+            return liste_reference;
         }
-        private void insertAdmin()
+
+        private void bt_inscrire_inscription_Click(object sender, RoutedEventArgs e)
         {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+
+                String nom = (string)tb_nom_inscription.Text;
+                String prenom = (string)tb_prenom_inscription.Text;
+                String mail = (string)tb_mail_inscription.Text;
+                String mot_de_passe = (string)tb_mdp_inscription.Text;
+                String hash_mdp = CalculateMD5Hash(mot_de_passe);
+                String confirmation = (string)tb_confirmer_mdp_inscription.Text;
+                String reference = tb_reference_inscription.Text;
+
+                if (string.IsNullOrWhiteSpace(nom) ||
+                       string.IsNullOrWhiteSpace(prenom) ||
+                       string.IsNullOrWhiteSpace(mail) ||
+                       string.IsNullOrWhiteSpace(mot_de_passe) ||
+                       string.IsNullOrWhiteSpace(confirmation) ||
+                       string.IsNullOrWhiteSpace(reference))
+                {
+                    MessageBox.Show("Veuillez remplir tous les champs pour vous incrire.    ", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                List<int> liste_reference = list_reference();
+                int id = int.Parse(reference);
+                
+
+                if (rb_client_inscription.IsChecked == true && mot_de_passe == confirmation && liste_reference.Contains(id))
+                {
+
+                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('"+id+"', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
+                    //using (var cmd = new NpgsqlCommand(requete, conn))
+                    //{
+                    //    cmd.Parameters.AddWithValue("@nom_client", nom);
+                    //    cmd.Parameters.AddWithValue("@prenom_client", prenom);
+                    //    cmd.Parameters.AddWithValue("@mail_client", mail);
+                    //    cmd.Parameters.AddWithValue("@pass_client", hash_mdp);
+                    var cmd = new NpgsqlCommand(requete, conn);
+                        try
+                        {
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected == 1)
+                            {
+                                //Réinitialiser le texte des TextBox après l'insertion
+                                tb_nom_inscription.Text = string.Empty;
+                                tb_prenom_inscription.Text = string.Empty;
+                                tb_mail_inscription.Text = string.Empty;
+                                tb_reference_inscription.Text = string.Empty;
+                                tb_mdp_inscription.Text = string.Empty;
+                                tb_confirmer_mdp_inscription.Text = string.Empty;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                }
+                else if (!liste_reference.Contains(id))
+                {
+                    MessageBox.Show("Cette référence n'existe pas. Veuillez contacter votre prestataire.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    tb_reference_inscription.Text = "";
+                }
+
+                else if (rb_administrateur_inscription.IsChecked == true && mot_de_passe == confirmation)
+                {
+                    if (string.IsNullOrWhiteSpace(nom) ||
+                       string.IsNullOrWhiteSpace(prenom) ||
+                       string.IsNullOrWhiteSpace(mail) ||
+                       string.IsNullOrWhiteSpace(mot_de_passe) ||
+                       string.IsNullOrWhiteSpace(confirmation) ||
+                       string.IsNullOrWhiteSpace(reference))
+                    {
+                        MessageBox.Show("Veuillez remplir tous les champs avant d'ajouter les données.", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    String requete = @"INSERT INTO public.administateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin)	VALUES ('1', '"+nom+"', '"+prenom+"', '"+mail+"', '"+mot_de_passe+"');";
+                    //using (var cmd = new NpgsqlCommand(requete, conn))
+                    //{
+                    //    cmd.Parameters.AddWithValue("@nom_admin", nom);
+                    //    cmd.Parameters.AddWithValue("@prenom_admin", prenom);
+                    //    cmd.Parameters.AddWithValue("@mail_admin", mail);
+                    //    cmd.Parameters.AddWithValue("@pass_admin", hash_mdp);
+                    var cmd = new NpgsqlCommand(requete, conn);
+                        try
+                        {
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected == 1)
+                            {
+                                // Réinitialiser le texte des TextBox après l'insertion
+                                tb_nom_inscription.Text = string.Empty;
+                                tb_prenom_inscription.Text = string.Empty;
+                                tb_mail_inscription.Text = string.Empty;
+                                tb_reference_inscription.Text = string.Empty;
+                                tb_mdp_inscription.Text = string.Empty;
+                                tb_confirmer_mdp_inscription.Text = string.Empty;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    
+                }
+                conn.Close();
+               
+            }
+        }
+
+
+        private void bt_annuler_inscription_Click(object sender, RoutedEventArgs e)
+        {
+            tb_nom_inscription.Text = "";
+            tb_prenom_inscription.Text = "";
+            tb_mail_inscription.Text = "";
+            tb_mdp_inscription.Text = "";
+            tb_confirmer_mdp_inscription.Text = "";
+            tb_reference_inscription.Text = "";
+
+            Authentification authentification = new Authentification();
+            authentification.Show();
+
+            this.Hide();
 
         }
     }
