@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Authentification" Height="450" Width="800">
+        Title="Authentification" Height="450" Width="800" ResizeMode="CanResize">
     <Grid  Background="#FFD6F9E5">
 
 
@@ -66,7 +66,7 @@
                 <RectangleGeometry Rect="0,0,200,200" RadiusX="100" RadiusY="100"/>
             </Path.Data>
         </Path>
-        <Label x:Name="lb_message" Content="" HorizontalAlignment="Right" Margin="0,243,93,0" Width="135" FontSize="10" FontStyle="Italic" Height="23" VerticalAlignment="Top"/>
+        <Label x:Name="lb_message" Content="" HorizontalAlignment="Right" Margin="0,282,94,0" Width="134" FontSize="10" FontStyle="Italic" Height="23" VerticalAlignment="Top"/>
 
 
     </Grid>

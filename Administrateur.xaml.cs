@@ -58,7 +58,7 @@ namespace Projet_2_GoGreen
         }
         private void connectDB()
         {
-            conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=admin13;Database=gg_db;");
+            NpgsqlConnection conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=a1234;Database=gg_db;");
             conx.Open();
             if (conx.State == System.Data.ConnectionState.Open)
             {

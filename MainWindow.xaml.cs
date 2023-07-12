@@ -31,16 +31,16 @@ namespace Projet_2_GoGreen
             authentification.Show();
 
 
-            Administrateur administrateur = new Administrateur();
-            administrateur.Show();
-            //this.Hide();
+            //Administrateur administrateur = new Administrateur();
+            //administrateur.Show();
+            ////this.Hide();
 
-            //this.Hide();
-            Test_op test_op = new Test_op();
-            test_op.Show();
+            ////this.Hide();
+            //Test_op test_op = new Test_op();
+            //test_op.Show();
 
-            Inscription inscription=new Inscription();
-            inscription.Show();
+            //Inscription inscription = new Inscription();
+            //inscription.Show();
 
             //Acceuil_client acc = new Acceuil_client();
             //acc.Show();
