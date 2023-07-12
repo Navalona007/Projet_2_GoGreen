@@ -1,0 +1,38 @@
+﻿<Window x:Class="Projet_2_GoGreen.Map"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projet_2_GoGreen"
+        mc:Ignorable="d"
+        Title="Map" Height="768" Width="1380">
+    <Grid Height="767.5">
+        <GridSplitter HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="254" Foreground="#FFFFB5B5" Background="#FFD6F9E5" />
+        <Button x:Name="bt_se_deconnecter_map" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="59,680,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_se_deconnecter_map_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="bt_retour_map" Content="Retour" HorizontalAlignment="Left" BorderThickness="2" Margin="59,625,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_retour_map_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Path StrokeThickness="1.5" Margin="20,0,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="214" Height="223" VerticalAlignment="Center">
+
+            <Path.Fill>
+                <ImageBrush ImageSource="/Go Green.png"/>
+            </Path.Fill>
+            <Path.Data>
+                <RectangleGeometry Rect="0,0,200,200" RadiusX="100" RadiusY="100"/>
+            </Path.Data>
+        </Path>
+        <Image HorizontalAlignment="Left" Height="72" Margin="97,37,0,0" VerticalAlignment="Top" Width="60" Source="/user (1).png"/>
+        <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="42" Margin="73,111,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

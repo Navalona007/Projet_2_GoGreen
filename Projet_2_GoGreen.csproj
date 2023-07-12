@@ -123,6 +123,9 @@
     <Compile Include="ConnectDB.cs" />
     <Compile Include="Espece.cs" />
     <Compile Include="Etat_arbre.cs" />
+    <Compile Include="Map.xaml.cs">
+      <DependentUpon>Map.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OperateurClass.cs" />
     <Compile Include="PositionGeographique.cs" />
     <Compile Include="Reference_entreprise.cs" />
@@ -167,6 +170,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Administrateur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Map.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

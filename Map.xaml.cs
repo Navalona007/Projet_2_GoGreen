@@ -15,23 +15,24 @@ using System.Windows.Shapes;
 namespace Projet_2_GoGreen
 {
     /// <summary>
-    /// Interaction logic for Acceuil_client.xaml
+    /// Interaction logic for Map.xaml
     /// </summary>
-    public partial class Acceuil_client : Window
+    public partial class Map : Window
     {
-        public Acceuil_client()
+        public Map()
         {
             InitializeComponent();
         }
 
-        private void bt_localiser_arbre_client_Click(object sender, RoutedEventArgs e)
+        private void bt_retour_map_Click(object sender, RoutedEventArgs e)
         {
-            Map map = new Map();
-            map.Show();
+            Acceuil_client acceuil_Client = new Acceuil_client();
+            acceuil_Client.Show();
             this.Hide();
+
         }
 
-        private void bt_se_deconnecter_client_Click(object sender, RoutedEventArgs e)
+        private void bt_se_deconnecter_map_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
