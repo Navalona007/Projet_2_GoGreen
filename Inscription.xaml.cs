@@ -29,6 +29,24 @@ namespace Projet_2_GoGreen
             InitializeComponent();
         }
 
+        public List<int> list_reference()
+        {
+            var conn = GetConnection();
+            conn.Open();
+            
+            List<int> liste_reference = new List<int>();
+            String query = "SELECT * FROM reference_entreprise";
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            NpgsqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                liste_reference.Add((int)reader["id"]);
+            }
+
+            return liste_reference;
+        }
+
         private void bt_inscrire_inscription_Click(object sender, RoutedEventArgs e)
         {
             using (var conn = GetConnection())
@@ -43,20 +61,25 @@ namespace Projet_2_GoGreen
                 String confirmation = (string)tb_confirmer_mdp_inscription.Text;
                 String reference = tb_reference_inscription.Text;
 
-                if (rb_client_inscription.IsChecked == true && mot_de_passe == confirmation)
-                {
-                    if (string.IsNullOrWhiteSpace(nom) ||
+                if (string.IsNullOrWhiteSpace(nom) ||
                        string.IsNullOrWhiteSpace(prenom) ||
                        string.IsNullOrWhiteSpace(mail) ||
                        string.IsNullOrWhiteSpace(mot_de_passe) ||
-                       string.IsNullOrWhiteSpace(confirmation) )
-                      // string.IsNullOrWhiteSpace(reference))
-                    {
-                        MessageBox.Show("Veuillez remplir tous les champs pour vous incrire.    ", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
+                       string.IsNullOrWhiteSpace(confirmation) ||
+                       string.IsNullOrWhiteSpace(reference))
+                {
+                    MessageBox.Show("Veuillez remplir tous les champs pour vous incrire.    ", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
-                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('1 ', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
+                List<int> liste_reference = list_reference();
+                int id = int.Parse(reference);
+                
+
+                if (rb_client_inscription.IsChecked == true && mot_de_passe == confirmation && liste_reference.Contains(id))
+                {
+
+                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('"+id+"', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
                     //using (var cmd = new NpgsqlCommand(requete, conn))
                     //{
                     //    cmd.Parameters.AddWithValue("@nom_client", nom);
@@ -74,7 +97,7 @@ namespace Projet_2_GoGreen
                                 tb_nom_inscription.Text = string.Empty;
                                 tb_prenom_inscription.Text = string.Empty;
                                 tb_mail_inscription.Text = string.Empty;
-                                //tb_reference_inscription.Text = string.Empty;
+                                tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
                             }
@@ -87,8 +110,13 @@ namespace Projet_2_GoGreen
                         {
                             MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    //}
                 }
+                else if (!liste_reference.Contains(id))
+                {
+                    MessageBox.Show("Cette référence n'existe pas. Veuillez contacter votre prestataire.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    tb_reference_inscription.Text = "";
+                }
+
                 else if (rb_administrateur_inscription.IsChecked == true && mot_de_passe == confirmation)
                 {
                     if (string.IsNullOrWhiteSpace(nom) ||
@@ -154,5 +182,21 @@ namespace Projet_2_GoGreen
                 return sb.ToString();
             }
         } //end CalculateMD5Hash
+
+        private void bt_annuler_inscription_Click(object sender, RoutedEventArgs e)
+        {
+            tb_nom_inscription.Text = "";
+            tb_prenom_inscription.Text = "";
+            tb_mail_inscription.Text = "";
+            tb_mdp_inscription.Text = "";
+            tb_confirmer_mdp_inscription.Text = "";
+            tb_reference_inscription.Text = "";
+
+            Authentification authentification = new Authentification();
+            authentification.Show();
+
+            this.Hide();
+
+        }
     }
 }

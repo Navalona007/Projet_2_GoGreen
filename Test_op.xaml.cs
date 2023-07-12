@@ -28,5 +28,10 @@ namespace Projet_2_GoGreen
         {
 
         }
+
+        private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

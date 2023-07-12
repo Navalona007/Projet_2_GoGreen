@@ -77,7 +77,7 @@
         </TextBox>
         <Image HorizontalAlignment="Left" Height="299" Margin="11,94,0,0" VerticalAlignment="Top" Width="471" Source="/saryfond.jpg"/>
         <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="131" Source="/Go Green.png" Margin="0,-10,0,0"/>
-        <Button x:Name="bt_annuler_inscription" Content="ANNULER" HorizontalAlignment="Left" Margin="646,377,0,0" VerticalAlignment="Top" Height="25" Width="130" Background="#FF5AE4A8" FontWeight="Bold" Foreground="#FFFFFDFD" BorderBrush="{x:Null}">
+        <Button x:Name="bt_annuler_inscription" Content="ANNULER" HorizontalAlignment="Left" Margin="646,377,0,0" VerticalAlignment="Top" Height="25" Width="130" Background="#FF5AE4A8" FontWeight="Bold" Foreground="#FFFFFDFD" BorderBrush="{x:Null}" Click="bt_annuler_inscription_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
