@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFC1E9B7" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="29*"/>
-            <ColumnDefinition Width="371*"/>
-        </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="460" Source="/nature-sprout-dirt-young-seedling.jpg" Grid.ColumnSpan="2"/>
-        <Image Margin="349,-19,-57,0" Source="/Go Green.png" Height="450" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="bt_start" Content="CLIQUEZ POUR COMMENCER !" HorizontalAlignment="Left" Height="44" Margin="453,366,0,0" VerticalAlignment="Top" Width="266" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_start_Click" FontFamily="Constantia" Grid.Column="1">
+
+    <Grid Background="#FFD6F9E5" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+        <Image HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="460" Source="/nature-sprout-dirt-young-seedling.jpg"/>
+        <Image HorizontalAlignment="Left" Height="450" Margin="400,-68,0,0" VerticalAlignment="Top" Width="450" Source="/Go Green.png" OpacityMask="#FFD6F9E5"/>
+        <Button x:Name="bt_start" Content="CLIQUEZ POUR COMMENCER !" HorizontalAlignment="Left" Height="44" Margin="492,338,0,0" VerticalAlignment="Top" Width="266" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_start_Click" FontFamily="Constantia">
+
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
