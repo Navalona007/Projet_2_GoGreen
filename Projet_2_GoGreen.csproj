@@ -212,6 +212,9 @@
     <Resource Include="carte.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Journey-amico.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="green.png" />
   </ItemGroup>
   <ItemGroup>
