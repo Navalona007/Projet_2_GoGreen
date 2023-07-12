@@ -94,6 +94,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,12 +113,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminClass.cs" />
     <Compile Include="Administrateur.xaml.cs">
       <DependentUpon>Administrateur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Arbre.cs" />
+    <Compile Include="ClientClass.cs" />
+    <Compile Include="ConnectDB.cs" />
+    <Compile Include="Espece.cs" />
+    <Compile Include="Etat_arbre.cs" />
+    <Compile Include="OperateurClass.cs" />
+    <Compile Include="PositionGeographique.cs" />
+    <Compile Include="Reference_entreprise.cs" />
+    <Compile Include="Statut_Arbre.cs" />
+    <Compile Include="Statut_Operateur.cs" />
     <Compile Include="Test_op.xaml.cs">
       <DependentUpon>Test_op.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Type_arbre.cs" />
+    <Compile Include="Zone.cs" />
     <Page Include="Acceuil_client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

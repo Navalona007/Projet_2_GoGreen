@@ -42,6 +42,9 @@ namespace Projet_2_GoGreen
             Inscription inscription=new Inscription();
             inscription.Show();
 
+            //Acceuil_client acc = new Acceuil_client();
+            //acc.Show();
+
         }
     }
 }

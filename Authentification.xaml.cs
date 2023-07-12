@@ -20,36 +20,48 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Authentification : Window
     {
-        NpgsqlConnection conx;
+        ConnectDB conx;
+        AdminClass admin;
+        OperateurClass operateur;
+        ClientClass client;
+
 
         public Authentification()
         {
             InitializeComponent();
-            conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=1234;Database=gg_db;");
 
         }
-        string login;
-        string password;
-        string defaultLogin = "admin";
-        string defaultPassword = "admin";
+        string login="";
+        string password="";
+        //string defaultLogin = "admin";
+        //string defaultPassword = "admin";
 
 
 
         private void bt_connect_Click(object sender, RoutedEventArgs e)
         {            
             login = tb_login.Text.ToString();
-            password = pwd_auth.Password;
+            password = CalculateMD5Hash(pwd_auth.Password);
             CompareLoginPassword(); 
         }
-
+        //private static List
 
         public void CompareLoginPassword()
         {
+            admin = new AdminClass();
+            operateur = new OperateurClass();
+            client = new ClientClass();
+
+            
+
+            
+
             // Vérification si le login et le mot de passe correspondent aux valeurs par défaut
-            if (login == defaultLogin && password == defaultPassword)
+            if (true)
             {
                 lb_message.Content = "correct";
                 lb_message.Foreground = Brushes.Green;
+
                 //basculer vers une nouvelle fenetre
             }
             else
@@ -70,9 +82,24 @@ namespace Projet_2_GoGreen
 
         }
 
-        
-            
-            
+
+        private string CalculateMD5Hash(string input)
+        {
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        } //end CalculateMD5Hash
+
+
+
 
     }
 }

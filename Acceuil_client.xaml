@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Acceuil_client" Height="450" Width="800">
+        Title="Acceuil_client" WindowState="Normal" WindowStartupLocation="Manual" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="800" Height="450">
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="21" Margin="564,41,0,0" TextWrapping="Wrap" Text="Recherche" VerticalAlignment="Top" Width="208"/>
         <Image HorizontalAlignment="Left" Height="72" Margin="26,22,0,0" VerticalAlignment="Top" Width="59" Source="/user (1).png"/>
