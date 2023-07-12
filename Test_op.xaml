@@ -32,13 +32,10 @@
                     <DatePicker x:Name="dp_mise_a_jour" HorizontalAlignment="Left" Margin="196,46,0,0" VerticalAlignment="Top" Width="211" BorderBrush="{x:Null}" Grid.Column="2"/>
                     <Rectangle HorizontalAlignment="Left" Height="148" Margin="176,205,0,0" VerticalAlignment="Top" Width="244" Fill="#FF5AE4A8" Grid.Column="2"/>
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="20,211,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="3"/>
-                    <RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Center" Margin="0,241,0,0" VerticalAlignment="Top"/>
-                    <RadioButton x:Name="rb_marron" Content="" HorizontalAlignment="Left" Margin="50,244,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-                    <RadioButton x:Name="rb_jaune" Content="" HorizontalAlignment="Center" Margin="0,276,0,0" VerticalAlignment="Top"/>
-                    <RadioButton x:Name="rb_aucune_feuille" Content="Aucune feuille" HorizontalAlignment="Left" Margin="50,275,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-                    <Rectangle HorizontalAlignment="Center" Height="12" Margin="0,242,0,0" VerticalAlignment="Top" Width="72" Fill="#FF36AF11" Grid.Column="1"/>
-                    <Rectangle HorizontalAlignment="Center" Height="12" Margin="0,276,0,0" VerticalAlignment="Top" Width="72" Fill="#FFDFE04D" Grid.Column="1"/>
-                    <Rectangle HorizontalAlignment="Left" Height="12" Margin="72,245,0,0" VerticalAlignment="Top" Width="72" Fill="#FF5F5F1A" RenderTransformOrigin="0.4,0.837" Grid.Column="2"/>
+                    <RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="rb_marron" Content="" HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <RadioButton x:Name="rb_jaune" Content="" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="rb_aucune_feuille" Content="Aucune feuille" HorizontalAlignment="Left" Margin="50,291,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <Rectangle HorizontalAlignment="Left" Height="305" Margin="434,8,0,0" VerticalAlignment="Top" Width="243" Fill="#FF5AE4A8" Grid.Column="2"/>
                     <Label Content="Espèce" HorizontalAlignment="Left" Margin="448,21,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="60" Grid.Column="2"/>
                     <ComboBox x:Name="cb_espece" HorizontalAlignment="Left" Margin="452,47,0,0" VerticalAlignment="Top" Width="209" Grid.Column="2">
@@ -75,6 +72,36 @@
                     <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="199,211,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2"/>
                     <TextBox x:Name="tb_recommandation" HorizontalAlignment="Left" Height="101" Margin="176,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Background="White" BorderBrush="{x:Null}" Grid.Column="2"/>
                     <Label Content="- Make the world green again -" HorizontalAlignment="Left" Margin="55,326,0,0" VerticalAlignment="Top" FontFamily="Bell MT" Grid.ColumnSpan="3"/>
+                    <Image HorizontalAlignment="Left" Height="38" Margin="49,237,0,0" VerticalAlignment="Top" Width="37" Source="/green.png" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="23.069"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="35" Margin="49,275,0,0" VerticalAlignment="Top" Width="46" Source="/green (1).png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="22.616"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="36" Margin="68,238,0,0" VerticalAlignment="Top" Width="39" Source="/green (2).png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="26.693"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
                 </Grid>
             </TabItem>
             <TabItem Header="Liste">
@@ -121,6 +148,7 @@
                             </Style>
                         </Button.Resources>
                     </Button>
+                    <Image HorizontalAlignment="Left" Height="101" Margin="6,290,0,0" VerticalAlignment="Top" Width="122" Source="/Go Green.png" Grid.ColumnSpan="3"/>
                 </Grid>
             </TabItem>
         </TabControl>
