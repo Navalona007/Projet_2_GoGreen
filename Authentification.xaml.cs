@@ -26,10 +26,10 @@ namespace Projet_2_GoGreen
         {
             InitializeComponent();
         }
-        
-
+     
         private void bt_connect_Click(object sender, RoutedEventArgs e)
         {
+
             string mdp = CalculateMD5Hash(pwd_auth.Password);
 
             if (!string.IsNullOrEmpty(tb_login.Text) || !string.IsNullOrEmpty(mdp))
@@ -43,7 +43,6 @@ namespace Projet_2_GoGreen
                     {
                         adminCmd.Parameters.AddWithValue("@mail_admin", tb_login.Text);
                         adminCmd.Parameters.AddWithValue("@pass_admin", mdp);
-
                         using (var adminReader = adminCmd.ExecuteReader())
                         {
                             if (adminReader.Read())
@@ -111,8 +110,8 @@ namespace Projet_2_GoGreen
             }
         }
 
-
         //passage a la fenetre d'inscription
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Inscription inscription = new Inscription();
