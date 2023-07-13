@@ -22,7 +22,7 @@ namespace Projet_2_GoGreen
     public partial class Authentification : Window
     {
 
-        NpgsqlConnection conn = new NpgsqlConnection("Host=localhost; Port=5432; Database=gg_db;Username=postgres;Password=1234");
+      
         public Authentification()
         {
             InitializeComponent();
@@ -30,27 +30,25 @@ namespace Projet_2_GoGreen
 
         public static NpgsqlConnection GetConnection()
         {
-            return new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=1234;Database=gg_db");
+            //return new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=1234;Database=gg_db");
+            return new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=root");
         }
-        string login;
-        string password;
-        string defaultLogin = "admin";
-        string defaultPassword = "admin";
+        
 
         private void bt_connect_Click(object sender, RoutedEventArgs e)
         {
-
+            string hash_password = CalculateMD5Hash(pwd_auth.Password);
             if (!string.IsNullOrEmpty(tb_login.Text) || !string.IsNullOrEmpty(pwd_auth.Password))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=1234"))
+                var conn = GetConnection();
                 {
                     conn.Open();
 
                     // Vérifier si l'utilisateur est un administrateur
-                    using (NpgsqlCommand adminCmd = new NpgsqlCommand("SELECT mail_admin, pass_admin FROM administrateur WHERE mail_admin = '" + tb_login.Text + "' AND pass_admin = '" + pwd_auth.Password + "'", conn))
+                    using (NpgsqlCommand adminCmd = new NpgsqlCommand("SELECT mail_admin, pass_admin FROM administrateur WHERE mail_admin = '" + tb_login.Text + "' AND pass_admin = '" + hash_password + "'", conn))
                     {
                         adminCmd.Parameters.AddWithValue("@mail_admin", tb_login.Text);
-                        adminCmd.Parameters.AddWithValue("@pass_admin", pwd_auth.Password);
+                        adminCmd.Parameters.AddWithValue("@pass_admin", hash_password);
 
                         using (var adminReader = adminCmd.ExecuteReader())
                         {
@@ -97,31 +95,7 @@ namespace Projet_2_GoGreen
         //private static List
 
 
-        public void CompareLoginPassword()
-        {
-            admin = new AdminClass();
-            operateur = new OperateurClass();
-            client = new ClientClass();
-
-            
-
-            
-
-            // Vérification si le login et le mot de passe correspondent aux valeurs par défaut
-            if (true)
-            {
-                lb_message.Content = "correct";
-                lb_message.Foreground = Brushes.Green;
-
-                //basculer vers une nouvelle fenetre
-            }
-            else
-            {
-                //affichage message sur lb_message au cas ou identifiant et mot de passe contient erreur
-                lb_message.Content = "login et mdp érroné";
-                lb_message.Foreground = Brushes.Red;
-            }
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -149,21 +123,5 @@ namespace Projet_2_GoGreen
             }
         } //end CalculateMD5Hash
 
-        //private bool VerifyPassword(string email, string password)
-        //{
-        //    // Récupérer le mot de passe haché depuis la base de données en fonction de l'email
-        //    // ...
-        //    using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=1234"))
-        //    {
-        //        conn.Open();
-
-        //        // Calculer le haché MD5 du mot de passe saisi
-        //        string hashedPasswordToVerify = CalculateMD5Hash(password);
-
-        //        // Comparer les deux hachés de mot de passe
-        //        return hashedPasswordFromDatabase.Equals(hashedPasswordToVerify);
-        //    }//verifyPassword
-
-        //}
     }
 }
