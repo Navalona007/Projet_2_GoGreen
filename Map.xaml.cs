@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Web.WebView2.Wpf;
+using Microsoft.Web.WebView2.Core;
 
 namespace Projet_2_GoGreen
 {
@@ -22,6 +24,7 @@ namespace Projet_2_GoGreen
         public Map()
         {
             InitializeComponent();
+            webView.Source = new Uri("https://maps.google.com/maps?key=AIzaSyB4AAyqAyD0iI0rJPUgvqy9bxW8Qb7yYXE");
         }
 
         private void bt_retour_map_Click(object sender, RoutedEventArgs e)
