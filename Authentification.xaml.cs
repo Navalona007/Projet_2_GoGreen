@@ -42,7 +42,7 @@ namespace Projet_2_GoGreen
 
             if (!string.IsNullOrEmpty(tb_login.Text) || !string.IsNullOrEmpty(pwd_auth.Password))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=1234"))
+                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=root"))
                 {
                     conn.Open();
 
@@ -99,9 +99,9 @@ namespace Projet_2_GoGreen
 
         public void CompareLoginPassword()
         {
-            admin = new AdminClass();
-            operateur = new OperateurClass();
-            client = new ClientClass();
+            //admin = new AdminClass();
+            //operateur = new OperateurClass();
+            //client = new ClientClass();
 
             
 
@@ -125,6 +125,9 @@ namespace Projet_2_GoGreen
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Inscription inscription = new Inscription();
+            inscription.Show();
+            this.Hide();
 
         }
 

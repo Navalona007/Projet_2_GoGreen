@@ -24,7 +24,7 @@ namespace Projet_2_GoGreen
 
         private NpgsqlConnection GetConnection()
         {
-            return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=muri789456123;Database=gg_db");
+            return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
         }
 
       
