@@ -99,11 +99,7 @@ namespace Projet_2_GoGreen
 
         public void CompareLoginPassword()
         {
-            admin = new AdminClass();
-            operateur = new OperateurClass();
-            client = new ClientClass();
-
-            
+                 
 
             
 
