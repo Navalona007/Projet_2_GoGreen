@@ -22,35 +22,27 @@ namespace Projet_2_GoGreen
     public partial class Authentification : Window
     {
 
-        NpgsqlConnection conn = new NpgsqlConnection("Host=localhost; Port=5432; Database=gg_db;Username=postgres;Password=1234");
         public Authentification()
         {
             InitializeComponent();
         }
-
-        public static NpgsqlConnection GetConnection()
-        {
-            return new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=1234;Database=gg_db");
-        }
-        string login;
-        string password;
-        string defaultLogin = "admin";
-        string defaultPassword = "admin";
+        
 
         private void bt_connect_Click(object sender, RoutedEventArgs e)
         {
+            string mdp = CalculateMD5Hash(pwd_auth.Password);
 
-            if (!string.IsNullOrEmpty(tb_login.Text) || !string.IsNullOrEmpty(pwd_auth.Password))
+            if (!string.IsNullOrEmpty(tb_login.Text) || !string.IsNullOrEmpty(mdp))
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=root"))
                 {
                     conn.Open();
 
-                    // Vérifier si l'utilisateur est un administrateur
-                    using (NpgsqlCommand adminCmd = new NpgsqlCommand("SELECT mail_admin, pass_admin FROM administrateur WHERE mail_admin = '" + tb_login.Text + "' AND pass_admin = '" + pwd_auth.Password + "'", conn))
+                    // Vérifier si l'utilisateur est un administrateur // remaque sur pwd_auth
+                    using (NpgsqlCommand adminCmd = new NpgsqlCommand("SELECT mail_admin, pass_admin FROM administrateur WHERE mail_admin = '" + tb_login.Text + "' AND pass_admin = '" + mdp + "'", conn))
                     {
                         adminCmd.Parameters.AddWithValue("@mail_admin", tb_login.Text);
-                        adminCmd.Parameters.AddWithValue("@pass_admin", pwd_auth.Password);
+                        adminCmd.Parameters.AddWithValue("@pass_admin", mdp);
 
                         using (var adminReader = adminCmd.ExecuteReader())
                         {
@@ -58,7 +50,8 @@ namespace Projet_2_GoGreen
                             {
                                 Administrateur administrateur = new Administrateur();
                                 administrateur.Show();
-                                //MessageBox.Show("Mety", "Ok");
+                                this.Hide();
+                                //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                 tb_login.Text = "";
                                 pwd_auth.Password = "";
                                 return;
@@ -67,24 +60,47 @@ namespace Projet_2_GoGreen
                     }
 
                     // Vérifier si l'utilisateur est un client
-                    using (NpgsqlCommand ClientCmd = new NpgsqlCommand("SELECT mail_client, pass_client FROM client WHERE mail_client = '" + tb_login.Text + "' AND pass_client = '" + pwd_auth.Password + "'", conn))
+                    using (NpgsqlCommand ClientCmd = new NpgsqlCommand("SELECT mail_client, pass_client FROM client WHERE mail_client = '" + tb_login.Text + "' AND pass_client = '" + mdp + "'", conn))
                     {
                         ClientCmd.Parameters.AddWithValue("@mail_client", tb_login.Text);
-                        ClientCmd.Parameters.AddWithValue("@pass_client", pwd_auth.Password);
+                        ClientCmd.Parameters.AddWithValue("@pass_client", mdp);
 
                         using (var clientReader = ClientCmd.ExecuteReader())
                         {
                             if (clientReader.Read())
                             {
-                                //Administrateur administrateur = new Administrateur();
-                                //administrateur.Show();
-                                MessageBox.Show("Bienvenu sur votre plateforme", "Reussi");
+                                Acceuil_client acc = new Acceuil_client();
+                                acc.Show();
+                                this.Hide();
+                                //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                 tb_login.Text = "";
                                 pwd_auth.Password = "";
                                 return;
                             }
                         }
                     }
+
+                    // Vérifier si l'utilisateur est un opérateur de saisi // remaque sur pwd_auth
+                    using (NpgsqlCommand OperCmd = new NpgsqlCommand("SELECT mail_oper, pass_oper FROM opérateur_de_saisi WHERE mail_oper = '" + tb_login.Text + "' AND pass_oper = '" + mdp + "'", conn))
+                    {
+                        OperCmd.Parameters.AddWithValue("@mail_oper", tb_login.Text);
+                        OperCmd.Parameters.AddWithValue("@pass_oper", mdp);
+
+                        using (var operReader = OperCmd.ExecuteReader())
+                        {
+                            if (operReader.Read())
+                            {
+                                Test_op test_op = new Test_op();
+                                test_op.Show();
+                                this.Hide();
+                                //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information );
+                                tb_login.Text = "";
+                                pwd_auth.Password = "";
+                                return;
+                            }
+                        }
+                    }
+
                     // Si aucun utilisateur correspondant n'est trouvé
                     MessageBox.Show("Votre identifiant et mot de passe ne correspondent pas. Réessayez", "Erreur");
                 }
@@ -94,35 +110,9 @@ namespace Projet_2_GoGreen
                 MessageBox.Show("Veuillez remplir tous les champs de connexion", "Erreur");
             }
         }
-        //private static List
 
 
-        public void CompareLoginPassword()
-        {
-            //admin = new AdminClass();
-            //operateur = new OperateurClass();
-            //client = new ClientClass();
-
-            
-
-            
-
-            // Vérification si le login et le mot de passe correspondent aux valeurs par défaut
-            if (true)
-            {
-                lb_message.Content = "correct";
-                lb_message.Foreground = Brushes.Green;
-
-                //basculer vers une nouvelle fenetre
-            }
-            else
-            {
-                //affichage message sur lb_message au cas ou identifiant et mot de passe contient erreur
-                lb_message.Content = "login et mdp érroné";
-                lb_message.Foreground = Brushes.Red;
-            }
-        }
-
+        //passage a la fenetre d'inscription
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Inscription inscription = new Inscription();
@@ -131,10 +121,6 @@ namespace Projet_2_GoGreen
 
         }
 
-        private void tb_login_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         static string CalculateMD5Hash(string input)
@@ -152,21 +138,5 @@ namespace Projet_2_GoGreen
             }
         } //end CalculateMD5Hash
 
-        //private bool VerifyPassword(string email, string password)
-        //{
-        //    // Récupérer le mot de passe haché depuis la base de données en fonction de l'email
-        //    // ...
-        //    using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Database=gg_db;Username=postgres;Password=1234"))
-        //    {
-        //        conn.Open();
-
-        //        // Calculer le haché MD5 du mot de passe saisi
-        //        string hashedPasswordToVerify = CalculateMD5Hash(password);
-
-        //        // Comparer les deux hachés de mot de passe
-        //        return hashedPasswordFromDatabase.Equals(hashedPasswordToVerify);
-        //    }//verifyPassword
-
-        //}
     }
 }

@@ -48,23 +48,82 @@ namespace Projet_2_GoGreen
                 return sb.ToString();
             }
         } //end CalculateMD5Hash
-               
-        public List<int> list_reference()
+
+        Dictionary<string, string> liste_id_ref;
+        Dictionary<string, int> liste_label_ref;
+        public void list_reference()
         {
+            liste_id_ref = null;
+            liste_label_ref = null;
+            liste_id_ref = new Dictionary<string, string>();
+            liste_label_ref = new Dictionary<string, int>();
             var conn = GetConnection();
             conn.Open();
             
-            List<int> liste_reference = new List<int>();
             String query = "SELECT * FROM reference_entreprise";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
             NpgsqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                liste_reference.Add((int)reader["id"]);
+                liste_id_ref.Add(reader["id"].ToString(), (string)reader["label_ref"]) ;//cast error
+                liste_label_ref.Add((string)reader["label_ref"], (int)reader["id"]);
             }
 
-            return liste_reference;
+            //return liste_reference;
+        }
+        public void insertReference(string valueInsert)
+        {
+            var conn = GetConnection();
+            conn.Open();
+
+            String query = "INSERT INTO public.reference_entreprise(label_ref)	VALUES ('"+valueInsert+"');";
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+            command.ExecuteNonQuery();
+
+        }
+
+        public int hasKey(string valuetofind)
+        {
+            int key=0;
+
+            foreach (var pair in liste_label_ref)
+            {
+                if( pair.Key == valuetofind)
+                {
+                    key = pair.Value;
+                    break;
+                }
+            }
+            return key;
+        }
+
+        public bool isExist(string valueTofind)
+        {
+            if(liste_id_ref.ContainsValue(valueTofind))
+            {
+                MessageBox.Show("Cette référence existe déjà. \nMerci de saisir votre réference d'entreprise.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int conversion_reference_key(string value)
+        {
+            int id = 0;
+            if (int.TryParse(value, out id)) { 
+                id = int.Parse(value);
+                return id;
+            }
+            else
+            {
+                MessageBox.Show("Cette référence n'existe pas. \nMerci de contacter votre prestataire.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                tb_reference_inscription.Text = "";
+                return 0;
+             }
         }
 
         private void bt_inscrire_inscription_Click(object sender, RoutedEventArgs e)
@@ -81,6 +140,8 @@ namespace Projet_2_GoGreen
                 String confirmation = (string)tb_confirmer_mdp_inscription.Text;
                 String reference = tb_reference_inscription.Text;
 
+                list_reference();
+
                 if (string.IsNullOrWhiteSpace(nom) ||
                        string.IsNullOrWhiteSpace(prenom) ||
                        string.IsNullOrWhiteSpace(mail) ||
@@ -88,24 +149,16 @@ namespace Projet_2_GoGreen
                        string.IsNullOrWhiteSpace(confirmation) ||
                        string.IsNullOrWhiteSpace(reference))
                 {
-                    MessageBox.Show("Veuillez remplir tous les champs pour vous incrire.    ", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Veuillez remplir tous les champs pour vous incrire.", "Champs obligatoires", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                List<int> liste_reference = list_reference();
-                int id = int.Parse(reference);
-                
-
-                if (rb_client_inscription.IsChecked == true && mot_de_passe == confirmation && liste_reference.Contains(id))
+                else if (rb_client_inscription.IsChecked == true && mot_de_passe == confirmation && liste_id_ref.ContainsKey(reference))
                 {
 
-                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('"+id+"', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
-                    //using (var cmd = new NpgsqlCommand(requete, conn))
-                    //{
-                    //    cmd.Parameters.AddWithValue("@nom_client", nom);
-                    //    cmd.Parameters.AddWithValue("@prenom_client", prenom);
-                    //    cmd.Parameters.AddWithValue("@mail_client", mail);
-                    //    cmd.Parameters.AddWithValue("@pass_client", hash_mdp);
+                    
+                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('"+int.Parse(reference)+"', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
+                    
                     var cmd = new NpgsqlCommand(requete, conn);
                         try
                         {
@@ -120,7 +173,11 @@ namespace Projet_2_GoGreen
                                 tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
-                            }
+                                MessageBox.Show("Inscription réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Authentification authentification = new Authentification();
+                                authentification.Show();
+                                this.Hide();
+                        }
                             else
                             {
                                 MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -131,32 +188,16 @@ namespace Projet_2_GoGreen
                             MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                 }
-                else if (!liste_reference.Contains(id))
-                {
-                    MessageBox.Show("Cette référence n'existe pas. Veuillez contacter votre prestataire.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                    tb_reference_inscription.Text = "";
-                }
 
-                else if (rb_administrateur_inscription.IsChecked == true && mot_de_passe == confirmation)
+                else if (rb_administrateur_inscription.IsChecked == true && mot_de_passe == confirmation && !liste_label_ref.ContainsKey(reference))
                 {
-                    if (string.IsNullOrWhiteSpace(nom) ||
-                       string.IsNullOrWhiteSpace(prenom) ||
-                       string.IsNullOrWhiteSpace(mail) ||
-                       string.IsNullOrWhiteSpace(mot_de_passe) ||
-                       string.IsNullOrWhiteSpace(confirmation) ||
-                       string.IsNullOrWhiteSpace(reference))
-                    {
-                        MessageBox.Show("Veuillez remplir tous les champs avant d'ajouter les données.", "Champs incomplets", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
+                    insertReference(reference);
+                    list_reference();
+                    int key = hasKey(reference);
 
-                    String requete = @"INSERT INTO public.administateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin)	VALUES ('1', '"+nom+"', '"+prenom+"', '"+mail+"', '"+mot_de_passe+"');";
-                    //using (var cmd = new NpgsqlCommand(requete, conn))
-                    //{
-                    //    cmd.Parameters.AddWithValue("@nom_admin", nom);
-                    //    cmd.Parameters.AddWithValue("@prenom_admin", prenom);
-                    //    cmd.Parameters.AddWithValue("@mail_admin", mail);
-                    //    cmd.Parameters.AddWithValue("@pass_admin", hash_mdp);
+
+                    String requete = @"INSERT INTO public.administrateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin)	VALUES ('"+ key + "', '"+nom+"', '"+prenom+"', '"+mail+"', '"+hash_mdp+"');";
+                    
                     var cmd = new NpgsqlCommand(requete, conn);
                         try
                         {
@@ -171,7 +212,11 @@ namespace Projet_2_GoGreen
                                 tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
-                            }
+                                MessageBox.Show("Inscription réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Authentification authentification = new Authentification();
+                                authentification.Show();
+                                this.Hide();
+                        }
                             else
                             {
                                 MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -182,6 +227,11 @@ namespace Projet_2_GoGreen
                             MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     
+                }
+                else if (!liste_id_ref.ContainsKey(reference))
+                {
+                    MessageBox.Show("Cette référence n'existe pas. \nVeuillez contacter votre prestataire.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    tb_reference_inscription.Text = "";
                 }
                 conn.Close();
                
