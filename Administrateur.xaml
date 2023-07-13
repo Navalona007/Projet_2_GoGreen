@@ -6,19 +6,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Gestion de compte" Icon="/Go Green.png" Width="800" Height="512">
+        Title="Gestion de compte" Width="1380" Height="768" ResizeMode="NoResize">
     <Grid Background="#FFF2F3F2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TabControl Background="#FFF4FAF3" Margin="0,10,0,0">
+        <TabControl Background="#FFF4FAF3" Margin="0,31,0,0">
             <TabItem Header="Opérateur de saisi" BorderBrush="#FFCFCBCB" FontSize="14">
                 <Grid Background="#FF5AE4A8">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="783*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="589,304,0,0" HorizontalAlignment="Left" Width="206" VerticalAlignment="Top" Height="193"/>
-                    <DataGrid x:Name="grid_oper" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="280,38,22,159" Background="#FF5AE4A8" AutoGenerateColumns="False">
+                    <GroupBox HorizontalAlignment="Left" Height="590" Header="Formulaire" Margin="10,0,0,0" VerticalAlignment="Top" Width="491" FontSize="16" FontFamily="Global User Interface"/>
+
+
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="grid_oper" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn CanUserReorder="True" Header="ID" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Nom"/>
@@ -30,29 +33,21 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <TextBox x:Name="tb_search_oper" Margin="623,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged">
+                    <TextBox x:Name="tb_search_oper" Margin="919,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="29,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Height="25" Grid.ColumnSpan="3" TextAlignment="Left" FontSize="14">
+                    <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="47,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="29,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Height="25" FontSize="14">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-
-                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="29,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Height="25" FontSize="14">
+                    <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -60,7 +55,7 @@
                         </TextBox.Resources>
                     </TextBox>
 
-                    <TextBox x:Name="tb_lieu" HorizontalAlignment="Left" Margin="29,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Height="25" FontSize="14">
+                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -68,53 +63,60 @@
                         </TextBox.Resources>
                     </TextBox>
 
-                    <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="29,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Height="25" FontSize="14">
+                    <TextBox x:Name="tb_lieu" HorizontalAlignment="Left" Margin="47,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="29,329,0,0" VerticalAlignment="Top" Width="213" Height="18"/>
-                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="29,292,0,0" VerticalAlignment="Top" Width="213" Height="18"/>
-                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="27" Margin="19,399,0,0" VerticalAlignment="Top" Width="88" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Constantia">
+
+                    <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="47,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,488,0,0" VerticalAlignment="Top" Width="417" Height="26" FontSize="16" FontFamily="Global User Interface"/>
+                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,433,0,0" VerticalAlignment="Top" Width="417" Height="26" FontSize="16" FontFamily="Global User Interface"/>
+                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="58,616,0,0" VerticalAlignment="Top" Width="165" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="27" Margin="145,399,0,0" VerticalAlignment="Top" Width="94" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Constantia">
+                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="311,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="29,274,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Confirmer Mot de passe" HorizontalAlignment="Left" Margin="28,310,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Mobile" HorizontalAlignment="Left" Margin="29,216,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Lieu de travail" HorizontalAlignment="Left" Margin="29,167,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="29,117,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Prénom" HorizontalAlignment="Left" Margin="29,71,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Nom" HorizontalAlignment="Left" Margin="29,18,0,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Label Content="Rechercher :" Margin="562,6,168,0" VerticalAlignment="Top" FontSize="10"/>
-                    <Button x:Name="bt_supprimer_oper" Content="SUPPRIMER" HorizontalAlignment="Left" Height="27" Margin="280,398,0,0" VerticalAlignment="Top" Width="88" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_suppr_oper_Click" FontFamily="Constantia">
+                    <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="47,408,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="136" FontFamily="Global User Interface"/>
+                    <Label Content="Confirmer Mot de passe" HorizontalAlignment="Left" Margin="45,461,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="228" FontFamily="Global User Interface"/>
+                    <Label Content="Mobile" HorizontalAlignment="Left" Margin="47,321,0,0" VerticalAlignment="Top" FontSize="16" Height="34" Width="80" FontFamily="Global User Interface"/>
+                    <Label Content="Lieu de travail" HorizontalAlignment="Left" Margin="47,248,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="140" FontFamily="Global User Interface"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="47,173,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="66" FontFamily="Global User Interface"/>
+                    <Label Content="Prénom" HorizontalAlignment="Left" Margin="47,105,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="88" FontFamily="Global User Interface"/>
+                    <Label Content="Nom" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="63" FontFamily="Global User Interface"/>
+                    <Label Content="Rechercher :" Margin="808,-2,459,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Button x:Name="bt_supprimer_oper" Content="SUPPRIMER" HorizontalAlignment="Left" Height="40" Margin="792,617,0,0" VerticalAlignment="Top" Width="156" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_suppr_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Right" Height="27" Margin="0,398,303,0" VerticalAlignment="Top" Width="94" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Constantia">
+                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Right" Height="40" Margin="0,617,652,0" VerticalAlignment="Top" Width="166" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label x:Name="lb_message_oper" Content="" HorizontalAlignment="Left" Margin="29,362,0,0" VerticalAlignment="Top" Width="213" FontSize="11"/>
-                    <GroupBox HorizontalAlignment="Left" Height="398" Header="Formulaire" Margin="10,0,0,0" VerticalAlignment="Top" Width="250" FontSize="12"/>
+                    <Label x:Name="lb_message_oper" Content="" HorizontalAlignment="Left" Margin="47,535,0,0" VerticalAlignment="Top" Width="417" FontSize="16" Height="37" FontFamily="Global User Interface"/>
 
 
                 </Grid>
@@ -131,75 +133,81 @@
                             <DataGridComboBoxColumn Header="Statut"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="587,302,0,-40" HorizontalAlignment="Left" Width="206"/>
-                    <TextBox x:Name="tb_search_client"  HorizontalAlignment="Left" Margin="623,4,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="149" Background="White" FontSize="14" TextChanged="tb_search_client_TextChanged">
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1225,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="199"/>
+                    <TextBox x:Name="tb_search_client"  HorizontalAlignment="Left" Margin="918,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="431" Background="White" FontSize="14" TextChanged="tb_search_client_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <Label Content="Rechercher :" HorizontalAlignment="Left" Margin="562,6,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label Content="Rechercher :" HorizontalAlignment="Left" Margin="824,8,0,0" VerticalAlignment="Top" FontSize="14" Width="89"/>
 
+                </Grid>
+            </TabItem>
+
+            <TabItem FontSize="14" Header="Liste des requêtes">
+                <Grid Background="#FF5AE4A8">
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1223,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201"/>
                 </Grid>
             </TabItem>
             <TabItem FontSize="14" Header="Requête">
                 <Grid Background="#FF5AE4A8">
-                    <GroupBox x:Name="grb_suppression" HorizontalAlignment="Left" Height="388" Header="Requête Suppression" Margin="5,23,0,0" VerticalAlignment="Top" Width="285"/>
-                    <GroupBox x:Name="grb_modification" HorizontalAlignment="Left" Height="322" Header="Requête Modification" Margin="370,23,0,0" VerticalAlignment="Top" Width="414"/>
-                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="587,302,0,-40" HorizontalAlignment="Left" Width="206"/>
-                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="15,58,0,0" VerticalAlignment="Top" FontSize="12" Background="#11DCFCC2"/>
-                    <Label x:Name="tb_demande_suppr_nom_oper" Content="" HorizontalAlignment="Left" Margin="121,56,0,0" VerticalAlignment="Top" Width="135" Background="#FFE9FADC"/>
-                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="15,111,0,0" VerticalAlignment="Top" Height="31" Width="84"/>
-                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="15,233,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="bt_demande_suppr_valide" Content="Valider" HorizontalAlignment="Left" Margin="19,341,0,0" VerticalAlignment="Top" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="32" Width="75" Click="Click_bt_demande_suppr_valide">
+                    <GroupBox x:Name="grb_modification" HorizontalAlignment="Left" Height="542" Header="Requête Modification" Margin="818,23,0,0" VerticalAlignment="Top" Width="507"/>
+                    <GroupBox x:Name="grb_suppression" HorizontalAlignment="Left" Height="542" Header="Requête Suppression" Margin="29,23,0,0" VerticalAlignment="Top" Width="489"/>
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="546,182,0,268" HorizontalAlignment="Left" Width="240" Height="240"/>
+                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="96,71,0,0" VerticalAlignment="Top" FontSize="14" Background="#11DCFCC2" Height="30" Width="110"/>
+                    <Label x:Name="tb_demande_suppr_nom_oper" Content="" HorizontalAlignment="Left" Margin="231,74,0,0" VerticalAlignment="Top" Width="268" Background="#FFE9FADC" Height="25"/>
+                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="131,145,0,0" VerticalAlignment="Top" Height="47" Width="95" FontSize="14"/>
+                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="96,323,0,0" VerticalAlignment="Top" Height="42" Width="101" FontSize="14"/>
+                    <Button x:Name="bt_demande_suppr_valide" Content="Valider" HorizontalAlignment="Left" Margin="233,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="120" Click="Click_bt_demande_suppr_valide">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_demande_suppr_decline" Content="Decliner" HorizontalAlignment="Left" Margin="166,341,0,0" VerticalAlignment="Top" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="32" Width="75" Click="Click_bt_demande_suppr_decline">
+                    <Button x:Name="bt_demande_suppr_decline" Content="Decliner" HorizontalAlignment="Left" Margin="372,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="127" Click="Click_bt_demande_suppr_decline">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="387,55,0,0" VerticalAlignment="Top" FontSize="12" Background="#11DCFCC2"/>
-                    <Label x:Name="tb_demande_modif_nom_oper" Content="" HorizontalAlignment="Left" Margin="493,53,0,0" VerticalAlignment="Top" Width="135" Background="#FFE9FADC"/>
-                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="387,108,0,0" VerticalAlignment="Top" Height="31" Width="84"/>
-                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="387,201,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="bt_demande_modif_valide" Content="Valider" HorizontalAlignment="Left" Margin="437,275,0,0" VerticalAlignment="Top" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="32" Width="75" Click="Click_bt_demande_modif_valide">
+                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="834,78,0,0" VerticalAlignment="Top" FontSize="14" Background="#11DCFCC2" Height="26" Width="120"/>
+                    <Label x:Name="tb_demande_modif_nom_oper" Content="" HorizontalAlignment="Left" Margin="963,74,0,0" VerticalAlignment="Top" Width="340" Background="#FFE9FADC" Height="30"/>
+                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="884,148,0,0" VerticalAlignment="Top" Height="31" Width="70" FontSize="14"/>
+                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="834,343,0,0" VerticalAlignment="Top" Height="52" Width="122" FontSize="14"/>
+                    <Button x:Name="bt_demande_modif_valide" Content="Valider" HorizontalAlignment="Left" Margin="1044,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="114" Click="Click_bt_demande_modif_valide">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_demande_modif_decline" Content="Decliner" HorizontalAlignment="Left" Margin="594,275,0,0" VerticalAlignment="Top" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="32" Width="75" Click="Click_bt_demande_modif_decline">
+                    <Button x:Name="bt_demande_modif_decline" Content="Decliner" HorizontalAlignment="Left" Margin="1181,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="122" Click="Click_bt_demande_modif_decline">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Ancienne valeur" HorizontalAlignment="Left" Margin="493,87,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Nouvelle valeur" HorizontalAlignment="Left" Margin="635,87,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <TextBlock x:Name="tb_demande_suppr_detail" HorizontalAlignment="Left" Margin="121,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="99" Width="141" Background="#FFE9FADC"/>
-                    <TextBlock x:Name="tb_demande_suppr_commentaire" HorizontalAlignment="Left" Margin="121,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="69" Width="141"/>
-                    <TextBlock x:Name="tb_demande_modif_old_valeur" HorizontalAlignment="Left" Margin="493,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="72" Width="135"/>
-                    <TextBlock x:Name="tb_demande_modif_new_valeur" HorizontalAlignment="Left" Margin="640,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="72" Width="132"/>
-                    <TextBlock x:Name="tb_demande_modif_comment" HorizontalAlignment="Left" Margin="493,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="56" Width="139"/>
+                    <Label Content="Ancienne valeur" HorizontalAlignment="Left" Margin="961,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="89"/>
+                    <Label Content="Nouvelle valeur" HorizontalAlignment="Left" Margin="1138,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="105"/>
+                    <TextBlock x:Name="tb_demande_suppr_detail" HorizontalAlignment="Left" Margin="231,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="268" Background="#FFE9FADC"/>
+                    <TextBlock x:Name="tb_demande_suppr_commentaire" HorizontalAlignment="Left" Margin="231,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="103" Width="268"/>
+                    <TextBlock x:Name="tb_demande_modif_old_valeur" HorizontalAlignment="Left" Margin="963,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="151"/>
+                    <TextBlock x:Name="tb_demande_modif_new_valeur" HorizontalAlignment="Left" Margin="1133,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="170"/>
+                    <TextBlock x:Name="tb_demande_modif_comment" HorizontalAlignment="Left" Margin="963,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="102" Width="340"/>
                 </Grid>
 
             </TabItem>
         </TabControl>
 
         <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
-        <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="415,-1,0,0" VerticalAlignment="Top" Height="28" Width="124"/>
-        <Image HorizontalAlignment="Left" Height="24" Margin="392,2,0,0" VerticalAlignment="Top" Width="51" Source="/user_1.png"/>
-        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="645,4,0,0" VerticalAlignment="Top" Width="125" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="14" Click="bt_se_déconnecter_Click">
+        <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="437,9,0,0" VerticalAlignment="Top" Height="32" Width="223" FontSize="16"/>
+        <Image HorizontalAlignment="Left" Height="36" Margin="392,8,0,0" VerticalAlignment="Top" Width="92" Source="/user_1.png"/>
+        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1176,14,0,0" VerticalAlignment="Top" Width="173" Height="27" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="16" Click="bt_se_déconnecter_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />

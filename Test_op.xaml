@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Test_op" Height="768" Width="1380">
+        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize">
     <Grid Margin="0,0,10,-30" Height="768">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="682*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <TabControl Margin="0,56,-10,-56" Height="768" Grid.ColumnSpan="2">
-            <TabItem Header="Insertion">
+            <TabItem Header="Insertion" Margin="-2,-2,-56,0" FontSize="20">
                 <Grid Background="#FFE5E5E5" Height="730">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -105,7 +105,7 @@
                         </Image.RenderTransform>
                     </Image>
                     <Viewbox Height="35" Margin="292,460,1051,235">
-                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Top"/>
+                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Center"/>
                     </Viewbox>
                     <Viewbox Height="35" Margin="83,551,1202,144">
                         <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center"/>
@@ -116,16 +116,14 @@
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Liste">
+            <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="759*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="18" Margin="486,20,0,0" VerticalAlignment="Top" Width="17" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>
-                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="24" Margin="511,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderBrush="#FF5AE4A8" Grid.Column="2"/>
-                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" Grid.ColumnSpan="3" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4">
+                    <Image HorizontalAlignment="Left" Height="28" Margin="989,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>
+                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="1024,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8"/>
+                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Foreground="#FF5AE4A8" FontWeight="Bold">
                                 <DataGridTextColumn.HeaderStyle>
@@ -145,31 +143,31 @@
                             <DataGridTextColumn Header="Position"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Rectangle Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="63" Margin="12,317,0,0" VerticalAlignment="Top" Width="774" Fill="#FFD6F9E5"/>
-                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="348,335,0,0" VerticalAlignment="Top" Width="178" Height="25" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" Grid.Column="2" BorderBrush="#FF5AE4A8">
+                    <Rectangle HorizontalAlignment="Center" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5"/>
+                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="730,640,0,0" VerticalAlignment="Top" Width="286" Height="51" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="544,335,0,0" VerticalAlignment="Top" Width="178" Height="25" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" Grid.Column="2" BorderBrush="#FF5AE4A8">
+                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="1065,640,0,0" VerticalAlignment="Top" Width="260" Height="51" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Image HorizontalAlignment="Left" Height="101" Margin="6,290,0,0" VerticalAlignment="Top" Width="122" Source="/Go Green.png" Grid.ColumnSpan="3"/>
+                    <Image HorizontalAlignment="Left" Height="151" Margin="0,578,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/>
                 </Grid>
             </TabItem>
         </TabControl>
         <Label Content="Arbre " HorizontalAlignment="Left" Margin="902,15,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bookman Old Style" Width="127" FontSize="36"/>
         <Image HorizontalAlignment="Left" Height="60" Margin="823,2,0,0" VerticalAlignment="Top" Width="78" Source="/forest.png"/>
-        <Image HorizontalAlignment="Left" Height="46" Margin="107,14,0,0" VerticalAlignment="Top" Width="69" Source="/user_1.png"/>
-        <Label Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="162,28,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
+        <Image HorizontalAlignment="Left" Height="46" Margin="245,8,0,0" VerticalAlignment="Top" Width="69" Source="/user_1.png"/>
+        <Label Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
         <Label x:Name="tb_opérateur" Content="" HorizontalAlignment="Left" Margin="187,19,0,0" VerticalAlignment="Top" Width="134"/>
-        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1105,18,0,0" VerticalAlignment="Top" Width="207" Height="40" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click">
+        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1119,20,0,0" VerticalAlignment="Top" Width="207" Height="40" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
