@@ -228,9 +228,9 @@ namespace Projet_2_GoGreen
                         }
                     
                 }
-                else if (!liste_id_ref.ContainsKey(reference))
+                else if (!liste_id_ref.ContainsKey(reference) || liste_label_ref.ContainsKey(reference))
                 {
-                    MessageBox.Show("Cette référence n'existe pas. \nVeuillez contacter votre prestataire.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Cette référence est invalide. \nVeuillez entrer une référence valide", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Error);
                     tb_reference_inscription.Text = "";
                 }
                 conn.Close();
