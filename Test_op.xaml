@@ -7,38 +7,40 @@
         mc:Ignorable="d"
         Title="Test_op" Height="768" Width="1380">
     <Grid Margin="0,0,10,-30" Height="768">
-        <TabControl Margin="0,56,-10,0" Height="768">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="682*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Margin="0,56,-10,-56" Height="768" Grid.ColumnSpan="2">
             <TabItem Header="Insertion">
                 <Grid Background="#FFE5E5E5" Height="730">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="39*"/>
-                        <ColumnDefinition Width="18*"/>
-                        <ColumnDefinition Width="350*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="33,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5" Grid.ColumnSpan="3"/>
-                    <Label Content="Date de plantation" HorizontalAlignment="Left" Margin="62,42,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Width="185" Grid.ColumnSpan="3" FontSize="20"/>
-                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="292,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5" Grid.Column="2"/>
-                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Grid.ColumnSpan="3" Fill="White"/>
-                    <DatePicker x:Name="dp_plantation" HorizontalAlignment="Left" Margin="67,88,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Text="" Grid.ColumnSpan="3" Height="49"/>
-                    <Label Content="Statut" HorizontalAlignment="Left" Margin="67,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="86" Grid.ColumnSpan="2" FontSize="20"/>
-                    <ComboBox x:Name="cb_statut" HorizontalAlignment="Left" Margin="66,263,0,0" VerticalAlignment="Top" Width="353" Grid.ColumnSpan="3" Height="49"/>
-                    <Label Content="Date de création" HorizontalAlignment="Left" Margin="66,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="169" FontSize="20" Grid.ColumnSpan="3"/>
-                    <DatePicker x:Name="dp_creation" HorizontalAlignment="Left" Margin="67,175,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Grid.ColumnSpan="3" Height="49"/>
-                    <Label Content="Hauteur" HorizontalAlignment="Left" Margin="315,227,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" Grid.Column="2" FontSize="20"/>
-                    <TextBox x:Name="tb_hauteur" HorizontalAlignment="Left" Margin="321,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="49" BorderBrush="{x:Null}" Grid.Column="2"/>
-                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="314,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" Grid.Column="2" FontSize="20"/>
-                    <TextBox x:Name="tb_diametre" HorizontalAlignment="Left" Margin="318,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="49" BorderBrush="{x:Null}" Grid.Column="2"/>
-                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="313,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" Grid.Column="2" FontSize="20"/>
-                    <DatePicker x:Name="dp_mise_a_jour" HorizontalAlignment="Left" Margin="318,88,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Grid.Column="2" Height="46" FontSize="18"/>
-                    <Rectangle HorizontalAlignment="Left" Height="281" Margin="295,380,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8" Grid.Column="2"/>
-                    <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,395,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="3" FontSize="20"/>
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="33,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5"/>
+                    <Label Content="Date de plantation" HorizontalAlignment="Left" Margin="62,42,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Width="185" FontSize="20"/>
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5"/>
+                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White"/>
+                    <DatePicker x:Name="dp_plantation" HorizontalAlignment="Left" Margin="67,88,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Text="" Height="49" FontSize="18"/>
+                    <Label Content="Statut" HorizontalAlignment="Left" Margin="67,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="86" FontSize="20"/>
+                    <ComboBox x:Name="cb_statut" HorizontalAlignment="Left" Margin="66,263,0,0" VerticalAlignment="Top" Width="353" Height="49"/>
+                    <Label Content="Date de création" HorizontalAlignment="Left" Margin="66,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="169" FontSize="20"/>
+                    <DatePicker x:Name="dp_creation" HorizontalAlignment="Left" Margin="67,175,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Height="49" FontSize="18"/>
+                    <Label Content="Hauteur" HorizontalAlignment="Left" Margin="507,227,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" FontSize="20"/>
+                    <TextBox x:Name="tb_hauteur" HorizontalAlignment="Left" Margin="513,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="49" BorderBrush="{x:Null}"/>
+                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="506,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="20"/>
+                    <TextBox x:Name="tb_diametre" HorizontalAlignment="Center" Margin="0,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="49" BorderBrush="{x:Null}"/>
+                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="505,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" FontSize="20"/>
+                    <DatePicker x:Name="dp_mise_a_jour" HorizontalAlignment="Center" Margin="0,88,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Height="46" FontSize="18"/>
+                    <Rectangle HorizontalAlignment="Left" Height="281" Margin="487,380,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
+                    <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,395,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
-                    <Viewbox Height="35" Margin="81,452,22,211" Grid.ColumnSpan="2">
+                    <Viewbox Height="35" Margin="81,468,1204,227">
                         <RadioButton x:Name="rb_vert"  VerticalAlignment="Center"></RadioButton>
                     </Viewbox>
-                    <Rectangle HorizontalAlignment="Left" Height="569" Margin="745,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8" Grid.Column="2"/>
-                    <Label Content="Espèce" HorizontalAlignment="Left" Margin="774,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" Grid.Column="2" FontSize="20"/>
-                    <ComboBox x:Name="cb_espece" HorizontalAlignment="Left" Margin="776,80,0,0" VerticalAlignment="Top" Width="353" Grid.Column="2" Height="46">
+                    <Rectangle HorizontalAlignment="Left" Height="569" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
+                    <Label Content="Espèce" HorizontalAlignment="Left" Margin="966,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="20"/>
+                    <ComboBox x:Name="cb_espece" HorizontalAlignment="Left" Margin="968,80,0,0" VerticalAlignment="Top" Width="353" Height="46">
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
@@ -46,33 +48,33 @@
                             </LinearGradientBrush>
                         </ComboBox.Background>
                     </ComboBox>
-                    <Label Content="Type" HorizontalAlignment="Left" Margin="776,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" Grid.Column="2" FontSize="20"/>
-                    <ComboBox x:Name="cb_type" HorizontalAlignment="Left" Margin="776,173,0,0" VerticalAlignment="Top" Width="353" Grid.Column="2" Height="46"/>
-                    <Label Content="Position" HorizontalAlignment="Left" Margin="1042,371,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" FontSize="20"/>
-                    <Label Content="Zone" HorizontalAlignment="Left" Margin="776,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" Grid.Column="2" FontSize="20"/>
-                    <TextBox x:Name="tb_zone" HorizontalAlignment="Left" Margin="776,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="46" BorderBrush="{x:Null}" Grid.Column="2"/>
-                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="786,426,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" Grid.Column="2" FontSize="18"/>
-                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="786,517,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" Grid.Column="2" FontSize="18"/>
-                    <TextBox x:Name="tb_latitude" HorizontalAlignment="Left" Margin="883,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Grid.Column="2" Height="46"/>
-                    <TextBox x:Name="tb_longitude" HorizontalAlignment="Left" Margin="884,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Grid.Column="2" Height="46"/>
-                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="784,621,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" Grid.Column="2" FontSize="18">
+                    <Label Content="Type" HorizontalAlignment="Left" Margin="968,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" FontSize="20"/>
+                    <ComboBox x:Name="cb_type" HorizontalAlignment="Left" Margin="968,173,0,0" VerticalAlignment="Top" Width="353" Height="46"/>
+                    <Label Content="Position" HorizontalAlignment="Left" Margin="1234,371,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+                    <Label Content="Zone" HorizontalAlignment="Left" Margin="968,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="20"/>
+                    <TextBox x:Name="tb_zone" HorizontalAlignment="Left" Margin="968,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="46" BorderBrush="{x:Null}"/>
+                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="978,426,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18"/>
+                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="978,517,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18"/>
+                    <TextBox x:Name="tb_latitude" HorizontalAlignment="Left" Margin="1075,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="46"/>
+                    <TextBox x:Name="tb_longitude" HorizontalAlignment="Left" Margin="1076,505,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="46"/>
+                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,621,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="968,621,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" Grid.Column="2" FontSize="18">
+                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,621,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="361,390,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" FontSize="18"/>
-                    <TextBox x:Name="tb_recommandation" HorizontalAlignment="Left" Height="210" Margin="295,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" Background="White" BorderBrush="{x:Null}" Grid.Column="2"/>
-                    <Label Content="- Make the world green again -" HorizontalAlignment="Left" Margin="123,639,0,0" VerticalAlignment="Top" FontFamily="Bell MT" FontSize="18" Grid.ColumnSpan="3"/>
-                    <Image HorizontalAlignment="Left" Height="65" Margin="4,439,0,0" VerticalAlignment="Top" Width="79" Source="/green.png" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1">
+                    <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="553,390,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+                    <TextBox x:Name="tb_recommandation" HorizontalAlignment="Left" Height="210" Margin="487,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" Background="White" BorderBrush="{x:Null}"/>
+                    <Label Content="- Make the world green again -" HorizontalAlignment="Left" Margin="123,639,0,0" VerticalAlignment="Top" FontFamily="Bell MT" FontSize="18"/>
+                    <Image HorizontalAlignment="Left" Height="65" Margin="136,439,0,0" VerticalAlignment="Top" Width="79" Source="/green.png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -82,7 +84,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image HorizontalAlignment="Left" Height="67" Margin="0,520,0,0" VerticalAlignment="Top" Width="95" Source="/green (1).png" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1">
+                    <Image HorizontalAlignment="Left" Height="67" Margin="132,520,0,0" VerticalAlignment="Top" Width="95" Source="/green (1).png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -92,7 +94,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image Grid.Column="2" HorizontalAlignment="Left" Height="67" Margin="132,441,0,0" VerticalAlignment="Top" Width="89" Source="/green (2).png" RenderTransformOrigin="0.5,0.5">
+                    <Image HorizontalAlignment="Left" Height="67" Margin="324,441,0,0" VerticalAlignment="Top" Width="89" Source="/green (2).png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -102,16 +104,16 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Viewbox Height="35" Margin="100,460,1051,235" Grid.Column="2">
+                    <Viewbox Height="35" Margin="292,460,1051,235">
                         <RadioButton x:Name="rb_marron"  VerticalAlignment="Top"/>
                     </Viewbox>
-                    <Viewbox Height="35" Margin="83,535,20,128" Grid.ColumnSpan="2">
+                    <Viewbox Height="35" Margin="83,551,1202,144">
                         <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center"/>
                     </Viewbox>
-                    <Viewbox Height="35" Margin="100,534,1051,124" Grid.Column="2">
+                    <Viewbox Height="35" Margin="292,552,1051,142">
                         <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Center"/>
                     </Viewbox>
-                    <Label Grid.Column="2" Content="Sans feuille" HorizontalAlignment="Left" Margin="134,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103"/>
+                    <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Liste">

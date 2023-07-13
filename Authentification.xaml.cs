@@ -111,12 +111,14 @@ namespace Projet_2_GoGreen
             }
         }
 
+
         //passage a la fenetre d'inscription
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Inscription inscription = new Inscription();
             inscription.Show();
             this.Hide();
+
         }
 
 
