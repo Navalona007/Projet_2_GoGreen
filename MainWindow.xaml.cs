@@ -27,22 +27,10 @@ namespace Projet_2_GoGreen
 
         private void bt_start_Click(object sender, RoutedEventArgs e)
         {
+
             Authentification authentification = new Authentification();
             authentification.Show();
             this.Hide();
-
-            //Administrateur administrateur = new Administrateur();
-            //administrateur.Show();
-
-            //////this.Hide();
-            //Test_op test_op = new Test_op();
-            //test_op.Show();
-
-            //Inscription inscription = new Inscription();
-            //inscription.Show();
-
-            //Acceuil_client acc = new Acceuil_client();
-            //acc.Show();
 
         }
     }

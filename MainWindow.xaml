@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="768" Width="1380
+     ">
 
     <Grid Background="#FFD6F9E5" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
-        <Image HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="460" Source="/nature-sprout-dirt-young-seedling.jpg"/>
-        <Image HorizontalAlignment="Left" Height="450" Margin="400,-68,0,0" VerticalAlignment="Top" Width="450" Source="/Go Green.png" OpacityMask="#FFD6F9E5"/>
-        <Button x:Name="bt_start" Content="CLIQUEZ POUR COMMENCER !" HorizontalAlignment="Left" Height="44" Margin="492,338,0,0" VerticalAlignment="Top" Width="266" Background="White" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_start_Click" FontFamily="Constantia">
+        <Image HorizontalAlignment="Left" Height="752" VerticalAlignment="Center" Width="690" Source="/nature-sprout-dirt-young-seedling.jpg" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="548" Margin="750,-4,0,0" VerticalAlignment="Top" Width="580" Source="/Go Green.png" OpacityMask="#FFD6F9E5"/>
+        <Button x:Name="bt_start" Content="CLIQUEZ POUR COMMENCER !" HorizontalAlignment="Left" Height="44" Margin="864,544,0,0" VerticalAlignment="Top" Width="320" Background="White" FontSize="18" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_start_Click" FontFamily="Constantia">
 
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">

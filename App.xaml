@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Projet_2_GoGreen"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+         
     </Application.Resources>
 </Application>
