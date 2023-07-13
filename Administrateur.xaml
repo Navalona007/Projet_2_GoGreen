@@ -196,9 +196,16 @@
             </TabItem>
         </TabControl>
 
-       <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
+        <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
         <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="415,-1,0,0" VerticalAlignment="Top" Height="28" Width="124"/>
         <Image HorizontalAlignment="Left" Height="24" Margin="392,2,0,0" VerticalAlignment="Top" Width="51" Source="/user_1.png"/>
+        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="645,4,0,0" VerticalAlignment="Top" Width="125" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="14" Click="bt_se_déconnecter_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

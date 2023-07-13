@@ -27,7 +27,9 @@ namespace Projet_2_GoGreen
         }
         private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
         {
-
+            Authentification authentification = new Authentification();
+            authentification.Show();
+            this.Hide();
         }
 
         private void bt_add_oper_Click(object sender, RoutedEventArgs e)
