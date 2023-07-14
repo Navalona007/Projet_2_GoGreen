@@ -123,16 +123,50 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
+                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Nom"/>
-                            <DataGridTextColumn Header="Prénom"/>
-                            <DataGridTextColumn Header="Mobile"/>
-                            <DataGridTextColumn Header="Courriel"/>
-                            <DataGridComboBoxColumn Header="Statut"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Prénom" Width="*" Binding="{Binding lastname}"/>
+                            <DataGridTextColumn Header="Mail" Width="*" Binding="{Binding email}"/>
+                            <DataGridTextColumn Header="Adresse" Width="*" Binding="{Binding adress}"/>
+                            <DataGridTextColumn Header="Date Inscription" Width="*" Binding="{Binding dateInscription}"/>
+                            <DataGridTextColumn Header="Mobile" Width="*" Binding="{Binding mobile}"/>
+                            <DataGridTextColumn Header="Status" Width="*" Binding="{Binding status}"/>
+                            <DataGridTemplateColumn Header="Action" Width="*"> 
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Suspendre" Click="ButtonStatus_Click" Tag="{Binding id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+
+                    <!--<DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
+                        <DataGrid.Columns>
+                            --><!-- Columns for existing data --><!--
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                            <DataGridTextColumn Header="Nom" Binding="{Binding nom_client}" />
+                            <DataGridTextColumn Header="Prénom" Binding="{Binding prenom_client}" />
+                            <DataGridTextColumn Header="Mail" Binding="{Binding mail_client}" />
+                            <DataGridTextColumn Header="Adresse" Binding="{Binding adresse_client}" />
+                            <DataGridTextColumn Header="Date Inscription" Binding="{Binding date_inscrip}" />
+                            <DataGridTextColumn Header="Mobile" Binding="{Binding mobile_client}" />
+
+                            --><!-- Button column for status --><!--
+                            <DataGridTemplateColumn Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding status}"
+                            Click="ButtonStatus_Click"
+                            Tag="{Binding id}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>-->
+
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1225,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="199"/>
                     <TextBox x:Name="tb_search_client"  HorizontalAlignment="Left" Margin="918,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="431" Background="White" FontSize="14" TextChanged="tb_search_client_TextChanged">
                         <TextBox.Resources>
