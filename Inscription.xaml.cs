@@ -75,7 +75,7 @@ namespace Projet_2_GoGreen
         public void insertReference(string valueInsert)
         {
             var conn = GetConnection();
-            conn.Open();
+            conn.Open(); 
 
             String query = "INSERT INTO public.reference_entreprise(label_ref)	VALUES ('"+valueInsert+"');";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -139,6 +139,7 @@ namespace Projet_2_GoGreen
                 String hash_mdp = CalculateMD5Hash(mot_de_passe);
                 String confirmation = (string)tb_confirmer_mdp_inscription.Text;
                 String reference = tb_reference_inscription.Text;
+                DateTime date_inscription = DateTime.Now;
 
                 list_reference();
 
@@ -157,7 +158,7 @@ namespace Projet_2_GoGreen
                 {
 
                     
-                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, prenom_client) VALUES ('"+int.Parse(reference)+"', '" + nom + "','" + mail + "','" + hash_mdp + "','" + prenom + "')";
+                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, date_inscrip, prenom_client) VALUES ('"+int.Parse(reference)+"', '" + nom + "','" + mail + "','" + hash_mdp + "', '"+date_inscription+"','" + prenom + "')";
                     
                     var cmd = new NpgsqlCommand(requete, conn);
                         try
@@ -173,7 +174,7 @@ namespace Projet_2_GoGreen
                                 tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
-                                MessageBox.Show("Inscription réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Inscription avec succès!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                                 Authentification authentification = new Authentification();
                                 authentification.Show();
                                 this.Hide();
@@ -196,7 +197,7 @@ namespace Projet_2_GoGreen
                     int key = hasKey(reference);
 
 
-                    String requete = @"INSERT INTO public.administrateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin)	VALUES ('"+ key + "', '"+nom+"', '"+prenom+"', '"+mail+"', '"+hash_mdp+"');";
+                    String requete = @"INSERT INTO public.administrateur(reference_entrepriseid, nom_admin, prenom_admin, mail_admin, pass_admin, date_inscript)	VALUES ('"+ key + "', '"+nom+"', '"+prenom+"', '"+mail+"', '"+hash_mdp+"', '"+date_inscription+"');";
                     
                     var cmd = new NpgsqlCommand(requete, conn);
                         try
@@ -212,7 +213,7 @@ namespace Projet_2_GoGreen
                                 tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
-                                MessageBox.Show("Inscription réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Inscription avec succès!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                                 Authentification authentification = new Authentification();
                                 authentification.Show();
                                 this.Hide();
