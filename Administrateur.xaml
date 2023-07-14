@@ -23,7 +23,7 @@
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
                     <DataGrid x:Name="grid_oper" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserReorder="True" Header="ID" IsReadOnly="True"/>
+                            <DataGridTextColumn CanUserReorder="False" Header="ID" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Nom"/>
                             <DataGridTextColumn Header="Prénom"/>
                             <DataGridTextColumn Header="Lieu de travail"/>
@@ -123,7 +123,7 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
+                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="True" AlternatingRowBackground="#FFE2F7E8">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Nom"/>

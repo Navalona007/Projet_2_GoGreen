@@ -20,7 +20,7 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Administrateur : Window
     {
-        NpgsqlConnection conx;
+        ConnectDB conx = new ConnectDB();
         public Administrateur()
         {
             InitializeComponent();
@@ -32,6 +32,14 @@ namespace Projet_2_GoGreen
             this.Hide();
         }
 
+        public void remiseZero()
+        {
+            tb_nom_oper.Text = "";
+            tb_prenom_oper.Text = "";
+            tb_email_oper.Text = "";
+            tb_mobile_oper.Text = "";
+        }
+
         private void bt_add_oper_Click(object sender, RoutedEventArgs e)
         {
             string nom = tb_nom_oper.Text;
@@ -40,16 +48,15 @@ namespace Projet_2_GoGreen
             string mobile = tb_mobile_oper.Text;
             if (string.IsNullOrEmpty(nom))
             {
-                lb_message_oper.Content = "remplir les champs obligatoires!";
+                //lb_message_oper.Content = "remplir les champs obligatoires!";
             }
             else { 
             try
             {
-                connectDB();
-
+                    
                     string requ = "INSERT INTO opérateur_de_saisi(statut_opérateurid, lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
                                     +" VALUES( , ?, ?, ?, ?, ?, ?); ";
-                conx.CreateCommand();
+                
 
             }
             catch (Exception ex)
@@ -64,7 +71,7 @@ namespace Projet_2_GoGreen
             conx.Open();
             if (conx.State == System.Data.ConnectionState.Open)
             {
-                lb_message_oper.Content = "connecter";
+                //lb_message_oper.Content = "connecter";
             }
         }
 
@@ -123,5 +130,6 @@ namespace Projet_2_GoGreen
             authentification.Show();
             this.Hide();
         }
+
     }
 }

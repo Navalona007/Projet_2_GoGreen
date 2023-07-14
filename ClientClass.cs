@@ -36,21 +36,21 @@ namespace Projet_2_GoGreen
 
         }
 
-        private void liste_client()
-        {
-            var cmd = conx.createRequest("Select * from administateur;");
-            var read = cmd.ExecuteReader();
+        //private void liste_client()
+        //{
+        //    var cmd = conx.createRequest("Select * from administateur;");
+        //    var read = cmd.ExecuteReader();
 
-            while (read.Read())
-            {
-                string mail = (string)read["mail_client"];
-                string pass = (string)read["pass_client"];
-                string nom = (string)read["nom_client"];
-                string prenom = (string)read["prenom_clients"];
-                //string 
-                list_pass_client.Add(pass, new ClientClass(nom, prenom, mail, pass));
-                list_login_client.Add(mail, new ClientClass(nom, prenom, mail, pass));
-            }
-        }
+        //    while (read.Read())
+        //    {
+        //        string mail = (string)read["mail_client"];
+        //        string pass = (string)read["pass_client"];
+        //        string nom = (string)read["nom_client"];
+        //        string prenom = (string)read["prenom_clients"];
+        //        //string 
+        //        list_pass_client.Add(pass, new ClientClass(nom, prenom, mail, pass));
+        //        list_login_client.Add(mail, new ClientClass(nom, prenom, mail, pass));
+        //    }
+        //}
     }
 }

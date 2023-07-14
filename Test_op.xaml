@@ -36,7 +36,7 @@
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,395,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
                     <Viewbox Height="35" Margin="81,468,1204,227">
-                        <RadioButton x:Name="rb_vert"  VerticalAlignment="Center"></RadioButton>
+                        <RadioButton x:Name="rb_vert"  VerticalAlignment="Center" GroupName="etat_de_feuillage"></RadioButton>
                     </Viewbox>
                     <Rectangle HorizontalAlignment="Left" Height="569" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
                     <Label Content="Espèce" HorizontalAlignment="Left" Margin="966,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="20"/>
@@ -105,13 +105,13 @@
                         </Image.RenderTransform>
                     </Image>
                     <Viewbox Height="35" Margin="292,460,1051,235">
-                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Center" GroupName="etat_de_feuillage"/>
                     </Viewbox>
                     <Viewbox Height="35" Margin="83,551,1202,144">
-                        <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center" GroupName="etat_de_feuillage"/>
                     </Viewbox>
                     <Viewbox Height="35" Margin="292,552,1051,142">
-                        <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Center" GroupName="etat_de_feuillage"/>
                     </Viewbox>
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103"/>
                 </Grid>
