@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+
 
 namespace Projet_2_GoGreen
 {
@@ -27,6 +29,7 @@ namespace Projet_2_GoGreen
         {
             InitializeComponent();
             lecture_ecriture();
+            LoadClientData();
         }
         
         private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
@@ -138,6 +141,7 @@ namespace Projet_2_GoGreen
             this.Hide();
         }
 
+
         private void lecture_ecriture()
         {
             ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
@@ -155,9 +159,6 @@ namespace Projet_2_GoGreen
                                 "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id " +
                                 "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-                //List<OperateurClass> listeOperateurs = new List<OperateurClass>();
-                
 
                  BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
 
@@ -189,37 +190,67 @@ namespace Projet_2_GoGreen
                 MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
-        //public string lecture_lieu()
-        //{
-        //    NpgsqlConnection GetConnection()
-        //    {
-        //        return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
-        //    }
-        //    var conn = GetConnection();
-        //    conn.Open();
+       
+       public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
-        //    int id = 1; 
-        //    //string nomlieu = "nom"; // Le nom de la colonne que vous souhaitez récupérer
+        private void LoadClientData()
+        {
+            string query = "SELECT id, nom_client, prenom_client, mail_client, adresse_client, date_inscrip, mobile_client, status_client FROM public.client;";
 
-        //    string query = "SELECT nom_lieu FROM lieu_travail WHERE ID = id";
-        //    using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
-        //    {
-        //        command.Parameters.AddWithValue("id", id);
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
 
-        //        using (NpgsqlDataReader reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        List<ClientClass> clients = new List<ClientClass>();
 
-        //                string columnValue = reader.GetString(0); // Récupère la valeur de la colonne
+                        while (reader.Read())
+                        {
+                            ClientClass client = new ClientClass();
+                            client.id = reader["id"].ToString();
+                            client.name = reader["nom_client"].ToString();
+                            client.lastname = reader["prenom_client"].ToString();
+                            client.email = reader["mail_client"].ToString();
+                            client.mobile = reader["mobile_client"].ToString();
+                            client.adress = reader["adresse_client"].ToString();
+                            //client.dateInscription = (DateTime)reader["date_inscrip"];
+                            client.status = reader["status_client"].ToString();
 
- 
-  
-        //            }
-        //        }
-        //        //String query = "SELECT name_lieu FROM lieu_travail WHERE ID = id";
-        //        return null;
-        //}
+                            clients.Add(client);
+                        }
+
+                        grid_client.ItemsSource = clients;
+                    }
+                }
+
+                connection.Close();
+            }
+        }
+
+        private void ButtonStatus_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            string id = button.Tag.ToString();
+
+           // Find the corresponding client object in the DataGrid's underlying data source
+            ClientClass client = grid_client.Items.OfType<ClientClass>().FirstOrDefault(c => c.id == id);
+
+            //Update the status value and button content based on the current status
+            if (client.status == "actif")
+            {
+                client.status = "suspendu";
+                button.Content = "Réactiver";
+            }
+            else if (client.status == "suspendu")
+            {
+                client.status = "actif";
+                button.Content = "Suspendre";
+            }
+        }
+
     }
+
 }
