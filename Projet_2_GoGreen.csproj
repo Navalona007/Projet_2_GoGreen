@@ -132,6 +132,7 @@
     <Compile Include="ConnectDB.cs" />
     <Compile Include="Espece.cs" />
     <Compile Include="Etat_arbre.cs" />
+    <Compile Include="Lieu_de_travail.cs" />
     <Compile Include="Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
@@ -253,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="green %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

@@ -25,10 +25,13 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Administrateur : Window
     {
+
+        ConnectDB conx = new ConnectDB();// used by samira
         private NpgsqlConnection GetConnection()
         {
             return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
         }
+
         public Administrateur()
         {
             InitializeComponent();
@@ -54,7 +57,6 @@ namespace Projet_2_GoGreen
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
-
         {
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
@@ -69,7 +71,6 @@ namespace Projet_2_GoGreen
             }
         } //end CalculateMD5Hash
 
-        
 
         //Dictionary<string, string> liste_id_lieu;
         Dictionary<string, int> liste_name_lieu;
@@ -330,7 +331,6 @@ namespace Projet_2_GoGreen
             authentification.Show();
             this.Hide();
         }
-
 
         private void grid_oper_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

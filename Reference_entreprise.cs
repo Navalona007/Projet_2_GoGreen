@@ -24,26 +24,26 @@ namespace Projet_2_GoGreen
             this.label = label;
         }
 
-        private void listReference()
-        {
+        //private void listReference()
+        //{
 
-            var cmd = conx.createRequest("Select * from reference_entreprise;");
-            var read = cmd.ExecuteReader();
+        //    var cmd = conx.createRequest("Select * from reference_entreprise;");
+        //    var read = cmd.ExecuteReader();
 
-            while (read.Read())
-            {
-                int id = (int)read["id"];
-                string label = (string)read["label"];
-                list_id_reference.Add(id, new Reference_entreprise(id, label));
-                list_label_reference.Add(label, new Reference_entreprise(id, label));
-            }
+        //    while (read.Read())
+        //    {
+        //        int id = (int)read["id"];
+        //        string label = (string)read["label"];
+        //        list_id_reference.Add(id, new Reference_entreprise(id, label));
+        //        list_label_reference.Add(label, new Reference_entreprise(id, label));
+        //    }
 
-            read.Close();
+        //    read.Close();
 
-            for (int i=0; i<list_id_reference.Count; i++)
-                Console.Out.WriteLine(list_id_reference[i]);
+        //    for (int i=0; i<list_id_reference.Count; i++)
+        //        Console.Out.WriteLine(list_id_reference[i]);
             
-        }
+        //}
 
         public Reference_entreprise createReference(int id_key, string label_ref)
         {

@@ -49,7 +49,6 @@ namespace Projet_2_GoGreen
 
         }
 
-
         private void liste_client()
         {
             var cmd = conx.createRequest("SELECT * FROM client_table;");
@@ -85,6 +84,5 @@ namespace Projet_2_GoGreen
 
             read.Close();
         }
-
     }
 }

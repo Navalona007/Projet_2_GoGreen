@@ -13,6 +13,9 @@ namespace Projet_2_GoGreen
     internal class ConnectDB
     {
         NpgsqlConnection conx;
+        public NpgsqlCommand cmd;
+        public NpgsqlDataReader read;
+        
                
         public ConnectDB()
         {
@@ -20,7 +23,6 @@ namespace Projet_2_GoGreen
             {
                 conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;");
                 conx.Open();
-
             }
             catch (Exception ex)
             {
@@ -28,16 +30,37 @@ namespace Projet_2_GoGreen
             }
          }
 
-        public NpgsqlCommand createRequest(string reques)
+        public NpgsqlCommand getCmd()
         {
-            var cmd = new NpgsqlCommand(reques, conx);
             return cmd;
         }
-
-        public NpgsqlDataReader createReader(NpgsqlCommand cmd)
+        public NpgsqlDataReader getRead()
         {
-            NpgsqlDataReader read = cmd.ExecuteReader();
+            if (read == null)
+                return null;
             return read;
+        }
+        public NpgsqlConnection getConx()
+        {
+            return conx;
+        }
+
+        public void executeRequest(string request)
+        {
+            cmd = new NpgsqlCommand(request, conx);
+            cmd.ExecuteNonQuery();
+
+        }
+
+        public void launchReader(string request)
+        {
+            cmd = new NpgsqlCommand(request, conx); 
+            read = cmd.ExecuteReader();
+        }
+
+        public void insertAdmin()
+        {
+
         }
             
     }

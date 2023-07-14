@@ -1,138 +1,3 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Collections.ObjectModel;
-//using System.ComponentModel;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-
-//namespace Projet_2_GoGreen
-//{
-//    internal class OperateurClass
-//    {
-//        private string name;
-//        private string lastname;
-//        private string workplace;
-//        private string email;
-//        private string password;
-//        private string mobile;
-
-//        ConnectDB conx = new ConnectDB();
-
-//        public static List<OperateurClass> list_operateur = new List<OperateurClass>();
-//        public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
-//        public static Dictionary<String, OperateurClass> list_login_operateur = new Dictionary<string, OperateurClass>();
-
-//        public OperateurClass(string name, string lastname, string email, string password, string workplace)
-//        {
-//            this.name = name;
-//            this.lastname = lastname;
-//            this.email = email;
-//            this.password = password;
-//            this.workplace = workplace;
-
-//        }
-//        public string getWorkplace()
-//        {
-//            return workplace;
-//        }
-//        public void setWorkplace(string value)
-//        {
-//            this.workplace = value;
-//        }
-//            public string getName()
-//        {
-//            return name;
-//        }
-
-//            public void setName (string value)
-//        {
-//            this.name = value;
-//        }
-//        public string getLastname()
-//        {
-//            return lastname;
-//        }
-
-//        public void setLastname(string value)
-//        {
-//            this.lastname = value;
-//        }
-//        public string getEmail()
-//        {
-//            return email;
-//        }
-
-//        public void setEmail(string value)
-//        {
-//            this.email = value;
-//        }
-//        public string getPassword()
-//        {
-//            return password;
-//        }
-
-//        public void setPassword(string value)
-//        {
-//            this.password = value;
-//        }
-
-//        public OperateurClass()
-//        {
-
-//        }
-
-//        private void liste_operateur()
-//        {
-//            var cmd = conx.createRequest("Select * from opérateur_de_saisi;");
-//            var read = cmd.ExecuteReader();
-
-//            while (read.Read())
-//            {
-//                string mail = (string)read["mail_oper"];
-//                string pass = (string)read["pass_oper"];
-//                string nom = (string)read["nom_oper"];
-//                string prenom = (string)read["prenom_oper"];
-//                string workplace = (string)read["mobile_oper"];
-//                list_pass_operateur.Add(pass, new OperateurClass(nom, prenom, mail, pass, workplace));
-//                list_login_operateur.Add(mail, new OperateurClass(nom, prenom, mail, pass, workplace));
-//            }
-//        }
-
-//        //private void lecture_ecriture()
-//        //{
-
-
-//        //    String query = "SELECT * FROM opérateur_de_saisi";
-
-//        //    var cmd = conx.createRequest(query);
-//        //    var reader = cmd.ExecuteReader();
-
-//        //    //List<OperateurClass> listeOperateurs = new List<OperateurClass>();
-//        //    ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
-
-//        //    //NpgsqlDataReader reader = command.ExecuteReader();
-//        //    while (reader.Read())
-//        //    {
-//        //        OperateurClass operateur = new OperateurClass();
-
-//        //        BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
-//        //        grid_oper.DataSource = bindingList;
-
-//        //        operateur.setName(reader.GetString(reader.GetOrdinal("nom_oper")));
-//        //        operateur.setLastname(reader.GetString(reader.GetOrdinal("prenom_oper")));
-//        //        operateur.setEmail(reader.GetString(reader.GetOrdinal("mail_oper")));
-//        //        operateur.setWorkplace(reader.GetString(reader.GetOrdinal("mobile_oper")));
-
-//        //        listeOperateurs.Add(operateur);
-
-//        //    }
-//        //    grid_oper.ItemsSource(listeOperateurs);
-//        //    reader.Close();
-//        //}
-//    }
-//}
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -146,7 +11,6 @@ namespace Projet_2_GoGreen
 {
     internal class OperateurClass
     {
-
         public int id_op { get; set; } //used by rakoto
         public string id { get; set; }
         public string name { get; set; }
@@ -168,17 +32,18 @@ namespace Projet_2_GoGreen
 
         ConnectDB conx = new ConnectDB();
 
-        public static List<OperateurClass> list_operateur = new List<OperateurClass>();
-        public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
+        public static List<OperateurClass> list_oper = new List<OperateurClass>();
+        //public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
         public static Dictionary<String, OperateurClass> list_login_operateur = new Dictionary<string, OperateurClass>();
 
 
-        public OperateurClass(string id, string name, string lastname, string email, string password, string workplace)
+        public OperateurClass(string id, string name, string lastname, string email, string mobile, string workplace)
         {
+            this.id = id;
             this.name = name;
             this.lastname = lastname;
             this.email = email;
-           
+            this.mobile = mobile;
             this.workplace = workplace;
         }
 
@@ -276,23 +141,87 @@ namespace Projet_2_GoGreen
         {
             
         }
-
-        private void liste_operateur()
+        public string get_Name_Oper()
         {
-            var cmd = conx.createRequest("Select * from opérateur_de_saisi;");
-            var read = cmd.ExecuteReader();
+            return name;
+        }
+        public void set_Name_Oper(string nom)
+        {
+            name = nom;
+        }
+        public string get_Lastname_Oper()
+        {
+            return lastname;
+        }
+        public void set_Lastname_Oper(string prenom)
+        {
+            lastname = prenom;
+        }
+        public string get_Workplace_Oper()
+        {
+            return workplace;
+        }
+        public void set_Workplace_Oper(string lieu)
+        {
+            workplace = lieu;
+        }
+        public string get_Email_Oper()
+        {
+            return email;
+        }
+        public void set_Email_Oper(string mail)
+        {
+            email = mail;
+        }
+        public string get_Mobile_Oper()
+        {
+            return mobile;
+        }
+        public void set_Mobile_Oper(string mobile)
+        {
+            this.mobile = mobile;
+        }
+        public string get_Status_Oper()
+        {
+            return status;
+        }
+        public void set_Status_Oper(string statut)
+        {
+            this.status = statut;
+        }
+        public List<OperateurClass> getList_oper()
+        {
+            liste_operateur_fromDB();
+            return list_oper;
 
-            while (read.Read())
+        }
+
+
+        private void liste_operateur_fromDB()
+        {
+            list_oper.Clear();
+            list_login_operateur.Clear();
+
+            conx.launchReader("Select opérateur_de_saisi.id, opérateur_de_saisi.nom_oper, opérateur_de_saisi.prenom_oper, opérateur_de_saisi.mail_oper,"+
+                " opérateur_de_saisi.mobile_oper, lieu_travail.name_lieu, statut_opérateur.satus from opérateur_de_saisi"+
+                " join lieu_travail on opérateur_de_saisi.lieu_travailid = lieu_travail.id "+
+                "join statut_opérateur on opérateur_de_saisi.statut_opérateurid = statut_opérateur.id;");
+
+            while (conx.read.Read())
             {
-                int id_op = (int)read["id"];
-                string mail = (string)read["mail_oper"];
-                string pass = (string)read["pass_oper"];
-                string nom = (string)read["nom_oper"];
-                string prenom = (string)read["prenom_oper"];
-                string workplace = (string)read["mobile_oper"];
 
-                list_pass_operateur.Add(pass, new OperateurClass(nom, prenom, mail, pass, workplace));
-                list_login_operateur.Add(mail, new OperateurClass(nom, prenom, mail, pass, workplace));
+              int id_op = (int)read["id"];//used by rakoto  
+              int id_oper = (int)conx.read["id"];//used by samira
+                string nom = (string)conx.read["nom_oper"];
+                string prenom = (string)conx.read["prenom_oper"];
+                string mail = (string)conx.read["mail_oper"];
+                string mobile = (string)conx.read["mobile_oper"];
+                string lieu = (string)conx.read["name_lieu"];
+                string state = (string)conx.read["satus"];
+
+                OperateurClass oper = new OperateurClass(id_oper, nom, prenom, mail, mobile, lieu, state) ;
+                list_oper.Add(oper);
+                list_login_operateur.Add(mail, oper);
             }
         }
 
@@ -312,6 +241,15 @@ namespace Projet_2_GoGreen
             }
 
             return listeOperateurs;
+        }
+
+        public void insert_operateur_db(OperateurClass oper)
+        {
+            oper = new OperateurClass();
+            conx.executeRequest("INSERT INTO public.opérateur_de_saisi(statut_opérateurid, lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"+
+                " VALUES('', '', '', '', '', '', ''); ");
+            string lieu = (string)conx.read["name_lieu"];
+            //return lieu;
         }
     }
 }

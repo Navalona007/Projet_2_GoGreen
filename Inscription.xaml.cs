@@ -212,7 +212,7 @@ namespace Projet_2_GoGreen
                                 tb_reference_inscription.Text = string.Empty;
                                 tb_mdp_inscription.Text = string.Empty;
                                 tb_confirmer_mdp_inscription.Text = string.Empty;
-                                MessageBox.Show("Inscription avec succès!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Inscription réussie! \n Votre clé de référence à partager avec vos clients est : "+key , "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                                 Authentification authentification = new Authentification();
                                 authentification.Show();
                                 this.Hide();

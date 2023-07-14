@@ -70,15 +70,15 @@ namespace Projet_2_GoGreen
 
         private void liste_admin()
         {
-            var cmd = conx.createRequest("Select * from administateur;");
-            var read = cmd.ExecuteReader();
+            //conx.executeRequest("Select * from administateur;");
+            conx.launchReader("Select * from administateur;");
 
-            while (read.Read())
+            while (conx.read.Read())
             {
-                string mail = (string)read["mail_admin"];
-                string pass = (string)read["pass_admin"];
-                string nom = (string)read["nom_admin"];
-                string prenom = (string)read["prenom_admin"];
+                string mail = (string)conx.read["mail_admin"];
+                string pass = (string)conx.read["pass_admin"];
+                string nom = (string)conx.read["nom_admin"];
+                string prenom = (string)conx.read["prenom_admin"];
                 //string 
                 list_pass_admin.Add(pass, new AdminClass(nom, prenom, mail, pass));
                 list_login_admin.Add(mail, new AdminClass(nom, prenom, mail, pass));
