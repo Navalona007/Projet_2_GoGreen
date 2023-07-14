@@ -20,6 +20,7 @@ namespace Projet_2_GoGreen
             {
                 conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;");
                 conx.Open();
+
             }
             catch (Exception ex)
             {
