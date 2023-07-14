@@ -93,6 +93,7 @@
                                     </Style>
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
 

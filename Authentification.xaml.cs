@@ -25,6 +25,7 @@ namespace Projet_2_GoGreen
         public Authentification()
         {
             InitializeComponent();
+            
         }
      
         private void bt_connect_Click(object sender, RoutedEventArgs e)
@@ -118,6 +119,8 @@ namespace Projet_2_GoGreen
             inscription.Show();
             this.Hide();
 
+            //Administrateur operateur=new Administrateur();
+            //operateur.LoadDataOperateur();
         }
 
 

@@ -141,10 +141,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Projet_2_GoGreen
 {
     internal class OperateurClass
     {
+
+        public int id_op { get; set; } //used by rakoto
         public string id { get; set; }
         public string name { get; set; }
         public string lastname { get; set; }
@@ -168,6 +171,7 @@ namespace Projet_2_GoGreen
         public static List<OperateurClass> list_operateur = new List<OperateurClass>();
         public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
         public static Dictionary<String, OperateurClass> list_login_operateur = new Dictionary<string, OperateurClass>();
+
 
         public OperateurClass(string id, string name, string lastname, string email, string password, string workplace)
         {
@@ -231,7 +235,46 @@ namespace Projet_2_GoGreen
 
         public OperateurClass()
         {
+     
+        }
 
+        public void setName(string value)
+        {
+            Name = value;
+        }
+
+        public string getLastname()
+        {
+            return Lastname;
+        }
+
+        public void setLastname(string value)
+        {
+            Lastname = value;
+        }
+
+        public string getEmail()
+        {
+            return Email;
+        }
+
+        public void setEmail(string value)
+        {
+            Email = value;
+        }
+
+        public int getId_op()
+        {
+            return id_op;
+        }
+
+        public void setId_op(int id_op)
+        {
+            this.id_op = id_op;
+        }
+        public OperateurClass()
+        {
+            
         }
 
         private void liste_operateur()
@@ -241,15 +284,18 @@ namespace Projet_2_GoGreen
 
             while (read.Read())
             {
+                int id_op = (int)read["id"];
                 string mail = (string)read["mail_oper"];
                 string pass = (string)read["pass_oper"];
                 string nom = (string)read["nom_oper"];
                 string prenom = (string)read["prenom_oper"];
                 string workplace = (string)read["mobile_oper"];
-                list_pass_operateur.Add(pass, new OperateurClass(id,nom, prenom, mail, pass, workplace));
-                list_login_operateur.Add(mail, new OperateurClass(id,nom, prenom, mail, pass, workplace));
+
+                list_pass_operateur.Add(pass, new OperateurClass(nom, prenom, mail, pass, workplace));
+                list_login_operateur.Add(mail, new OperateurClass(nom, prenom, mail, pass, workplace));
             }
         }
+
 
         // Code for creating DataGridTextColumns
 

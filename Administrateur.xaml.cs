@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,7 @@ namespace Projet_2_GoGreen
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
+
         {
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
@@ -265,7 +267,36 @@ namespace Projet_2_GoGreen
 
         private void bt_modifier_oper_Click(object sender, RoutedEventArgs e)
         {
-           
+            string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+
+            //string query = "UPDATE opérateur_de_saisi SET colonne1 = @valeur1, colonne2 = @valeur2 WHERE id = @valeur_id;";
+
+            //string query = "UPDATE opérateur_de_saisi SET nom_oper = tb_nom_oper.Text, prenom_oper = tb_prenom_oper.Text, mail_oper =tb_email_oper.Text WHERE id=@id;";
+            
+            string query = "UPDATE opérateur_de_saisi SET nom_oper ='"+tb_nom_oper.Text+ "', prenom_oper = '"+tb_prenom_oper.Text+"', mail_oper = '"+tb_email_oper.Text+"' WHERE id=id;";
+
+            NpgsqlConnection conn = new NpgsqlConnection(connString);
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@nom_oper", tb_nom_oper.Text);
+            cmd.Parameters.AddWithValue("@prenom_oper", tb_prenom_oper.Text);
+            cmd.Parameters.AddWithValue("@mail_oper", tb_email_oper.Text);
+
+            try
+            {
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                lecture_ecriture();
+                conn.Close();
+            }
+
         }
 
         private void tb_search_client_TextChanged(object sender, TextChangedEventArgs e)
@@ -298,6 +329,12 @@ namespace Projet_2_GoGreen
             Authentification authentification = new Authentification();
             authentification.Show();
             this.Hide();
+        }
+
+
+        private void grid_oper_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
 

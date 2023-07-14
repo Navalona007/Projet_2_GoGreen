@@ -70,7 +70,6 @@ namespace Projet_2_GoGreen
                 liste_label_ref.Add((string)reader["label_ref"], (int)reader["id"]);
             }
 
-            //return liste_reference;
         }
         public void insertReference(string valueInsert)
         {
