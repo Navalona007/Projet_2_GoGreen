@@ -1,6 +1,8 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +28,21 @@ namespace Projet_2_GoGreen
         public Administrateur()
         {
             InitializeComponent();
+            lecture_ecriture();
             LoadClientData();
         }
+        
         private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
         {
+            tb_nom_oper.Text = "";
+            tb_prenom_oper.Text = "";
+            tb_email_oper.Text = "";
+            tb_lieu.Text = "";
+            tb_mobile_oper.Text = "";
+            pwd_oper.Password = "";
+            pwd_oper.Password = "";
+
+
             Authentification authentification = new Authentification();
             authentification.Show();
             this.Hide();
@@ -83,6 +96,7 @@ namespace Projet_2_GoGreen
             {
                 connectDB();
 
+
             }
             catch (Exception ex)
             {
@@ -92,7 +106,7 @@ namespace Projet_2_GoGreen
 
         private void bt_modifier_oper_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void tb_search_client_TextChanged(object sender, TextChangedEventArgs e)
@@ -128,8 +142,56 @@ namespace Projet_2_GoGreen
         }
 
 
-        public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+        private void lecture_ecriture()
+        {
+            ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
+            NpgsqlConnection GetConnection()
+            {
+                return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
+            }
+            try
+            {
+                var conn = GetConnection();
+                conn.Open();
 
+                String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status " +
+                                "FROM opérateur_de_saisi " +
+                                "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id " +
+                                "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
+                NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+                 BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
+
+                NpgsqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    OperateurClass operateur = new OperateurClass();
+
+                     grid_oper.ItemsSource = bindingList;
+
+                    operateur.setId(reader["id"].ToString());
+                    operateur.setName(reader["nom_oper"].ToString());
+                    operateur.setLastname(reader.GetString(reader.GetOrdinal("prenom_oper")));
+                    operateur.setEmail(reader.GetString(reader.GetOrdinal("mail_oper")));
+                    operateur.setMobile(reader.GetString(reader.GetOrdinal("mobile_oper")));
+                    operateur.setWorkplace(reader.GetString(reader.GetOrdinal("name_lieu")));
+                    operateur.setStatut(reader.GetString(reader.GetOrdinal("status")));
+
+                    listeOperateurs.Add(operateur);
+
+                }
+                grid_oper.ItemsSource = listeOperateurs;
+                
+                conn.Close();
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+       
+       public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
         private void LoadClientData()
         {
@@ -190,6 +252,5 @@ namespace Projet_2_GoGreen
         }
 
     }
-
 
 }
