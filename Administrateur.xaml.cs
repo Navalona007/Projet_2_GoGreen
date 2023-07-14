@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+
 
 namespace Projet_2_GoGreen
 {
@@ -24,6 +26,7 @@ namespace Projet_2_GoGreen
         public Administrateur()
         {
             InitializeComponent();
+            LoadClientData();
         }
         private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +63,7 @@ namespace Projet_2_GoGreen
         }
         private void connectDB()
         {
-            NpgsqlConnection conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=a1234;Database=gg_db;");
+            NpgsqlConnection conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;");
             conx.Open();
             if (conx.State == System.Data.ConnectionState.Open)
             {
@@ -123,5 +126,70 @@ namespace Projet_2_GoGreen
             authentification.Show();
             this.Hide();
         }
+
+
+        public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+
+
+        private void LoadClientData()
+        {
+            string query = "SELECT id, nom_client, prenom_client, mail_client, adresse_client, date_inscrip, mobile_client, status_client FROM public.client;";
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        List<ClientClass> clients = new List<ClientClass>();
+
+                        while (reader.Read())
+                        {
+                            ClientClass client = new ClientClass();
+                            client.id = reader["id"].ToString();
+                            client.name = reader["nom_client"].ToString();
+                            client.lastname = reader["prenom_client"].ToString();
+                            client.email = reader["mail_client"].ToString();
+                            client.mobile = reader["mobile_client"].ToString();
+                            client.adress = reader["adresse_client"].ToString();
+                            //client.dateInscription = (DateTime)reader["date_inscrip"];
+                            client.status = reader["status_client"].ToString();
+
+                            clients.Add(client);
+                        }
+
+                        grid_client.ItemsSource = clients;
+                    }
+                }
+
+                connection.Close();
+            }
+        }
+
+        private void ButtonStatus_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            string id = button.Tag.ToString();
+
+           // Find the corresponding client object in the DataGrid's underlying data source
+            ClientClass client = grid_client.Items.OfType<ClientClass>().FirstOrDefault(c => c.id == id);
+
+            //Update the status value and button content based on the current status
+            if (client.status == "actif")
+            {
+                client.status = "suspendu";
+                button.Content = "Réactiver";
+            }
+            else if (client.status == "suspendu")
+            {
+                client.status = "actif";
+                button.Content = "Suspendre";
+            }
+        }
+
     }
+
+
 }
