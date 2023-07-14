@@ -140,5 +140,12 @@ namespace Projet_2_GoGreen
             }
         } //end CalculateMD5Hash
 
+        
+        private void tb_auth_Gotfocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= tb_auth_Gotfocus;
+        }
     }
 }
