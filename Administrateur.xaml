@@ -8,9 +8,7 @@
         mc:Ignorable="d"
         Title="Gestion de compte" Width="1380" Height="768" ResizeMode="NoResize">
     <Grid Background="#FFF2F3F2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
         <TabControl Background="#FFF4FAF3" Margin="0,31,0,0">
             <TabItem Header="Opérateur de saisi" BorderBrush="#FFCFCBCB" FontSize="14">
                 <Grid Background="#FF5AE4A8">
@@ -21,15 +19,9 @@
 
 
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="grid_oper" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False">
+                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="True" SelectionChanged="grid_oper_SelectionChanged_1">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserReorder="True" Header="ID" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Nom"/>
-                            <DataGridTextColumn Header="Prénom"/>
-                            <DataGridTextColumn Header="Lieu de travail"/>
-                            <DataGridTextColumn Header="Mobile"/>
-                            <DataGridTextColumn Header="Courriel" IsReadOnly="False"/>
-                            <DataGridComboBoxColumn Header="Statut" CanUserResize="True"/>
+                            
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -46,6 +38,9 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
                     <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
@@ -149,6 +144,14 @@
             <TabItem FontSize="14" Header="Liste des requêtes">
                 <Grid Background="#FF5AE4A8">
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1223,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201"/>
+                    <Grid x:Name="GridListeRequeteSuppression" Margin="58,66,50,100">
+                        <Grid.Effect>
+                            <DropShadowEffect ShadowDepth="3" Opacity="0.5"/>
+                        </Grid.Effect>
+                        <Rectangle HorizontalAlignment="Center" Height="65" VerticalAlignment="Top" Width="1275" Fill="#FFD6F9E5"/>
+                        <Label Content="Liste des Requêtes " HorizontalAlignment="Left" Margin="478,6,0,0" VerticalAlignment="Top" Foreground="#FF055C36" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Background="{x:Null}"/>
+                        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,65,0,0" Background="White" BorderBrush="{x:Null}"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem FontSize="14" Header="Requête">

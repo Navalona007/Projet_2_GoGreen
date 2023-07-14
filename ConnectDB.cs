@@ -18,7 +18,7 @@ namespace Projet_2_GoGreen
         {
             try
             {
-                conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=admin13;Database=gg_db;");
+                conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;");
 
             }
             catch (Exception ex)
