@@ -23,7 +23,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Path StrokeThickness="1.5" Margin="20,0,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="214" Height="223" VerticalAlignment="Center">
+        <Path StrokeThickness="1.5" Margin="14,0,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="225" Height="223" VerticalAlignment="Center">
 
             <Path.Fill>
                 <ImageBrush ImageSource="/Go Green.png"/>
@@ -35,7 +35,7 @@
         <Image HorizontalAlignment="Left" Height="72" Margin="97,37,0,0" VerticalAlignment="Top" Width="60" Source="/user (1).png"/>
         <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="42" Margin="73,111,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
 
-        <Wpf:WebView2 x:Name="webView"   HorizontalAlignment="Right" Height="730" Margin="0,10,6,0" VerticalAlignment="Top" Width="1115"/>
+        <Wpf:WebView2 x:Name="webView"   HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115"/>
 
     </Grid>
 </Window>

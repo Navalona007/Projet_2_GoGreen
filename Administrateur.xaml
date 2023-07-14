@@ -8,28 +8,91 @@
         mc:Ignorable="d"
         Title="Gestion de compte" Width="1380" Height="768" ResizeMode="NoResize">
     <Grid Background="#FFF2F3F2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
         <TabControl Background="#FFF4FAF3" Margin="0,31,0,0">
             <TabItem Header="Opérateur de saisi" BorderBrush="#FFCFCBCB" FontSize="14">
                 <Grid Background="#FF5AE4A8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox HorizontalAlignment="Left" Height="590" Header="Formulaire" Margin="10,0,0,0" VerticalAlignment="Top" Width="491" FontSize="16" FontFamily="Global User Interface"/>
+                    <GroupBox HorizontalAlignment="Left" Height="590" Header="Formulaire" Margin="10,0,0,0" VerticalAlignment="Top" Width="491" FontSize="16" FontFamily="Global User Interface" Background="#FFD6F9E5" FontWeight="Bold" Foreground="Black">
+                        <GroupBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </GroupBox.Effect>
+                    </GroupBox>
 
 
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="grid_oper" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
+
+                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50">
+                        <DataGrid.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </DataGrid.Effect>
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserReorder="True" Header="ID" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Nom"/>
-                            <DataGridTextColumn Header="Prénom"/>
-                            <DataGridTextColumn Header="Lieu de travail"/>
-                            <DataGridTextColumn Header="Mobile"/>
-                            <DataGridTextColumn Header="Courriel" IsReadOnly="False"/>
-                            <DataGridComboBoxColumn Header="Statut" CanUserResize="True"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" IsReadOnly="True" FontSize="12" Width="50">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+
+
+                            <DataGridTextColumn Header="Nom" Binding="{Binding name}" FontSize="12" Width="*">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Prénom" Binding="{Binding lastname}" FontSize="12" Width="*" >
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Mail" Binding="{Binding email}" FontSize="12" Width="*">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Mobile" Binding="{Binding mobile}" FontSize="12" Width="*" >
+
+
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+
+
+                            </DataGridTextColumn>
+
+
+
+                            <DataGridTextColumn Header="Lieu" Binding="{Binding workplace}" FontSize="12" Width="*">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Statut" Binding="{Binding statut}" FontSize="12" Width="*">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -39,6 +102,9 @@
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
                     <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="47,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
@@ -46,6 +112,9 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
                     <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
                         <TextBox.Resources>
@@ -53,6 +122,9 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
 
                     <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" Text="Votre adresse mail">
@@ -60,7 +132,10 @@
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
-                        </TextBox.Resources> 
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
 
 
@@ -70,6 +145,9 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
 
                     <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="47,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
@@ -78,15 +156,55 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
-                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,488,0,0" VerticalAlignment="Top" Width="417" Height="26" FontSize="16" FontFamily="Global User Interface"/>
-                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,433,0,0" VerticalAlignment="Top" Width="417" Height="26" FontSize="16" FontFamily="Global User Interface"/>
+                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+                        <PasswordBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </PasswordBox.Effect>
+                        <PasswordBox.Style>
+                            <Style TargetType="{x:Type PasswordBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </PasswordBox.Style>
+                    </PasswordBox>
+                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+                        <PasswordBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </PasswordBox.Effect>
+                        <PasswordBox.Style>
+                            <Style TargetType="{x:Type PasswordBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </PasswordBox.Style>
+                    </PasswordBox>
                     <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="58,616,0,0" VerticalAlignment="Top" Width="165" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
                     </Button>
                     <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="311,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
@@ -94,14 +212,17 @@
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
                     </Button>
-                    <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="47,408,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="136" FontFamily="Global User Interface"/>
-                    <Label Content="Confirmer Mot de passe" HorizontalAlignment="Left" Margin="45,461,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="228" FontFamily="Global User Interface"/>
-                    <Label Content="Mobile" HorizontalAlignment="Left" Margin="47,321,0,0" VerticalAlignment="Top" FontSize="16" Height="34" Width="80" FontFamily="Global User Interface"/>
-                    <Label Content="Lieu de travail" HorizontalAlignment="Left" Margin="47,248,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="140" FontFamily="Global User Interface"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="47,173,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="66" FontFamily="Global User Interface"/>
-                    <Label Content="Prénom" HorizontalAlignment="Left" Margin="47,105,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="88" FontFamily="Global User Interface"/>
-                    <Label Content="Nom" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="63" FontFamily="Global User Interface"/>
+                    <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="47,392,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="136" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Confirmer Mot de passe" HorizontalAlignment="Left" Margin="45,465,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="228" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Mobile" HorizontalAlignment="Left" Margin="47,321,0,0" VerticalAlignment="Top" FontSize="16" Height="34" Width="80" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Lieu de travail" HorizontalAlignment="Left" Margin="47,248,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="140" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="47,173,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="66" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Prénom" HorizontalAlignment="Left" Margin="47,105,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="88" FontFamily="Global User Interface" FontWeight="Bold"/>
+                    <Label Content="Nom" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="63" FontFamily="Global User Interface" FontWeight="Bold"/>
                     <Label Content="Rechercher :" Margin="808,-2,459,0" VerticalAlignment="Top" FontSize="16"/>
                     <Button x:Name="bt_supprimer_oper" Content="SUPPRIMER" HorizontalAlignment="Left" Height="40" Margin="792,617,0,0" VerticalAlignment="Top" Width="156" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_suppr_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
@@ -109,6 +230,9 @@
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
                     </Button>
                     <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Right" Height="40" Margin="0,617,652,0" VerticalAlignment="Top" Width="166" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
@@ -116,6 +240,9 @@
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
                     </Button>
                     <Label x:Name="lb_message_oper" Content="" HorizontalAlignment="Left" Margin="47,535,0,0" VerticalAlignment="Top" Width="417" FontSize="16" Height="37" FontFamily="Global User Interface"/>
 
@@ -124,28 +251,36 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="96*"/>
-                        <ColumnDefinition Width="19*"/>
-                        <ColumnDefinition Width="1259*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="grid_client" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" Grid.ColumnSpan="3">
+                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Nom"/>
-                            <DataGridTextColumn Header="Prénom"/>
-                            <DataGridTextColumn Header="Mobile"/>
-                            <DataGridTextColumn Header="Courriel"/>
-                            <DataGridComboBoxColumn Header="Statut"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Prénom" Width="*" Binding="{Binding lastname}"/>
+                            <DataGridTextColumn Header="Mail" Width="*" Binding="{Binding email}"/>
+                            <DataGridTextColumn Header="Adresse" Width="*" Binding="{Binding adress}"/>
+                            <DataGridTextColumn Header="Date Inscription" Width="*" Binding="{Binding dateInscription}"/>
+                            <DataGridTextColumn Header="Mobile" Width="*" Binding="{Binding mobile}"/>
+                            <DataGridTextColumn Header="Status" Width="*" Binding="{Binding status}"/>
+                            <DataGridTemplateColumn Header="Action" Width="*"> 
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Suspendre" Click="ButtonStatus_Click" Tag="{Binding id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1110,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="199" Grid.Column="2"/>
-                    <TextBox x:Name="tb_search_client"  HorizontalAlignment="Left" Margin="803,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="431" Background="White" FontSize="14" TextChanged="tb_search_client_TextChanged" Grid.Column="2">
+
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1225,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="199"/>
+                    <TextBox x:Name="tb_search_client"  HorizontalAlignment="Left" Margin="918,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="431" Background="White" FontSize="14" TextChanged="tb_search_client_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
                     </TextBox>
                     <Label Content="Rechercher :" HorizontalAlignment="Left" Margin="709,8,0,0" VerticalAlignment="Top" FontSize="14" Width="89" Grid.Column="2"/>
 
@@ -155,6 +290,14 @@
             <TabItem FontSize="14" Header="Liste des requêtes">
                 <Grid Background="#FF5AE4A8">
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1223,541,0,0" Height="199" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201"/>
+                    <Grid x:Name="GridListeRequeteSuppression" Margin="58,66,50,100">
+                        <Grid.Effect>
+                            <DropShadowEffect ShadowDepth="3" Opacity="0.5"/>
+                        </Grid.Effect>
+                        <Rectangle HorizontalAlignment="Center" Height="65" VerticalAlignment="Top" Width="1275" Fill="#FFD6F9E5"/>
+                        <Label Content="Liste des Requêtes " HorizontalAlignment="Left" Margin="478,6,0,0" VerticalAlignment="Top" Foreground="#FF055C36" FontFamily="Global User Interface" FontSize="36" FontWeight="Bold" Background="{x:Null}"/>
+                        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,65,0,0" Background="White" BorderBrush="{x:Null}"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem FontSize="14" Header="Requête">
@@ -217,12 +360,15 @@
         <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
         <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="437,9,0,0" VerticalAlignment="Top" Height="32" Width="223" FontSize="16"/>
         <Image HorizontalAlignment="Left" Height="36" Margin="392,8,0,0" VerticalAlignment="Top" Width="92" Source="/user_1.png"/>
-        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1176,14,0,0" VerticalAlignment="Top" Width="173" Height="27" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="16" Click="bt_se_déconnecter_Click">
+        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1179,14,0,0" VerticalAlignment="Top" Width="170" Height="27" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="16" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Button.Effect>
         </Button>
 
     </Grid>
