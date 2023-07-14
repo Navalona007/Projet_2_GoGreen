@@ -11,6 +11,9 @@
 
 
         <Path StrokeThickness="1" Margin="938,15,0,14" Fill="#FF5AE4A8" Stretch="Fill" HorizontalAlignment="Left" Width="412">
+            <Path.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Path.Effect>
 
             <Path.Data>
                 <RectangleGeometry Rect="0,0,340,300" RadiusX="20" RadiusY="20"/>
@@ -19,9 +22,20 @@
 
 
 
-        <Label Content="Identifiant :" HorizontalAlignment="Left" Height="42" Margin="981,0,0,480" VerticalAlignment="Bottom" Width="180" Foreground="Black" FontWeight="Bold" FontSize="20"/>
-        <Label Content="Mot de passe :" HorizontalAlignment="Left" Margin="981,345,0,0" Width="180" Background="Transparent" Foreground="Black" FontWeight="Bold" RenderTransformOrigin="0.502,0.468" FontSize="20" Height="43" VerticalAlignment="Top"/>
+        <Label Content="Identifiant :" HorizontalAlignment="Left" Height="42" Margin="981,0,0,480" VerticalAlignment="Bottom" Width="180" Foreground="White" FontWeight="Bold" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Mot de passe :" HorizontalAlignment="Left" Margin="981,345,0,0" Width="180" Background="Transparent" Foreground="White" FontWeight="Bold" RenderTransformOrigin="0.502,0.468" FontSize="20" Height="43" VerticalAlignment="Top">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Label.Effect>
+        </Label>
         <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1">
+            <PasswordBox.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </PasswordBox.Effect>
             <PasswordBox.Style>
                 <Style TargetType="{x:Type PasswordBox}">
                     <Setter Property="Template">
@@ -36,13 +50,16 @@
                 </Style>
             </PasswordBox.Style>
         </PasswordBox>
-        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1">
+        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_auth_Gotfocus" Text="votre adresse mail">
 
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
+            <TextBox.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </TextBox.Effect>
         </TextBox>
 
         <Button x:Name="bt_connect" Content="Se connecter" HorizontalAlignment="Left" Height="34" Margin="1035,564,0,0" VerticalAlignment="Top" Width="218" Click="bt_connect_Click" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF17925D" Background="White" FontSize="20">
@@ -52,11 +69,14 @@
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Button.Effect>
         </Button>
 
         <Label Content="Vous n'avez pas de compte?" HorizontalAlignment="Left" Height="48" Margin="957,627,0,0" VerticalAlignment="Top" Width="261" FontStyle="Italic" FontSize="20"/>
-        <Button Content="S'inscrire" HorizontalAlignment="Left" Height="29" Margin="1202,629,0,0" VerticalAlignment="Top" Width="114" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click" FontSize="20"/>
-        <Image Height="75" Margin="0,73,202,0" VerticalAlignment="Top" Source="/user_1.png" HorizontalAlignment="Right" Width="70"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Left" Height="29" Margin="1218,629,0,0" VerticalAlignment="Top" Width="98" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click" FontSize="20"/>
+        <Image Height="75" Margin="0,73,194,0" VerticalAlignment="Top" Source="/user_1.png" HorizontalAlignment="Right" Width="70"/>
         <Path StrokeThickness="1.5" Margin="299,0,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="330" Height="337" VerticalAlignment="Center">
 
             <Path.Fill>

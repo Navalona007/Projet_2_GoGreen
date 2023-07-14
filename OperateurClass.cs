@@ -1,20 +1,34 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Projet_2_GoGreen
 {
     internal class OperateurClass
     {
-        private int id_oper;
-        private string name;
-        private string lastname;
-        private string workplace;
-        private string email;
-        private string mobile;
-        private string status;
+        public int id_op { get; set; } //used by rakoto
+        public string id { get; set; }
+        public string name { get; set; }
+        public string lastname { get; set; }
+        public string workplace { get; set; }
+        public string email { get; set; }
+        public string mobile { get; set; }
+        public string statut { get; set; }
+
+        public void setWorkplace(string v)
+        {
+            workplace = v;
+        }
+
+        public void setStatut(string v)
+        {
+            statut = v;
+        }
 
         ConnectDB conx = new ConnectDB();
 
@@ -22,18 +36,110 @@ namespace Projet_2_GoGreen
         //public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
         public static Dictionary<String, OperateurClass> list_login_operateur = new Dictionary<string, OperateurClass>();
 
-        public OperateurClass(int id, string name, string lastname, string email, string mobile, string workplace, string status)
+
+        public OperateurClass(string id, string name, string lastname, string email, string mobile, string workplace)
         {
-            id_oper = id;
+            this.id = id;
             this.name = name;
             this.lastname = lastname;
             this.email = email;
             this.mobile = mobile;
             this.workplace = workplace;
         }
+
+        public string getWorkplace()
+        {
+            return workplace;
+        }
+
+        public void setMobile(string value)
+        {
+            mobile = value;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public string getId()
+        {
+            return id;
+        }
+
+        public void setId(string value)
+        {
+            id = value;
+        }
+
+        public void setName(string value)
+        {
+            name = value;
+        }
+
+        public string getLastname()
+        {
+            return lastname;
+        }
+
+        public void setLastname(string value)
+        {
+            lastname = value;
+        }
+
+        public string getEmail()
+        {
+            return email;
+        }
+
+        public void setEmail(string value)
+        {
+            email = value;
+        }
+
+
         public OperateurClass()
         {
+     
+        }
 
+        public void setName(string value)
+        {
+            Name = value;
+        }
+
+        public string getLastname()
+        {
+            return Lastname;
+        }
+
+        public void setLastname(string value)
+        {
+            Lastname = value;
+        }
+
+        public string getEmail()
+        {
+            return Email;
+        }
+
+        public void setEmail(string value)
+        {
+            Email = value;
+        }
+
+        public int getId_op()
+        {
+            return id_op;
+        }
+
+        public void setId_op(int id_op)
+        {
+            this.id_op = id_op;
+        }
+        public OperateurClass()
+        {
+            
         }
         public string get_Name_Oper()
         {
@@ -103,7 +209,9 @@ namespace Projet_2_GoGreen
 
             while (conx.read.Read())
             {
-                int id_oper = (int)conx.read["id"];
+
+              int id_op = (int)read["id"];//used by rakoto  
+              int id_oper = (int)conx.read["id"];//used by samira
                 string nom = (string)conx.read["nom_oper"];
                 string prenom = (string)conx.read["prenom_oper"];
                 string mail = (string)conx.read["mail_oper"];
@@ -115,6 +223,24 @@ namespace Projet_2_GoGreen
                 list_oper.Add(oper);
                 list_login_operateur.Add(mail, oper);
             }
+        }
+
+
+        // Code for creating DataGridTextColumns
+
+        public static ObservableCollection<OperateurClass> GetOperateurs()
+        {
+            ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
+
+            // Retrieve data from your data source
+            // For example, fetch data from list_operateur or list_pass_operateur dictionaries
+
+            foreach (var operateur in list_operateur)
+            {
+                listeOperateurs.Add(operateur);
+            }
+
+            return listeOperateurs;
         }
 
         public void insert_operateur_db(OperateurClass oper)

@@ -25,6 +25,7 @@ namespace Projet_2_GoGreen
         public Authentification()
         {
             InitializeComponent();
+            
         }
      
         private void bt_connect_Click(object sender, RoutedEventArgs e)
@@ -118,6 +119,8 @@ namespace Projet_2_GoGreen
             inscription.Show();
             this.Hide();
 
+            //Administrateur operateur=new Administrateur();
+            //operateur.LoadDataOperateur();
         }
 
 
@@ -137,5 +140,12 @@ namespace Projet_2_GoGreen
             }
         } //end CalculateMD5Hash
 
+        
+        private void tb_auth_Gotfocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= tb_auth_Gotfocus;
+        }
     }
 }
