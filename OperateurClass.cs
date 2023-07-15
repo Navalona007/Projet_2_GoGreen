@@ -37,7 +37,7 @@ namespace Projet_2_GoGreen
         public static Dictionary<String, OperateurClass> list_login_operateur = new Dictionary<string, OperateurClass>();
 
 
-        public OperateurClass(string id, string name, string lastname, string email, string mobile, string workplace)
+        public OperateurClass(string id, string name, string lastname, string email, string mobile, string workplace, string statut)
         {
             this.id = id;
             this.name = name;
@@ -45,6 +45,7 @@ namespace Projet_2_GoGreen
             this.email = email;
             this.mobile = mobile;
             this.workplace = workplace;
+            this.statut = statut;
         }
 
         public string getWorkplace()
@@ -103,30 +104,7 @@ namespace Projet_2_GoGreen
      
         }
 
-        //public void setName(string value)
-        //{
-        //    Name = value;
-        //}
 
-        //public string getLastname()
-        //{
-        //    return Lastname;
-        //}
-
-        //public void setLastname(string value)
-        //{
-        //    Lastname = value;
-        //}
-
-        //public string getEmail()
-        //{
-        //    return Email;
-        //}
-
-        //public void setEmail(string value)
-        //{
-        //    Email = value;
-        //}
 
         public int getId_op()
         {
@@ -137,10 +115,7 @@ namespace Projet_2_GoGreen
         {
             this.id_op = id_op;
         }
-        //public OperateurClass()
-        //{
-            
-        //}
+
         public string get_Name_Oper()
         {
             return name;
@@ -210,7 +185,7 @@ namespace Projet_2_GoGreen
             while (conx.read.Read())
             {
 
-             // int id_op = (int)read["id"];//used by rakoto  
+
               int id_oper = (int)conx.read["id"];//used by samira
                 string nom = (string)conx.read["nom_oper"];
                 string prenom = (string)conx.read["prenom_oper"];
@@ -219,7 +194,9 @@ namespace Projet_2_GoGreen
                 string lieu = (string)conx.read["name_lieu"];
                 string state = (string)conx.read["satus"];
 
-                OperateurClass oper = new OperateurClass(id, nom, prenom, mail, mobile, lieu) ;
+
+                OperateurClass oper = new OperateurClass(id, nom, prenom, mail, mobile, lieu, statut) ;
+
                 list_oper.Add(oper);
                 list_login_operateur.Add(mail, oper);
             }
