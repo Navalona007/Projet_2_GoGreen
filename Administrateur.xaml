@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Gestion de compte" Width="1380" Height="768" ResizeMode="NoResize">
+        Title="Gestion de compte" Width="1380" Height="768" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFF2F3F2">
 
         <TabControl Background="#FFF4FAF3" Margin="0,31,0,0">
@@ -105,7 +105,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <TextBox x:Name="tb_search_oper" Margin="919,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged">
+                    <TextBox x:Name="tb_search_oper" Margin="919,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -115,7 +115,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="47,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" FontSize="16" FontFamily="Global User Interface">
+                    <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="47,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -125,18 +125,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
-                    </TextBox>
-
-                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" Text="Votre adresse mail">
+                    <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -147,8 +136,7 @@
                         </TextBox.Effect>
                     </TextBox>
 
-
-                    <TextBox x:Name="tb_lieu" HorizontalAlignment="Left" Margin="47,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" LostFocus="tb_mail_oper_LostFocus" Text="Adresse mail" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -159,7 +147,8 @@
                         </TextBox.Effect>
                     </TextBox>
 
-                    <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="47,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+
+                    <TextBox x:Name="tb_lieu" HorizontalAlignment="Left" Margin="47,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -169,7 +158,18 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+
+                    <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="47,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>
@@ -187,7 +187,7 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
-                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface">
+                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>

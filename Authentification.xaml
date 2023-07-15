@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Authentification" Height="768" Width="1380" ResizeMode="NoResize">
+        Title="Authentification" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid  Background="#FFD6F9E5">
 
 
@@ -32,7 +32,7 @@
                 <DropShadowEffect Opacity="0.5"/>
             </Label.Effect>
         </Label>
-        <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1">
+        <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1" VerticalContentAlignment="Center" Padding="10,0,0,0">
             <PasswordBox.Effect>
                 <DropShadowEffect Opacity="0.5"/>
             </PasswordBox.Effect>
@@ -50,7 +50,7 @@
                 </Style>
             </PasswordBox.Style>
         </PasswordBox>
-        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_auth_Gotfocus" Text="votre adresse mail">
+        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_auth_Gotfocus" Text="Email" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
 
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">

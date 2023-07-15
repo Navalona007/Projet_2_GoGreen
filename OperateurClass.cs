@@ -105,6 +105,7 @@ namespace Projet_2_GoGreen
         }
 
 
+
         public int getId_op()
         {
             return id_op;
@@ -114,6 +115,7 @@ namespace Projet_2_GoGreen
         {
             this.id_op = id_op;
         }
+
         public string get_Name_Oper()
         {
             return name;
@@ -183,7 +185,7 @@ namespace Projet_2_GoGreen
             while (conx.read.Read())
             {
 
-              //int id_op = (int)read["id"];//used by rakoto  
+
               int id_oper = (int)conx.read["id"];//used by samira
                 string nom = (string)conx.read["nom_oper"];
                 string prenom = (string)conx.read["prenom_oper"];
@@ -192,7 +194,9 @@ namespace Projet_2_GoGreen
                 string lieu = (string)conx.read["name_lieu"];
                 string state = (string)conx.read["satus"];
 
+
                 OperateurClass oper = new OperateurClass(id, nom, prenom, mail, mobile, lieu, statut) ;
+
                 list_oper.Add(oper);
                 list_login_operateur.Add(mail, oper);
             }

@@ -39,23 +39,11 @@ namespace Projet_2_GoGreen
             InitializeComponent();
             lecture_ecriture();
             LoadClientData();
+            tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
+            tb_email_oper.LostFocus += tb_mail_oper_LostFocus;
         }
 
-        //private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
-        //{
-        //    tb_nom_oper.Text = "";
-        //    tb_prenom_oper.Text = "";
-        //    tb_email_oper.Text = "";
-        //    tb_lieu.Text = "";
-        //    tb_mobile_oper.Text = "";
-        //    pwd_oper.Password = "";
-        //    pwd_oper.Password = "";
 
-
-        //    Authentification authentification = new Authentification();
-        //    authentification.Show();
-        //    this.Hide();
-        //}
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
@@ -132,12 +120,19 @@ namespace Projet_2_GoGreen
         {
             tb_nom_oper.Text = string.Empty;
             tb_prenom_oper.Text = string.Empty;
-            tb_email_oper.Text = string.Empty;
+            //tb_email_oper.Text = string.Empty;           
             tb_lieu.Text = string.Empty;
             tb_mobile_oper.Text = string.Empty;
             pwd_oper.Password = "";
             pwd_oper_confirm.Password = "";
+            //faire revenir le mot "adresse mail" dans le text box
+            if (!string.IsNullOrEmpty(tb_email_oper.Text))
+            {
+                tb_email_oper.Text = "Adresse mail";
+                tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
+            }//fin if
         }
+
 
         private void bt_add_oper_Click(object sender, RoutedEventArgs e)
         {
@@ -176,7 +171,7 @@ namespace Projet_2_GoGreen
                 {
                     {
                         int key = hasKey(lieu_travail);
-                      
+
                         string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
                                           + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
                         var cmd = new NpgsqlCommand(requete, conx);
@@ -213,7 +208,7 @@ namespace Projet_2_GoGreen
                     insertLieu(lieu_travail);
                     list_lieu();
                     int key = hasKey(lieu_travail);
-                   
+
                     string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
                                       + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
                     var cmd = new NpgsqlCommand(requete, conx);
@@ -243,7 +238,9 @@ namespace Projet_2_GoGreen
                     {
                         MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
                     conx.Close();
+
                 }
             }
         }
@@ -276,7 +273,9 @@ namespace Projet_2_GoGreen
 
             //string query = "UPDATE opérateur_de_saisi SET nom_oper = tb_nom_oper.Text, prenom_oper = tb_prenom_oper.Text, mail_oper =tb_email_oper.Text WHERE id=@id;";
 
+
             string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "' WHERE id="+id_selected+" ;";
+
 
             NpgsqlConnection conn = new NpgsqlConnection(connString);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -342,9 +341,28 @@ namespace Projet_2_GoGreen
 
         private void tb_mail_oper_GotFocus(object sender, RoutedEventArgs e)
         {
+            //modification 
             TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= tb_mail_oper_GotFocus;
+            if (tb.Text == "Adresse mail")
+            {
+                tb.Text = string.Empty;
+                tb.Foreground = Brushes.Black;
+            }
+        }
+
+        private void tb_mail_oper_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = "Adresse mail";
+                tb.GotFocus += tb_mail_oper_GotFocus;
+                tb.Foreground = Brushes.Red;
+            }
+            else
+            {
+                tb.Foreground = Brushes.Black;
+            }
         }
 
         private void lecture_ecriture()
@@ -456,6 +474,7 @@ namespace Projet_2_GoGreen
                 button.Content = "Suspendre";
             }
         }
+
 
         private void grid_oper_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {

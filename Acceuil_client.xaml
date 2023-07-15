@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Acceuil_client" Height="768" Width="1380" ResizeMode="NoResize">
+        Title="Acceuil_client" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFD6F9E5">
         <Image HorizontalAlignment="Left" Height="72" Margin="267,79,0,0" VerticalAlignment="Top" Width="60" Source="/user (1).png"/>
         <Label Content="Bienvennue" HorizontalAlignment="Left" Height="36" Margin="247,160,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
