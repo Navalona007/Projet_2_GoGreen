@@ -24,7 +24,7 @@ namespace Projet_2_GoGreen
         public Map()
         {
             InitializeComponent();
-            webView.Source = new Uri("https://maps.google.com/maps?key=AIzaSyB4AAyqAyD0iI0rJPUgvqy9bxW8Qb7yYXE");
+            webView.Source = new Uri("https://maps.google.com/maps?key=ATAO_ETO_LE_KEY");
         }
 
         private void bt_retour_map_Click(object sender, RoutedEventArgs e)
