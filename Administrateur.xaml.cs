@@ -37,23 +37,25 @@ namespace Projet_2_GoGreen
             InitializeComponent();
             lecture_ecriture();
             LoadClientData();
+            tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
+            tb_email_oper.LostFocus += tb_mail_oper_LostFocus;
         }
-        
-        private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
-        {
-            tb_nom_oper.Text = "";
-            tb_prenom_oper.Text = "";
-            tb_email_oper.Text = "";
-            tb_lieu.Text = "";
-            tb_mobile_oper.Text = "";
-            pwd_oper.Password = "";
-            pwd_oper.Password = "";
+
+        //private void bt_cancel_oper_Click(object sender, RoutedEventArgs e)
+        //{
+        //    tb_nom_oper.Text = "";
+        //    tb_prenom_oper.Text = "";
+        //    tb_email_oper.Text = "";
+        //    tb_lieu.Text = "";
+        //    tb_mobile_oper.Text = "";
+        //    pwd_oper.Password = "";
+        //    pwd_oper.Password = "";
 
 
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
-        }
+        //    Authentification authentification = new Authentification();
+        //    authentification.Show();
+        //    this.Hide();
+        //}
 
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
@@ -116,11 +118,11 @@ namespace Projet_2_GoGreen
                 if (pair.Key == valuetofind)
                 {
                     key = pair.Value;
-                    
+
                     break;
-                    
+
                 }
-                
+
             }
             return key;
         }
@@ -130,24 +132,31 @@ namespace Projet_2_GoGreen
         {
             tb_nom_oper.Text = string.Empty;
             tb_prenom_oper.Text = string.Empty;
-            tb_email_oper.Text = string.Empty;
+            //tb_email_oper.Text = string.Empty;           
             tb_lieu.Text = string.Empty;
             tb_mobile_oper.Text = string.Empty;
             pwd_oper.Password = "";
             pwd_oper_confirm.Password = "";
+            //faire revenir le mot "adresse mail" dans le text box
+            if (!string.IsNullOrEmpty(tb_email_oper.Text))
+            {
+                tb_email_oper.Text = "Adresse mail";
+                tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
+            }//fin if
         }
+
 
         private void bt_add_oper_Click(object sender, RoutedEventArgs e)
         {
 
             list_lieu();
-            using (var conn = GetConnection())
+            //using (var conn = GetConnection())
 
             NpgsqlConnection conx = new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;");
             conx.Open();
             if (conx.State == System.Data.ConnectionState.Open)
             {
-                
+
                 string nom = tb_nom_oper.Text;
                 string prenom = tb_prenom_oper.Text;
                 string mail = tb_email_oper.Text;
@@ -171,13 +180,13 @@ namespace Projet_2_GoGreen
                 }
 
                 else if (!string.IsNullOrWhiteSpace(lieu_travail) && mot_de_passe_oper == confirm_mdp && liste_name_lieu.ContainsKey(lieu_travail))
-                {                    
+                {
                     {
                         int key = hasKey(lieu_travail);
-                        conn.Open();
+                        conx.Open();
                         string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
                                           + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
-                        var cmd = new NpgsqlCommand(requete, conn);
+                        var cmd = new NpgsqlCommand(requete, conx);
                         try
                         {
                             int rowsAffected = cmd.ExecuteNonQuery();
@@ -207,42 +216,42 @@ namespace Projet_2_GoGreen
                     }
                 }
                 else if (!string.IsNullOrWhiteSpace(lieu_travail) && mot_de_passe_oper == confirm_mdp && !liste_name_lieu.ContainsKey(lieu_travail))
-                {                    
-                        insertLieu(lieu_travail);
-                        list_lieu();
-                        int key = hasKey(lieu_travail);
-                        conn.Open();
-                        string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
-                                          + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
-                        var cmd = new NpgsqlCommand(requete, conn);
-                        try
-                        {
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                {
+                    insertLieu(lieu_travail);
+                    list_lieu();
+                    int key = hasKey(lieu_travail);
+                    //conx.Open();
+                    string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
+                                      + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
+                    var cmd = new NpgsqlCommand(requete, conx);
+                    try
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
 
-                            if (rowsAffected == 1)
-                            {
-                                // Réinitialiser le texte des TextBox après l'insertion 
-                                tb_nom_oper.Text = string.Empty;
-                                tb_prenom_oper.Text = string.Empty;
-                                tb_email_oper.Text = string.Empty;
-                                tb_lieu.Text = string.Empty;
-                                tb_mobile_oper.Text = string.Empty;
-                                pwd_oper.Password = "";
-                                pwd_oper_confirm.Password = "";
-
-                                MessageBox.Show("Inscription de l'opérateur de saisie réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                            }
-                        }
-                        catch (Exception ex)
+                        if (rowsAffected == 1)
                         {
-                            MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
+                            // Réinitialiser le texte des TextBox après l'insertion 
+                            tb_nom_oper.Text = string.Empty;
+                            tb_prenom_oper.Text = string.Empty;
+                            tb_email_oper.Text = string.Empty;
+                            tb_lieu.Text = string.Empty;
+                            tb_mobile_oper.Text = string.Empty;
+                            pwd_oper.Password = "";
+                            pwd_oper_confirm.Password = "";
+
+                            MessageBox.Show("Inscription de l'opérateur de saisie réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
-                    
-                }             
+                        else
+                        {
+                            MessageBox.Show("Erreur lors de l'insertion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
             }
         }
 
@@ -273,8 +282,8 @@ namespace Projet_2_GoGreen
             //string query = "UPDATE opérateur_de_saisi SET colonne1 = @valeur1, colonne2 = @valeur2 WHERE id = @valeur_id;";
 
             //string query = "UPDATE opérateur_de_saisi SET nom_oper = tb_nom_oper.Text, prenom_oper = tb_prenom_oper.Text, mail_oper =tb_email_oper.Text WHERE id=@id;";
-            
-            string query = "UPDATE opérateur_de_saisi SET nom_oper ='"+tb_nom_oper.Text+ "', prenom_oper = '"+tb_prenom_oper.Text+"', mail_oper = '"+tb_email_oper.Text+"' WHERE id=id;";
+
+            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "' WHERE id=id;";
 
             NpgsqlConnection conn = new NpgsqlConnection(connString);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -286,7 +295,7 @@ namespace Projet_2_GoGreen
             {
                 conn.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
-                
+
             }
             catch (Exception ex)
             {
@@ -340,9 +349,28 @@ namespace Projet_2_GoGreen
 
         private void tb_mail_oper_GotFocus(object sender, RoutedEventArgs e)
         {
+            //modification 
             TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= tb_mail_oper_GotFocus;
+            if (tb.Text == "Adresse mail")
+            {
+                tb.Text = string.Empty;
+                tb.Foreground = Brushes.Black;
+            }
+        }
+
+        private void tb_mail_oper_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = "Adresse mail";
+                tb.GotFocus += tb_mail_oper_GotFocus;
+                tb.Foreground = Brushes.Red;
+            }
+            else
+            {
+                tb.Foreground = Brushes.Black;
+            }
         }
 
         private void lecture_ecriture()
@@ -363,7 +391,7 @@ namespace Projet_2_GoGreen
                                 "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-                 BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
+                BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -372,7 +400,7 @@ namespace Projet_2_GoGreen
 
                     OperateurClass operateur = new OperateurClass();
 
-                     grid_oper.ItemsSource = bindingList;
+                    grid_oper.ItemsSource = bindingList;
 
                     operateur.setId(reader["id"].ToString());
                     operateur.setName(reader["nom_oper"].ToString());
@@ -386,15 +414,16 @@ namespace Projet_2_GoGreen
 
                 }
                 grid_oper.ItemsSource = listeOperateurs;
-                
+
                 conn.Close();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-       
-       public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+
+        public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
         private void LoadClientData()
         {
@@ -438,7 +467,7 @@ namespace Projet_2_GoGreen
             Button button = (Button)sender;
             string id = button.Tag.ToString();
 
-           // Find the corresponding client object in the DataGrid's underlying data source
+            // Find the corresponding client object in the DataGrid's underlying data source
             ClientClass client = grid_client.Items.OfType<ClientClass>().FirstOrDefault(c => c.id == id);
 
             //Update the status value and button content based on the current status
@@ -453,6 +482,8 @@ namespace Projet_2_GoGreen
                 button.Content = "Suspendre";
             }
         }
+
+
     }
 
 }

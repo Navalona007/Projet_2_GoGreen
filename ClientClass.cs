@@ -51,20 +51,23 @@ namespace Projet_2_GoGreen
 
         private void liste_client()
         {
-            var cmd = conx.createRequest("SELECT * FROM client_table;");
-            var read = cmd.ExecuteReader();
+           //var cmd = conx.createRequest("SELECT * FROM client_table;");
+           // var read = cmd.ExecuteReader();
+           conx.launchReader("SELECT * FROM client_table;");
 
-            while (read.Read())
+
+
+            while (conx.read.Read())
             {
-                string id = read["id"].ToString();
-                string nom = (string)read["nom_client"];
-                string prenom = (string)read["prenom_client"];
-                string mail = (string)read["mail_client"];
-                string pass = (string)read["pass_client"];
-                string adresse = (string)read["adresse_client"];
-                DateTime dateInscription = (DateTime)read["date_inscrip"];
-                string mobile = (string)read["mobile_client"];
-                string status = (string)read["status_client"];
+                string id = conx.read["id"].ToString();
+                string nom = (string)conx.read["nom_client"];
+                string prenom = (string)conx.read["prenom_client"];
+                string mail = (string)conx.read["mail_client"];
+                string pass = (string)conx.read["pass_client"];
+                string adresse = (string)conx.read["adresse_client"];
+                DateTime dateInscription = (DateTime)conx.read["date_inscrip"];
+                string mobile = (string)conx.read["mobile_client"];
+                string status = (string)conx.read["status_client"];
 
                 list_client.Add(new ClientClass
                 {
@@ -82,7 +85,7 @@ namespace Projet_2_GoGreen
                 list_login_client.Add(email, new ClientClass(nom, prenom, mail, pass));
             }
 
-            read.Close();
+            conx.read.Close();
         }
     }
 }

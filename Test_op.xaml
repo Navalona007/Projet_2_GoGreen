@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize">
+        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,10,-30" Height="768">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="598*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="84*"/>
-            <ColumnDefinition Width="3*"/>
+            <!--<ColumnDefinition Width="598*"/>-->
+            <!--<ColumnDefinition Width="0*"/>-->
+            <!--<ColumnDefinition Width="84*"/>-->
+            <!--<ColumnDefinition Width="3*"/>-->
         </Grid.ColumnDefinitions>
         <TabControl Margin="0,56,-10,-56" Height="768" Grid.ColumnSpan="4">
             <TabItem Header="Insertion" Margin="-2,-2,-56,0" FontSize="20">

@@ -103,30 +103,30 @@ namespace Projet_2_GoGreen
      
         }
 
-        public void setName(string value)
-        {
-            Name = value;
-        }
+        //public void setName(string value)
+        //{
+        //    Name = value;
+        //}
 
-        public string getLastname()
-        {
-            return Lastname;
-        }
+        //public string getLastname()
+        //{
+        //    return Lastname;
+        //}
 
-        public void setLastname(string value)
-        {
-            Lastname = value;
-        }
+        //public void setLastname(string value)
+        //{
+        //    Lastname = value;
+        //}
 
-        public string getEmail()
-        {
-            return Email;
-        }
+        //public string getEmail()
+        //{
+        //    return Email;
+        //}
 
-        public void setEmail(string value)
-        {
-            Email = value;
-        }
+        //public void setEmail(string value)
+        //{
+        //    Email = value;
+        //}
 
         public int getId_op()
         {
@@ -137,10 +137,10 @@ namespace Projet_2_GoGreen
         {
             this.id_op = id_op;
         }
-        public OperateurClass()
-        {
+        //public OperateurClass()
+        //{
             
-        }
+        //}
         public string get_Name_Oper()
         {
             return name;
@@ -181,14 +181,14 @@ namespace Projet_2_GoGreen
         {
             this.mobile = mobile;
         }
-        public string get_Status_Oper()
-        {
-            return status;
-        }
-        public void set_Status_Oper(string statut)
-        {
-            this.status = statut;
-        }
+        //public string get_Status_Oper()
+        //{
+        //    return status;
+        //}
+        //public void set_Status_Oper(string statut)
+        //{
+        //    this.status = statut;
+        //}
         public List<OperateurClass> getList_oper()
         {
             liste_operateur_fromDB();
@@ -210,7 +210,7 @@ namespace Projet_2_GoGreen
             while (conx.read.Read())
             {
 
-              int id_op = (int)read["id"];//used by rakoto  
+             // int id_op = (int)read["id"];//used by rakoto  
               int id_oper = (int)conx.read["id"];//used by samira
                 string nom = (string)conx.read["nom_oper"];
                 string prenom = (string)conx.read["prenom_oper"];
@@ -219,7 +219,7 @@ namespace Projet_2_GoGreen
                 string lieu = (string)conx.read["name_lieu"];
                 string state = (string)conx.read["satus"];
 
-                OperateurClass oper = new OperateurClass(id_oper, nom, prenom, mail, mobile, lieu, state) ;
+                OperateurClass oper = new OperateurClass(id, nom, prenom, mail, mobile, lieu) ;
                 list_oper.Add(oper);
                 list_login_operateur.Add(mail, oper);
             }
@@ -235,7 +235,7 @@ namespace Projet_2_GoGreen
             // Retrieve data from your data source
             // For example, fetch data from list_operateur or list_pass_operateur dictionaries
 
-            foreach (var operateur in list_operateur)
+            foreach (var operateur in listeOperateurs)
             {
                 listeOperateurs.Add(operateur);
             }
