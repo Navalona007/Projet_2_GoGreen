@@ -41,163 +41,82 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </DatePicker.Resources>
-                        <DatePicker.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </DatePicker.Effect>
+                       
                     </DatePicker>
-                    <Label Content="Statut" HorizontalAlignment="Left" Margin="67,219,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="86" FontSize="18" FontFamily="Global User Interface"/>
-                    <ComboBox x:Name="cb_statut" HorizontalAlignment="Left" Margin="66,259,0,0" VerticalAlignment="Top" Width="353" Height="40">
-
-
-
-
-                        <ComboBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </ComboBox.Effect>
-                    </ComboBox>
-                    <Label Content="Date de création" HorizontalAlignment="Left" Margin="66,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="169" FontSize="18" FontFamily="Global User Interface"/>
-                    <DatePicker x:Name="dp_creation" HorizontalAlignment="Left" Margin="67,171,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White">
-                        <DatePicker.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </DatePicker.Resources>
-                        <DatePicker.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </DatePicker.Effect>
-                    </DatePicker>
-                    <Label Content="Hauteur" HorizontalAlignment="Left" Margin="511,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" FontSize="18"/>
-                    <TextBox x:Name="tb_hauteur" HorizontalAlignment="Left" Margin="513,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
-                    </TextBox>
-                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="510,129,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18"/>
-                    <TextBox x:Name="tb_diametre" HorizontalAlignment="Center" Margin="0,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
-                    </TextBox>
-                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="509,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" FontSize="18"/>
-                    <DatePicker x:Name="dp_mise_a_jour" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="354" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White">
-                        <DatePicker.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </DatePicker.Resources>
-                        <DatePicker.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </DatePicker.Effect>
-                    </DatePicker>
-                    <Rectangle HorizontalAlignment="Left" Height="281" Margin="487,380,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
                     <Viewbox Margin="77,463,1217,238">
                         <RadioButton x:Name="rb_vert"  VerticalAlignment="Center">
-                            <RadioButton.Effect>
-                                <DropShadowEffect Opacity="0.5"/>
-                            </RadioButton.Effect>
+                            
                         </RadioButton>
                     </Viewbox>
-                    <Rectangle HorizontalAlignment="Left" Height="569" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
+                    <Rectangle HorizontalAlignment="Left" Height="308" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <Label Content="Espèce" HorizontalAlignment="Left" Margin="966,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
-                    </Label>
-                    <ComboBox x:Name="cb_espece" HorizontalAlignment="Left" Margin="968,80,0,0" VerticalAlignment="Top" Width="353" Height="40">
+                    <Label Content="Espèce" HorizontalAlignment="Left" Margin="513,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="18" Foreground="#FF010101">
 
-                        <ComboBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </ComboBox.Effect>
+                    </Label>
+                    <ComboBox x:Name="cb_espece" HorizontalAlignment="Left" Margin="515,80,0,0" VerticalAlignment="Top" Width="353" Height="40" IsEditable="True" TextInput="cb_espece_TextInput">
+                        <ComboBoxItem Content="Oranger" />
+                        <ComboBoxItem Content="Manguier" />
+                        <ComboBoxItem Content="Eucalyptus" />
+                        
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </ComboBox.Background>
+                        
                     </ComboBox>
-                    <Label Content="Type" HorizontalAlignment="Left" Margin="968,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
-                    </Label>
-                    <ComboBox x:Name="cb_type" HorizontalAlignment="Left" Margin="968,0,0,517" VerticalAlignment="Bottom" Width="353" Height="40">
+                    <Label Content="Type" HorizontalAlignment="Left" Margin="515,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" FontSize="18" Foreground="#FF010101" >
 
-                        <ComboBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </ComboBox.Effect>
+                    </Label>
+                    <ComboBox x:Name="cb_type" HorizontalAlignment="Left" Margin="515,0,0,517" VerticalAlignment="Bottom" Width="353" Height="40">
+                        <ComboBoxItem Content="Forestier" />
+                        <ComboBoxItem Content="Fruitier" />
+                        <ComboBoxItem Content="Autres" />
+                        
                     </ComboBox>
-                    <Label Content="Position" HorizontalAlignment="Left" Margin="1234,377,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
+                    <Label Content="Position" HorizontalAlignment="Left" Margin="1232,38,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White">
+                       
                     </Label>
-                    <Label Content="Zone" HorizontalAlignment="Left" Margin="968,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
-                    </Label>
-                    <TextBox x:Name="tb_zone" HorizontalAlignment="Left" Margin="968,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                        <TextBox.Effect>
+                    <Label Content="Zone" HorizontalAlignment="Left" Margin="515,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="18" Foreground="#FF010101">
 
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
-                    </TextBox>
-                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="966,426,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
                     </Label>
-                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="966,517,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
-                        <Label.Effect>
-                            <DropShadowEffect/>
-                        </Label.Effect>
-                    </Label>
-                    <TextBox x:Name="tb_latitude" HorizontalAlignment="Left" Margin="1075,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
+                    <TextBox x:Name="tb_zone" HorizontalAlignment="Left" Margin="515,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+                        
                     </TextBox>
-                    <TextBox x:Name="tb_longitude" HorizontalAlignment="Left" Margin="1076,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
+                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="964,88,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
+
+                    </Label>
+                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="964,179,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
+
+                    </Label>
+                    <TextBox x:Name="tb_latitude" HorizontalAlignment="Left" Margin="1073,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
-                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,621,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface">
+                    <TextBox x:Name="tb_longitude" HorizontalAlignment="Left" Margin="1074,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+
+                    </TextBox>
+                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,551,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -207,7 +126,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,621,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,551,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -217,11 +136,6 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </Button.Effect>
                     </Button>
-
-                    <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="553,390,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" FontFamily="Global User Interface"/>
-
-                    <TextBox x:Name="tb_recommandation" HorizontalAlignment="Left" Height="210" Margin="487,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" Background="White" BorderBrush="{x:Null}"/>
-                    <Label Content="- Make the world green again -" HorizontalAlignment="Left" Margin="123,639,0,0" VerticalAlignment="Top" FontFamily="Bell MT" FontSize="18"/>
                     <Image HorizontalAlignment="Left" Height="65" Margin="136,439,0,0" VerticalAlignment="Top" Width="79" Source="/green.png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
@@ -254,40 +168,302 @@
                     </Image>
                     <Viewbox Height="35" Margin="292,460,1051,235">
                         <RadioButton x:Name="rb_marron"  VerticalAlignment="Center">
-                            <RadioButton.Effect>
-                                <DropShadowEffect Opacity="0.5"/>
-                            </RadioButton.Effect>
+
                         </RadioButton>
                     </Viewbox>
                     <Viewbox Margin="76,555,1214,147">
                         <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center">
-                            <RadioButton.Effect>
-                                <DropShadowEffect Opacity="0.5"/>
-                            </RadioButton.Effect>
+
                         </RadioButton>
                     </Viewbox>
                     <Viewbox Height="35" Margin="292,552,1051,142">
                         <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Center">
-                            <RadioButton.Effect>
-                                <DropShadowEffect Opacity="0.5"/>
-                            </RadioButton.Effect>
+
                         </RadioButton>
                     </Viewbox>
 
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103" FontFamily="Global User Interface"/>
+                    <Label x:Name="lb_message" Content="" HorizontalAlignment="Left" Margin="976,478,0,0" VerticalAlignment="Top" Width="351" Foreground="#FF8E0E0E"/>
+                    <Label Content="Hauteur" HorizontalAlignment="Left" Margin="65,225,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" FontSize="18"/>
+                    <TextBox x:Name="tb_hauteur" HorizontalAlignment="Left" Margin="67,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                       
+                    </TextBox>
+                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="64,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18"/>
+                    <TextBox x:Name="tb_diametre" HorizontalAlignment="Left" Margin="64,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        
+                    </TextBox>
 
+                </Grid>
+            </TabItem>
+            <TabItem HorizontalAlignment="Center" Height="31" Header="Suivi" VerticalAlignment="Top" Width="80" Margin="0,-1,0,0" FontSize="20">
+                <Grid Background="#FFE5E5E5">
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="33,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Label Content="Date de plantation" HorizontalAlignment="Left" Margin="62,42,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Width="185" FontSize="18" FontFamily="Global User Interface"/>
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <DatePicker x:Name="dp_plantation_Copy" HorizontalAlignment="Left" Margin="67,82,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Text="" Height="40" FontSize="18" Background="White">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </DatePicker.Resources>
+                        <DatePicker.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </DatePicker.Effect>
+                    </DatePicker>
+                    <Label Content="Statut" HorizontalAlignment="Left" Margin="67,219,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="86" FontSize="18" FontFamily="Global User Interface"/>
+                    <ComboBox x:Name="cb_statut_Copy" HorizontalAlignment="Left" Margin="66,259,0,0" VerticalAlignment="Top" Width="353" Height="40">
+                        <ComboBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </ComboBox.Effect>
+                    </ComboBox>
+                    <Label Content="Date de création" HorizontalAlignment="Left" Margin="66,133,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="169" FontSize="18" FontFamily="Global User Interface"/>
+                    <DatePicker x:Name="dp_creation_Copy" HorizontalAlignment="Left" Margin="67,171,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </DatePicker.Resources>
+                        <DatePicker.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </DatePicker.Effect>
+                    </DatePicker>
+                    <Label Content="Hauteur" HorizontalAlignment="Left" Margin="511,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" FontSize="18"/>
+                    <TextBox x:Name="tb_hauteur_Copy" HorizontalAlignment="Left" Margin="513,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="510,129,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18"/>
+                    <TextBox x:Name="tb_diametre_Copy" HorizontalAlignment="Center" Margin="0,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="509,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" FontSize="18"/>
+                    <DatePicker x:Name="dp_mise_a_jour_Copy" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="354" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </DatePicker.Resources>
+                        <DatePicker.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </DatePicker.Effect>
+                    </DatePicker>
+                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="487,380,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
+                    <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
+                    <Viewbox Margin="77,463,1217,237">
+                        <RadioButton x:Name="rb_vert1"  VerticalAlignment="Center">
+
+                        </RadioButton>
+                    </Viewbox>
+                    <Rectangle HorizontalAlignment="Left" Height="515" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Label Content="Espèce" HorizontalAlignment="Left" Margin="966,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <ComboBox x:Name="cb_espece_Copy" HorizontalAlignment="Left" Margin="968,80,0,0" VerticalAlignment="Top" Width="353" Height="40">
+
+                        <ComboBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </ComboBox.Effect>
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#FFF0F0F0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label Content="Type" HorizontalAlignment="Left" Margin="968,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <ComboBox x:Name="cb_type_Copy" HorizontalAlignment="Left" Margin="968,0,0,516" VerticalAlignment="Bottom" Width="353" Height="40">
+
+                        <ComboBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </ComboBox.Effect>
+                    </ComboBox>
+                    <Label Content="Position" HorizontalAlignment="Left" Margin="1234,338,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <Label Content="Zone" HorizontalAlignment="Left" Margin="968,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <TextBox x:Name="tb_zone_Copy" HorizontalAlignment="Left" Margin="968,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" Height="40" BorderBrush="{x:Null}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="966,390,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="966,471,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+                    <TextBox x:Name="tb_latitude_Copy" HorizontalAlignment="Left" Margin="1075,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <TextBox x:Name="tb_longitude_Copy" HorizontalAlignment="Left" Margin="1076,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                        <TextBox.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                    <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,587,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button x:Name="bt_annuler_Copy" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,587,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18" FontFamily="Global User Interface">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.5"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="553,390,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" FontFamily="Global User Interface"/>
+
+                    <TextBox x:Name="tb_recommandation_Copy" HorizontalAlignment="Left" Height="182" Margin="487,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="409" Background="White" BorderBrush="{x:Null}"/>
+                    <Image HorizontalAlignment="Left" Height="65" Margin="136,439,0,0" VerticalAlignment="Top" Width="79" Source="/green.png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="23.069"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image HorizontalAlignment="Left" Height="67" Margin="132,520,0,0" VerticalAlignment="Top" Width="95" Source="/green (1).png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="22.616"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image HorizontalAlignment="Left" Height="67" Margin="324,441,0,0" VerticalAlignment="Top" Width="89" Source="/green (2).png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="26.693"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Viewbox Height="35" Margin="292,460,1051,234">
+                        <RadioButton x:Name="rb_marron1"  VerticalAlignment="Center">
+
+                        </RadioButton>
+                    </Viewbox>
+                    <Viewbox Margin="76,555,1214,146">
+                        <RadioButton x:Name="rb_jaune1"  VerticalAlignment="Center">
+
+                        </RadioButton>
+                    </Viewbox>
+                    <Viewbox Height="35" Margin="292,552,1051,142">
+                        <RadioButton x:Name="rb_sans_feuille1"  VerticalAlignment="Center">
+
+                        </RadioButton>
+                    </Viewbox>
+
+                    <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103" FontFamily="Global User Interface"/>
+                    <Label x:Name="lb_message_Copy" Content="" HorizontalAlignment="Left" Margin="524,624,0,0" VerticalAlignment="Top" Width="351" Foreground="#FF8E0E0E"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="101*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="641*"/>
                         <ColumnDefinition Width="1273*"/>
                     </Grid.ColumnDefinitions>
-                    <Image HorizontalAlignment="Left" Height="28" Margin="989,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>
-                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="1024,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8"/>
+                    <Image HorizontalAlignment="Left" Height="28" Margin="897,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449" Grid.Column="1"/>
+                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="932,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8" Grid.Column="1"/>
 
-                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4">
+                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4" Grid.ColumnSpan="2">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Foreground="#FF5AE4A8" FontWeight="Bold">
@@ -295,10 +471,10 @@
                                     <Style/>
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Date de plantation"/>
-                            <DataGridTextColumn Header="Date de création"/>
+                            <DataGridTextColumn Header="Date de plantation" Binding="{Binding date_plantation}"/>
+                            <DataGridTextColumn Header="Date de création" Binding="{Binding date_creation}"/>
                             <DataGridTextColumn Header="Date de mise à jour"/>
-                            <DataGridComboBoxColumn Header="Statut"/>
+                            <DataGridTextColumn Header="Statut"  Binding="{Binding statut}"/>
                             <DataGridTextColumn Header="Zone"/>
                             <DataGridComboBoxColumn Header="Espèce"/>
                             <DataGridComboBoxColumn Header="Type"/>
@@ -308,8 +484,8 @@
                             <DataGridTextColumn Header="Position"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Rectangle HorizontalAlignment="Center" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5"/>
-                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="730,654,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Rectangle HorizontalAlignment="Left" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="2"/>
+                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="638,654,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Grid.Column="1">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -320,7 +496,7 @@
                         </Button.Effect>
                     </Button>
 
-                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="1065,654,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="973,654,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Grid.Column="1">
 
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">

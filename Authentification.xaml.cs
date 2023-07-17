@@ -25,7 +25,8 @@ namespace Projet_2_GoGreen
         public Authentification()
         {
             InitializeComponent();
-
+            tb_login.GotFocus += tb_login_GotFocus;
+            tb_login.Foreground = Brushes.LightGray;
         }
 
         private void bt_connect_Click(object sender, RoutedEventArgs e)
@@ -162,13 +163,29 @@ namespace Projet_2_GoGreen
                 return sb.ToString();
             }
         } //end CalculateMD5Hash
-
-
-        private void tb_auth_Gotfocus(object sender, RoutedEventArgs e)
+      
+        private void tb_login_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
-            tb.GotFocus -= tb_auth_Gotfocus;
+            tb.GotFocus -= tb_login_GotFocus;
+            tb.Foreground = Brushes.Black;
         }
+
+        private void tb_login_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = "Email";
+                tb.GotFocus += tb_login_GotFocus;
+                tb.Foreground = Brushes.LightGray;
+            }
+            else
+            {
+                tb.Foreground = Brushes.Black;
+            }
+        }
+       
     }
 }

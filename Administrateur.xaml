@@ -16,15 +16,14 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox HorizontalAlignment="Left" Height="590" Header="Formulaire" Margin="10,0,0,0" VerticalAlignment="Top" Width="491" FontSize="16" FontFamily="Global User Interface" Background="#FFD6F9E5" FontWeight="Bold" Foreground="Black">
-                        <GroupBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </GroupBox.Effect>
+
                     </GroupBox>
 
 
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
 
-                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" CanUserAddRows="False">
+
+                    <DataGrid x:Name="grid_oper" CanUserAddRows="False" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
                         <DataGrid.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </DataGrid.Effect>
@@ -60,7 +59,7 @@
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Mobile" Binding="{Binding mobile}" FontSize="12" Width="*" >
-                            
+
 
 
                                 <DataGridTextColumn.ElementStyle>
@@ -97,11 +96,24 @@
                             <DataGridTemplateColumn Header="Action" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Suspendre"/>
+                                        <Button Click="ButtonStatus_oper_Click" Tag="{Binding id}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Content" Value=""/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding statut}" Value="actif">
+                                                            <Setter Property="Content" Value="Suspendre"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding statut}" Value="suspendu">
+                                                            <Setter Property="Content" Value="Réactiver"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -111,9 +123,7 @@
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
                     <TextBox x:Name="tb_nom_oper" HorizontalAlignment="Left" Margin="47,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
@@ -121,9 +131,7 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
                     <TextBox x:Name="tb_prenom_oper" HorizontalAlignment="Left" Margin="47,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
@@ -131,32 +139,23 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
 
-                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" LostFocus="tb_mail_oper_LostFocus" Text="Adresse mail" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
                     </TextBox>
-
-
                     <TextBox x:Name="tb_lieu" HorizontalAlignment="Left" Margin="47,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
 
                     <TextBox x:Name="tb_mobile_oper" HorizontalAlignment="Left" Margin="47,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
@@ -165,14 +164,10 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        <TextBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </TextBox.Effect>
+
                     </TextBox>
+
                     <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
-                        <PasswordBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </PasswordBox.Effect>
                         <PasswordBox.Style>
                             <Style TargetType="{x:Type PasswordBox}">
                                 <Setter Property="Template">
@@ -188,9 +183,6 @@
                         </PasswordBox.Style>
                     </PasswordBox>
                     <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
-                        <PasswordBox.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </PasswordBox.Effect>
                         <PasswordBox.Style>
                             <Style TargetType="{x:Type PasswordBox}">
                                 <Setter Property="Template">
@@ -205,7 +197,7 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
-                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="58,616,0,0" VerticalAlignment="Top" Width="165" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="80,616,0,0" VerticalAlignment="Top" Width="165" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
@@ -215,7 +207,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="311,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="271,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
@@ -243,7 +235,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Right" Height="40" Margin="0,617,652,0" VerticalAlignment="Top" Width="166" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Center" Height="40" Margin="0,617,0,0" VerticalAlignment="Top" Width="166" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
@@ -260,9 +252,9 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" CanUserAddRows="False">
+                    <DataGrid x:Name="grid_client" CanUserAddRows="False" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>
                             <DataGridTextColumn Header="Prénom" Width="*" Binding="{Binding lastname}"/>
                             <DataGridTextColumn Header="Mail" Width="*" Binding="{Binding email}"/>
@@ -273,10 +265,25 @@
                             <DataGridTemplateColumn Header="Action" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Suspendre" Click="ButtonStatus_Click" Tag="{Binding id}"/>
+                                        <Button Click="ButtonStatusClient_Click" Tag="{Binding id}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Content" Value=""/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding status}" Value="actif">
+                                                            <Setter Property="Content" Value="Suspendre"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding status}" Value="suspendu">
+                                                            <Setter Property="Content" Value="Réactiver"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -312,55 +319,54 @@
             <TabItem FontSize="14" Header="Requête">
                 <Grid Background="#FF5AE4A8">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="124*"/>
-                        <ColumnDefinition Width="563*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox x:Name="grb_modification" HorizontalAlignment="Left" Height="542" Header="Requête Modification" Margin="570,23,0,0" VerticalAlignment="Top" Width="507" Grid.Column="1"/>
-                    <GroupBox x:Name="grb_suppression" HorizontalAlignment="Left" Height="542" Header="Requête Suppression" Margin="29,23,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="2"/>
-                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="298,182,0,268" HorizontalAlignment="Left" Width="240" Height="240" Grid.Column="1"/>
+                    <GroupBox x:Name="grb_modification" HorizontalAlignment="Left" Height="542" Header="Requête Modification" Margin="818,23,0,0" VerticalAlignment="Top" Width="507"/>
+                    <GroupBox x:Name="grb_suppression" HorizontalAlignment="Left" Height="542" Header="Requête Suppression" Margin="29,23,0,0" VerticalAlignment="Top" Width="489"/>
+                    <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="546,182,0,268" HorizontalAlignment="Left" Width="240" Height="240"/>
                     <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="96,71,0,0" VerticalAlignment="Top" FontSize="14" Background="#11DCFCC2" Height="30" Width="110"/>
-                    <Label x:Name="tb_demande_suppr_nom_oper" Content="" HorizontalAlignment="Left" Margin="231,74,0,0" VerticalAlignment="Top" Width="268" Background="#FFE9FADC" Height="25" Grid.ColumnSpan="2"/>
+                    <Label x:Name="tb_demande_suppr_nom_oper" Content="" HorizontalAlignment="Left" Margin="231,74,0,0" VerticalAlignment="Top" Width="268" Background="#FFE9FADC" Height="25"/>
                     <Label Content="Détails :" HorizontalAlignment="Left" Margin="131,145,0,0" VerticalAlignment="Top" Height="47" Width="95" FontSize="14"/>
                     <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="96,323,0,0" VerticalAlignment="Top" Height="42" Width="101" FontSize="14"/>
-                    <Button x:Name="bt_demande_suppr_valide" Content="Valider" HorizontalAlignment="Left" Margin="233,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="120" Click="Click_bt_demande_suppr_valide" Grid.ColumnSpan="2">
+                    <Button x:Name="bt_demande_suppr_valide" Content="Valider" HorizontalAlignment="Left" Margin="233,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="120" Click="Click_bt_demande_suppr_valide">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_demande_suppr_decline" Content="Decliner" HorizontalAlignment="Left" Margin="124,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="127" Click="Click_bt_demande_suppr_decline" Grid.Column="1">
+                    <Button x:Name="bt_demande_suppr_decline" Content="Decliner" HorizontalAlignment="Left" Margin="372,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="127" Click="Click_bt_demande_suppr_decline">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="586,78,0,0" VerticalAlignment="Top" FontSize="14" Background="#11DCFCC2" Height="26" Width="120" Grid.Column="1"/>
-                    <Label x:Name="tb_demande_modif_nom_oper" Content="" HorizontalAlignment="Left" Margin="715,74,0,0" VerticalAlignment="Top" Width="340" Background="#FFE9FADC" Height="30" Grid.Column="1"/>
-                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="636,148,0,0" VerticalAlignment="Top" Height="31" Width="70" FontSize="14" Grid.Column="1"/>
-                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="586,343,0,0" VerticalAlignment="Top" Height="52" Width="122" FontSize="14" Grid.Column="1"/>
-                    <Button x:Name="bt_demande_modif_valide" Content="Valider" HorizontalAlignment="Left" Margin="796,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="114" Click="Click_bt_demande_modif_valide" Grid.Column="1">
+                    <Label Content="Nom Opérateur :" HorizontalAlignment="Left" Margin="834,78,0,0" VerticalAlignment="Top" FontSize="14" Background="#11DCFCC2" Height="26" Width="120"/>
+                    <Label x:Name="tb_demande_modif_nom_oper" Content="" HorizontalAlignment="Left" Margin="963,74,0,0" VerticalAlignment="Top" Width="340" Background="#FFE9FADC" Height="30"/>
+                    <Label Content="Détails :" HorizontalAlignment="Left" Margin="884,148,0,0" VerticalAlignment="Top" Height="31" Width="70" FontSize="14"/>
+                    <Label Content="Commentaire :" HorizontalAlignment="Left" Margin="834,343,0,0" VerticalAlignment="Top" Height="52" Width="122" FontSize="14"/>
+                    <Button x:Name="bt_demande_modif_valide" Content="Valider" HorizontalAlignment="Left" Margin="1044,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="114" Click="Click_bt_demande_modif_valide">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="bt_demande_modif_decline" Content="Decliner" HorizontalAlignment="Left" Margin="933,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="122" Click="Click_bt_demande_modif_decline" Grid.Column="1">
+                    <Button x:Name="bt_demande_modif_decline" Content="Decliner" HorizontalAlignment="Left" Margin="1181,483,0,0" VerticalAlignment="Top" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Height="48" Width="122" Click="Click_bt_demande_modif_decline">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label Content="Ancienne valeur" HorizontalAlignment="Left" Margin="713,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="89" Grid.Column="1"/>
-                    <Label Content="Nouvelle valeur" HorizontalAlignment="Left" Margin="890,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="105" Grid.Column="1"/>
-                    <TextBlock x:Name="tb_demande_suppr_detail" HorizontalAlignment="Left" Margin="231,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="268" Background="#FFE9FADC" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="tb_demande_suppr_commentaire" HorizontalAlignment="Left" Margin="231,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="103" Width="268" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="tb_demande_modif_old_valeur" HorizontalAlignment="Left" Margin="715,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="151" Grid.Column="1"/>
-                    <TextBlock x:Name="tb_demande_modif_new_valeur" HorizontalAlignment="Left" Margin="885,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="170" Grid.Column="1"/>
-                    <TextBlock x:Name="tb_demande_modif_comment" HorizontalAlignment="Left" Margin="715,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="102" Width="340" Grid.Column="1"/>
+                    <Label Content="Ancienne valeur" HorizontalAlignment="Left" Margin="961,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="89"/>
+                    <Label Content="Nouvelle valeur" HorizontalAlignment="Left" Margin="1138,115,0,0" VerticalAlignment="Top" FontSize="11" Height="25" Width="105"/>
+                    <TextBlock x:Name="tb_demande_suppr_detail" HorizontalAlignment="Left" Margin="231,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="268" Background="#FFE9FADC"/>
+                    <TextBlock x:Name="tb_demande_suppr_commentaire" HorizontalAlignment="Left" Margin="231,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="103" Width="268"/>
+                    <TextBlock x:Name="tb_demande_modif_old_valeur" HorizontalAlignment="Left" Margin="963,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="151"/>
+                    <TextBlock x:Name="tb_demande_modif_new_valeur" HorizontalAlignment="Left" Margin="1133,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="165" Width="170"/>
+                    <TextBlock x:Name="tb_demande_modif_comment" HorizontalAlignment="Left" Margin="963,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE9FADC" Height="102" Width="340"/>
                 </Grid>
 
             </TabItem>
