@@ -254,16 +254,26 @@ namespace Projet_2_GoGreen
 
         private void bt_suppr_oper_Click(object sender, RoutedEventArgs e)
         {
+            if (id_selected != null)
+            {
+                MessageBox.Show("Voulez-vous vraiment supprimer cette élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
+               // grid_oper.SelectedItems.Clear();
+                delete_oper_DB(int.Parse(id_selected));
+                lecture_ecriture();
+            }
+        }
 
+        private void delete_oper_DB(int id)
+        {
+            ConnectDB con = new ConnectDB();
             try
             {
-                GetConnection();
-
+                con.executeRequest("DELETE FROM public.opérateur_de_saisi WHERE id='" + id + "';");
 
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Erreur de suppression de l'opérateur de saisi", MessageBoxButton.OK);
             }
         }
 
@@ -391,8 +401,6 @@ namespace Projet_2_GoGreen
                     operateur.mobile = reader["mobile_oper"].ToString();
                     operateur.workplace = reader["name_lieu"].ToString();
                     operateur.statut = reader["status_oper"].ToString();
-
-
                     listeOperateurs.Add(operateur);
 
                 }
@@ -559,29 +567,20 @@ namespace Projet_2_GoGreen
                 tb_email_oper.Text = selectedOperateur.email;
 
             }
+            else
+            {
+                tb_nom_oper.Text = "";
+                tb_prenom_oper.Text = "";
+                tb_lieu.Text ="";
+                tb_mobile_oper.Text = "";
+                tb_email_oper.Text = "";
+            }
 
         }
 
         private void selected_cells(object sender, SelectedCellsChangedEventArgs e)
         {
-            //if (grid_oper.SelectedItem != null)
-            //{
-            //    Console.WriteLine("----------------------");
-            //    Console.WriteLine(grid_oper.SelectedItem);
-            //    Console.WriteLine("----------------------");
-            //    var selectedOperateur = grid_oper.SelectedItem as OperateurClass;
-
-            //    id_selected = selectedOperateur.id;
-
-            //    MessageBox.Show(selectedOperateur.id.ToString());
-            //    tb_nom_oper.Text = selectedOperateur.name;
-            //    tb_prenom_oper.Text = selectedOperateur.lastname;
-            //    tb_lieu.Text = selectedOperateur.workplace;
-            //    tb_mobile_oper.Text = selectedOperateur.mobile;
-            //    tb_email_oper.Text = selectedOperateur.email;
-
-            //}
-
+        
         }
         private void rechercheOperateur()
         {
