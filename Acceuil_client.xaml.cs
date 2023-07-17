@@ -24,6 +24,16 @@ namespace Projet_2_GoGreen
             InitializeComponent();
         }
 
+        public void nombre_arbre(int id_client)
+        {
+            ConnectDB conx = new ConnectDB();
+            conx.launchReader("SELECT count (*) nombre FROM arbre JOIN client ON arbre.clientid=client.id WHERE client.id ='"+id_client+"'");
+            string nb = conx.read.GetInt32(0).ToString();
+            conx.close();
+            lb_nbr_arbre.Content = nb;
+            //return nb ;
+        }
+
         private void bt_localiser_arbre_client_Click(object sender, RoutedEventArgs e)
         {
             Map map = new Map();

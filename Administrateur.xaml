@@ -24,7 +24,7 @@
 
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
 
-                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
+                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" CanUserAddRows="False">
                         <DataGrid.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </DataGrid.Effect>
@@ -260,7 +260,7 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
+                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>
@@ -367,7 +367,7 @@
         </TabControl>
 
         <!--<materialDesign:Badged x:Name="tb_admin_badge" Content="" Height="25" Margin="549,4,0,0" Width="241" Background="#FFFBFFF8" BadgeBackground="#FFCDF3A5"/>-->
-        <Label Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="437,9,0,0" VerticalAlignment="Top" Height="32" Width="223" FontSize="16"/>
+        <Label x:Name="lb_badge_admin" Content="Badge Administrateur :" HorizontalAlignment="Left" Margin="437,9,0,0" VerticalAlignment="Top" Height="32" Width="223" FontSize="16"/>
         <Image HorizontalAlignment="Left" Height="36" Margin="392,8,0,0" VerticalAlignment="Top" Width="92" Source="/user_1.png"/>
         <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1179,14,0,0" VerticalAlignment="Top" Width="170" Height="27" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="16" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">
             <Button.Resources>
