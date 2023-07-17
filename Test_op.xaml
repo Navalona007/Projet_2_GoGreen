@@ -197,7 +197,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,621,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,621,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.5,0.5" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -281,13 +281,15 @@
             <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="101*"/>
-                        <ColumnDefinition Width="1273*"/>
+                        <!--<ColumnDefinition Width="101*"/>
+                        <ColumnDefinition Width="1273*"/>-->
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="641*"/>
                     </Grid.ColumnDefinitions>
-                    <Image HorizontalAlignment="Left" Height="28" Margin="989,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>
-                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="1024,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8"/>
+                    <Image HorizontalAlignment="Left" Height="28" Margin="897,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449" Grid.Column="1"/>
+                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="932,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8" Grid.Column="1"/>
 
-                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4">
+                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="12,51,8,63" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4" Grid.ColumnSpan="2">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Foreground="#FF5AE4A8" FontWeight="Bold">
@@ -295,10 +297,10 @@
                                     <Style/>
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Date de plantation"/>
-                            <DataGridTextColumn Header="Date de création"/>
+                            <DataGridTextColumn Header="Date de plantation" Binding="{Binding date_plantation}"/>
+                            <DataGridTextColumn Header="Date de création" Binding="{Binding date_creation}"/>
                             <DataGridTextColumn Header="Date de mise à jour"/>
-                            <DataGridComboBoxColumn Header="Statut"/>
+                            <DataGridTextColumn Header="Statut"  Binding="{Binding statut}"/>
                             <DataGridTextColumn Header="Zone"/>
                             <DataGridComboBoxColumn Header="Espèce"/>
                             <DataGridComboBoxColumn Header="Type"/>
@@ -308,8 +310,8 @@
                             <DataGridTextColumn Header="Position"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Rectangle HorizontalAlignment="Center" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5"/>
-                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="730,654,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Rectangle HorizontalAlignment="Left" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="2"/>
+                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="638,654,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Grid.Column="1">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -320,7 +322,7 @@
                         </Button.Effect>
                     </Button>
 
-                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="1065,654,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="973,654,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Grid.Column="1">
 
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
