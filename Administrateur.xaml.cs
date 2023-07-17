@@ -221,7 +221,7 @@ namespace Projet_2_GoGreen
                             pwd_oper.Password = "";
                             pwd_oper_confirm.Password = "";
 
-                            MessageBox.Show("Inscription de l'opérateur de saisie réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Inscription de l'opérateur de saisie réussie", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         else
                         {
@@ -545,10 +545,6 @@ namespace Projet_2_GoGreen
         private void selected_cells(object sender, SelectedCellsChangedEventArgs e)
         {
         
-        }
-        private void rechercheOperateur()
-        {
-
         }
 
     }
