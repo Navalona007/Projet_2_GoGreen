@@ -130,6 +130,7 @@
     <Compile Include="Arbre.cs" />
     <Compile Include="ClientClass.cs" />
     <Compile Include="ConnectDB.cs" />
+    <Compile Include="Demande_validation.cs" />
     <Compile Include="Espece.cs" />
     <Compile Include="Etat_arbre.cs" />
     <Compile Include="Lieu_de_travail.cs" />

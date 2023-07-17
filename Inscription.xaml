@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Inscription" Height="768" Width="1380" ResizeMode="NoResize">
+        Title="Inscription" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid RenderTransformOrigin="0.488,0.485">
         <Grid.ColumnDefinitions>
@@ -14,15 +14,59 @@
         <Image HorizontalAlignment="Left" Height="621" Margin="11,138,0,0" VerticalAlignment="Top" Width="877" Source="/saryfond.jpg"/>
         <Label Content="INSCRIPTION" HorizontalAlignment="Left" Margin="1030,38,0,0" VerticalAlignment="Top" Width="146" FontWeight="Bold" Foreground="#FF5DB28D" Height="53" FontSize="20"/>
         <Label Content="En tant que " HorizontalAlignment="Left" Margin="870,92,0,0" VerticalAlignment="Top" Width="134" Height="36" FontSize="16"/>
+        <RadioButton x:Name="rb_client_inscription" Content="Client" HorizontalAlignment="Left" Margin="1044,98,0,0" VerticalAlignment="Top" Width="104" Height="25" FontSize="16"/>
 
         <RadioButton x:Name="rb_administrateur_inscription" Content="Administrateur" HorizontalAlignment="Left" Margin="1191,98,0,0" VerticalAlignment="Top" Width="171" Height="24" FontSize="16"/>
-        <RadioButton x:Name="rb_client_inscription" Content="Client" HorizontalAlignment="Left" Margin="1044,98,0,0" VerticalAlignment="Top" Width="104" Height="25" FontSize="16"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="864,130,0,0" VerticalAlignment="Top" Height="43" Width="100" FontWeight="Bold" Foreground="#FF67B593" RenderTransformOrigin="0.51,0.034" FontSize="16"/>
         <Label Content="Prénom (s)" HorizontalAlignment="Left" Margin="864,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.562,-0.112" Height="39" Width="140" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
         <Label Content="Mail" HorizontalAlignment="Left" Margin="870,303,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.075,0.09" Height="36" Width="89" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
         <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="869,390,0,0" VerticalAlignment="Top" Height="39" Width="220" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
         <Label Content="Confirmer mot de passe" HorizontalAlignment="Left" Margin="869,484,0,0" VerticalAlignment="Top" Height="42" Width="277" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
+        <Label Content="Réference" HorizontalAlignment="Left" Margin="865,570,0,0" VerticalAlignment="Top" Height="47" Width="138" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
+        <TextBox x:Name="tb_nom_inscription" HorizontalAlignment="Left" Margin="869,165,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" Height="39" BorderBrush="#FFD6F9E5" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
 
+        <TextBox x:Name="tb_prenom_inscription" HorizontalAlignment="Left" Margin="870,251,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" Height="40" BorderBrush="#FFD6F9E5" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <TextBox x:Name="tb_mail_inscription" HorizontalAlignment="Left" Margin="869,339,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" Height="38" BorderBrush="#FFD6F9E5" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="tb_mdp_inscription" HorizontalAlignment="Left" Margin="869,429,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" Height="40" BorderBrush="#FFD6F9E5" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="tb_confirmer_mdp_inscription" HorizontalAlignment="Left" Margin="869,519,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Height="39" BorderBrush="#FFD6F9E5" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="tb_reference_inscription" HorizontalAlignment="Left" Margin="869,604,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Height="40" BorderBrush="#FFD6F9E5" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" FontSize="16">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Button x:Name="bt_inscrire_inscription" Content="S'INSCRIRE" HorizontalAlignment="Left" Margin="869,672,0,0" VerticalAlignment="Top" Height="43" Width="211" Background="#FF5AE4A8" FontWeight="Bold" Foreground="#FFFFFDFD" BorderBrush="{x:Null}" Click="bt_inscrire_inscription_Click" FontSize="16">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -30,53 +74,6 @@
                 </Style>
             </Button.Resources>
         </Button>
-
-        <TextBox x:Name="tb_prenom_inscription" HorizontalAlignment="Left" Margin="870,251,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" Height="40" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-
-
-        <TextBox x:Name="tb_nom_inscription" HorizontalAlignment="Left" Margin="869,165,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" Height="39" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-
-        <TextBox x:Name="tb_mail_inscription" HorizontalAlignment="Left" Margin="869,339,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" Height="38" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox x:Name="tb_mdp_inscription" HorizontalAlignment="Left" Margin="869,429,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" Height="40" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox x:Name="tb_confirmer_mdp_inscription" HorizontalAlignment="Left" Margin="869,519,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Height="39" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <Label Content="Réference" HorizontalAlignment="Left" Margin="865,570,0,0" VerticalAlignment="Top" Height="47" Width="138" FontWeight="Bold" Foreground="#FF67B593" FontSize="16"/>
-        <TextBox x:Name="tb_reference_inscription" HorizontalAlignment="Left" Margin="869,604,0,0" BorderThickness="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" Height="40" BorderBrush="#FFD6F9E5">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
         <Image HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="144" Source="/Go Green.png" Margin="0,-10,0,0"/>
         <Button x:Name="bt_annuler_inscription" Content="ANNULER" HorizontalAlignment="Left" Margin="1125,672,0,0" VerticalAlignment="Top" Height="43" Width="206" Background="#FF5AE4A8" FontWeight="Bold" Foreground="#FFFFFDFD" BorderBrush="{x:Null}" Click="bt_annuler_inscription_Click" FontSize="16">
             <Button.Resources>

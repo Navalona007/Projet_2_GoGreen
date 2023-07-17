@@ -40,8 +40,6 @@ namespace Projet_2_GoGreen
             InitializeComponent();
             lecture_ecriture();
             LoadClientData();
-            tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
-            tb_email_oper.LostFocus += tb_mail_oper_LostFocus;
 
         }
 
@@ -122,17 +120,11 @@ namespace Projet_2_GoGreen
         {
             tb_nom_oper.Text = string.Empty;
             tb_prenom_oper.Text = string.Empty;
-            //tb_email_oper.Text = string.Empty;           
+            tb_email_oper.Text = string.Empty;           
             tb_lieu.Text = string.Empty;
             tb_mobile_oper.Text = string.Empty;
             pwd_oper.Password = "";
             pwd_oper_confirm.Password = "";
-            //faire revenir le mot "adresse mail" dans le text box
-            if (!string.IsNullOrEmpty(tb_email_oper.Text))
-            {
-                tb_email_oper.Text = "Adresse mail";
-                tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
-            }//fin if
         }
 
 
@@ -254,6 +246,7 @@ namespace Projet_2_GoGreen
 
         private void bt_suppr_oper_Click(object sender, RoutedEventArgs e)
         {
+
             if (id_selected != null)
             {
                 MessageBox.Show("Voulez-vous vraiment supprimer cette élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -275,6 +268,7 @@ namespace Projet_2_GoGreen
             {
                 MessageBox.Show(ex.Message, "Erreur de suppression de l'opérateur de saisi", MessageBoxButton.OK);
             }
+
         }
 
         private void bt_modifier_oper_Click(object sender, RoutedEventArgs e)
@@ -332,43 +326,15 @@ namespace Projet_2_GoGreen
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
         {
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
-        }
-
-        private void grid_oper_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-
-        private void tb_mail_oper_GotFocus(object sender, RoutedEventArgs e)
-        {
-            //modification 
-            TextBox tb = (TextBox)sender;
-            if (tb.Text == "Adresse mail")
-            {
-                tb.Text = string.Empty;
-                tb.Foreground = Brushes.Black;
+           MessageBoxResult result = MessageBox.Show(Application.Current.MainWindow, "Voulez-vous vraiment vous déconnecter?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {                
+                Authentification authentification = new Authentification();
+                authentification.Show();                
+                this.Hide();
             }
         }
-
-        private void tb_mail_oper_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            if (string.IsNullOrEmpty(tb.Text))
-            {
-                tb.Text = "Adresse mail";
-                tb.GotFocus += tb_mail_oper_GotFocus;
-                tb.Foreground = Brushes.Red;
-            }
-            else
-            {
-                tb.Foreground = Brushes.Black;
-            }
-        }
-
+  
         private void lecture_ecriture()
         {
             ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
@@ -393,7 +359,6 @@ namespace Projet_2_GoGreen
                 {
 
                     OperateurClass operateur = new OperateurClass();
-
                     operateur.id = reader["id"].ToString();
                     operateur.name = reader["nom_oper"].ToString();
                     operateur.lastname = reader["prenom_oper"].ToString();
@@ -407,7 +372,6 @@ namespace Projet_2_GoGreen
                 grid_oper.ItemsSource = listeOperateurs;
 
                 conn.Close();
-
 
             }
             catch (Exception ex)
