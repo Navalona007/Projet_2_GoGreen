@@ -227,7 +227,7 @@ namespace Projet_2_GoGreen
                             pwd_oper.Password = "";
                             pwd_oper_confirm.Password = "";
 
-                            MessageBox.Show("Inscription de l'opérateur de saisie réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Inscription de l'opérateur de saisie réussie", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         else
                         {
@@ -387,7 +387,7 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
-                String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status " +
+                String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status " + //asina valeur ny any @table statut_operateurid
                                 "FROM opérateur_de_saisi " +
                                 "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id " +
                                 "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
