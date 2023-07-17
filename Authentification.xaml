@@ -10,13 +10,13 @@
 
 
 
-        <Path StrokeThickness="1" Margin="938,15,0,14" Fill="#FF5AE4A8" Stretch="Fill" HorizontalAlignment="Left" Width="412">
+        <Path StrokeThickness="5" Margin="938,15,0,14" Fill="#FF5AE4A8" Stretch="Fill" HorizontalAlignment="Left" Width="412" Stroke="WhiteSmoke">
             <Path.Effect>
                 <DropShadowEffect Opacity="0.5"/>
             </Path.Effect>
 
             <Path.Data>
-                <RectangleGeometry Rect="0,0,340,300" RadiusX="20" RadiusY="20"/>
+                <RectangleGeometry Rect="0,0,340,300" RadiusX="40" RadiusY="20"/>
             </Path.Data>
         </Path>
 
@@ -32,6 +32,17 @@
                 <DropShadowEffect Opacity="0.5"/>
             </Label.Effect>
         </Label>
+        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_login_GotFocus" Text="Email" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" LostFocus="tb_login_LostFocus">
+
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+            <TextBox.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </TextBox.Effect>
+        </TextBox>
         <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1" VerticalContentAlignment="Center" Padding="10,0,0,0">
             <PasswordBox.Effect>
                 <DropShadowEffect Opacity="0.5"/>
@@ -50,17 +61,6 @@
                 </Style>
             </PasswordBox.Style>
         </PasswordBox>
-        <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_auth_Gotfocus" Text="Email" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
-
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-            <TextBox.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </TextBox.Effect>
-        </TextBox>
 
         <Button x:Name="bt_connect" Content="Se connecter" HorizontalAlignment="Left" Height="34" Margin="1035,564,0,0" VerticalAlignment="Top" Width="218" Click="bt_connect_Click" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF17925D" Background="White" FontSize="20">
 

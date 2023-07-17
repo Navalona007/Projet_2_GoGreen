@@ -60,7 +60,7 @@
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Mobile" Binding="{Binding mobile}" FontSize="12" Width="*" >
-                            
+
 
 
                                 <DataGridTextColumn.ElementStyle>
@@ -136,7 +136,7 @@
                         </TextBox.Effect>
                     </TextBox>
 
-                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" LostFocus="tb_mail_oper_LostFocus" Text="Adresse mail" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -169,7 +169,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
+                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>
@@ -187,7 +187,7 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
-                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
+                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>

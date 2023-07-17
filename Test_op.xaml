@@ -281,7 +281,7 @@
             <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="101*"/>
+                        <!--<ColumnDefinition Width="101*"/>-->
                         <ColumnDefinition Width="1273*"/>
                     </Grid.ColumnDefinitions>
                     <Image HorizontalAlignment="Left" Height="28" Margin="989,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>

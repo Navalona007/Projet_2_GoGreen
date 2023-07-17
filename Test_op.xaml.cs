@@ -26,7 +26,6 @@ namespace Projet_2_GoGreen
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
@@ -34,6 +33,16 @@ namespace Projet_2_GoGreen
             Authentification authentification = new Authentification();
             authentification.Show();
             this.Hide();
+        }
+
+        private void bt_demander_modif_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
