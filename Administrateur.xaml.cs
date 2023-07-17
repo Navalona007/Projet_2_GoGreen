@@ -2,20 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data;
 
 
 namespace Projet_2_GoGreen
@@ -25,10 +15,11 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Administrateur : Window
     {
+        public static string id_admin_connected { get; set; }
 
         public string id_selected { get; set; }
 
-        ConnectDB conx = new ConnectDB();// used by samira
+        //ConnectDB conx = new ConnectDB();// used by samira
         private NpgsqlConnection GetConnection()
         {
             return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
@@ -40,11 +31,10 @@ namespace Projet_2_GoGreen
             InitializeComponent();
             lecture_ecriture();
             LoadClientData();
-
         }
 
 
-
+        Authentification auth = new Authentification();
         // Fonction pour calculer le hachage MD5 d'une chaîne de caractères
         private string CalculateMD5Hash(string input)
         {
@@ -94,6 +84,8 @@ namespace Projet_2_GoGreen
             String query = "INSERT INTO public.lieu_travail (name_lieu)	VALUES ('" + valueInsert + "');";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.ExecuteNonQuery();
+
+            conn.Close();
 
         }
 
@@ -166,8 +158,8 @@ namespace Projet_2_GoGreen
                     {
                         int key = hasKey(lieu_travail);
 
-                        string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
-                                          + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
+                        string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper, status_oper)"
+                                          + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "', 'actif'); ";//operateur indcri doit etre toujours actif
                         var cmd = new NpgsqlCommand(requete, conx);
                         try
                         {
@@ -184,7 +176,7 @@ namespace Projet_2_GoGreen
                                 pwd_oper.Password = "";
                                 pwd_oper_confirm.Password = "";
 
-                                MessageBox.Show("Inscription de l'opérateur de saisie réussi", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Inscription de l'opérateur de saisie réussie", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             else
                             {
@@ -203,8 +195,8 @@ namespace Projet_2_GoGreen
                     list_lieu();
                     int key = hasKey(lieu_travail);
 
-                    string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"
-                                      + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "'); ";
+                    string requete = "INSERT INTO opérateur_de_saisi( lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper, status_oper)"
+                                      + " VALUES( '" + key + "', '" + nom + "', '" + prenom + "', '" + mail + "', '" + hash_mdp + "', '" + mobile + "', 'actif'); ";//operateur indcri doit etre toujours actif
                     var cmd = new NpgsqlCommand(requete, conx);
                     try
                     {
@@ -233,25 +225,63 @@ namespace Projet_2_GoGreen
                         MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                    conx.Close();
+                 conx.Close();
 
                 }
+                lecture_ecriture();
             }
         }
 
         private void tb_search_oper_TextChanged(object sender, TextChangedEventArgs e)
         {
+            lecture_ecriture();
+            string text_to_find = tb_search_oper.Text;
+            searchOperateur(listeOperateurs, text_to_find);
+        }
+        //recherche operateur
+        private void searchOperateur(ObservableCollection<OperateurClass> listInit, string text)
+        {
+            if (text.Contains(" "))
+            {
+                string[] decompos = text.Split(' ');
 
+                for (int i = 0; i < decompos.Length; i++)
+                {
+                    listInit = triageListeOperateur(listInit, decompos[i]);
+                }
+            }
+            else
+            {
+                listInit = triageListeOperateur(listInit, text);
+            }
+            grid_oper.ItemsSource = listInit;
+        }
+
+        private ObservableCollection<OperateurClass> triageListeOperateur(ObservableCollection<OperateurClass> list, string text)
+        {
+            ObservableCollection<OperateurClass> searchList = new ObservableCollection<OperateurClass>();
+            foreach (OperateurClass oper in list)
+            {
+                text.ToLower(); //same conversion
+
+                if (oper.toString().Contains(text))
+                {
+                    searchList.Add(oper);
+                }
+            }
+            return searchList;
         }
 
         private void bt_suppr_oper_Click(object sender, RoutedEventArgs e)
         {
+            var oper_select = grid_oper.SelectedItem as OperateurClass;
+            string id_select = oper_select.id;
 
-            if (id_selected != null)
+            if (id_select != null)
             {
-                MessageBox.Show("Voulez-vous vraiment supprimer cette élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
-               // grid_oper.SelectedItems.Clear();
-                delete_oper_DB(int.Parse(id_selected));
+                MessageBox.Show("Voulez-vous vraiment supprimer cet élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                // grid_oper.SelectedItems.Clear();
+                delete_oper_DB(int.Parse(id_select));
                 lecture_ecriture();
             }
         }
@@ -273,17 +303,32 @@ namespace Projet_2_GoGreen
 
         private void bt_modifier_oper_Click(object sender, RoutedEventArgs e)
         {
+            //recuperer id_lieu + tester lieu
+            string lieu_travail = tb_lieu.Text;
+            list_lieu();
+            int key;
+            if (liste_name_lieu.ContainsKey(lieu_travail))
+            {
+                key = hasKey(lieu_travail);
+            }
+            else
+            {
+                insertLieu(lieu_travail);
+                list_lieu();
+                key = hasKey(lieu_travail);
+            }//fin test lieu
+
             string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
-            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "' WHERE id=" + id_selected + " ;";
+
+            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "', lieu_travailid = '"+key+"' WHERE id=" + id_selected + " ;";//ajouter id_lieu modifié
+
             NpgsqlConnection conn = new NpgsqlConnection(connString);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@nom_oper", tb_nom_oper.Text);
-            cmd.Parameters.AddWithValue("@prenom_oper", tb_prenom_oper.Text);
-            cmd.Parameters.AddWithValue("@mail_oper", tb_email_oper.Text);
-
+            
             try
             {
                 conn.Open();
+                MessageBox.Show("Voulez-vous vraiment modifier cet élément?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 int rowsAffected = cmd.ExecuteNonQuery();
 
             }
@@ -301,7 +346,43 @@ namespace Projet_2_GoGreen
 
         private void tb_search_client_TextChanged(object sender, TextChangedEventArgs e)
         {
+            LoadClientData();
+            string text_to_find = tb_search_client.Text;
+            searchClient(clients, text_to_find);
 
+        }
+        //recherche client
+        private void searchClient(List<ClientClass> listInit, string text_to_find)
+        {
+            if (text_to_find.Contains(" "))
+            {
+                string[] decompos = text_to_find.Split(' ');
+
+                for (int i = 0; i < decompos.Length; i++)
+                {
+                    listInit = triageListeClient(listInit, decompos[i]);
+                }
+            }
+            else
+            {
+                listInit = triageListeClient(listInit, text_to_find);
+            }
+            grid_client.ItemsSource = listInit;
+        }
+
+        private List<ClientClass> triageListeClient(List<ClientClass> list, string text)
+        {
+            List<ClientClass> searchList = new List<ClientClass>();
+            foreach (ClientClass kila in list)
+            {
+                text.ToLower(); //same conversion
+
+                if (kila.toString().Contains(text))
+                {
+                    searchList.Add(kila);
+                }
+            }
+            return searchList;
         }
 
         private void Click_bt_demande_suppr_valide(object sender, RoutedEventArgs e)
@@ -335,9 +416,10 @@ namespace Projet_2_GoGreen
             }
         }
   
+        ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
         private void lecture_ecriture()
         {
-            ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
+            listeOperateurs.Clear();
             NpgsqlConnection GetConnection()
             {
                 return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
@@ -346,13 +428,11 @@ namespace Projet_2_GoGreen
             {
                 var conn = GetConnection();
                 conn.Open();
-
                 String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status_oper " +
                                 "FROM opérateur_de_saisi " +
                                 "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id "; //+
                                                                                                                    // "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
                 NpgsqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -367,7 +447,6 @@ namespace Projet_2_GoGreen
                     operateur.workplace = reader["name_lieu"].ToString();
                     operateur.statut = reader["status_oper"].ToString();
                     listeOperateurs.Add(operateur);
-
                 }
                 grid_oper.ItemsSource = listeOperateurs;
 
@@ -430,9 +509,11 @@ namespace Projet_2_GoGreen
 
         public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
+        List<ClientClass> clients = new List<ClientClass>();
         private void LoadClientData()
         {
-            string query = "SELECT id, nom_client, prenom_client, mail_client, adresse_client, date_inscrip, mobile_client, status_client FROM public.client;";
+            clients.Clear();
+            string query = "SELECT client.id, nom_client, prenom_client, mail_client, adresse_client, date_inscrip, mobile_client, status_client FROM public.client JOIN reference_entreprise ON client.reference_entrepriseid=reference_entreprise.id WHERE reference_entreprise.id='2';";
 
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
@@ -442,7 +523,7 @@ namespace Projet_2_GoGreen
                 {
                     using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        List<ClientClass> clients = new List<ClientClass>();
+                        //List<ClientClass> clients = new List<ClientClass>();
 
 
                         while (reader.Read())
@@ -535,7 +616,7 @@ namespace Projet_2_GoGreen
             {
                 tb_nom_oper.Text = "";
                 tb_prenom_oper.Text = "";
-                tb_lieu.Text ="";
+                tb_lieu.Text = "";
                 tb_mobile_oper.Text = "";
                 tb_email_oper.Text = "";
             }
@@ -546,7 +627,6 @@ namespace Projet_2_GoGreen
         {
         
         }
-
     }
 
 }

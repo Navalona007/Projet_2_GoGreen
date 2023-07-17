@@ -58,9 +58,9 @@ namespace Projet_2_GoGreen
             read = cmd.ExecuteReader();
         }
 
-        public void insertAdmin()
+        public void close()
         {
-
+            conx.Close();
         }
             
     }

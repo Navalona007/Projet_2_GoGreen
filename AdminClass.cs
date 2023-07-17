@@ -13,6 +13,7 @@ namespace Projet_2_GoGreen
 {
     internal class AdminClass
     {
+        public string id { get; set; }
         private string name;
         private string lastname;
         private string email;
@@ -38,6 +39,7 @@ namespace Projet_2_GoGreen
         {
 
         }
+        
 
         public string getName()
         {

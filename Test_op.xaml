@@ -518,7 +518,7 @@
             </Image.Effect>
         </Image>
         <Image HorizontalAlignment="Left" Height="46" Margin="245,8,0,0" VerticalAlignment="Top" Width="69" Source="/user_1.png"/>
-        <Label Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
+        <Label x:Name="lb_nom_operateur" Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
         <Label x:Name="tb_opérateur" Content="" HorizontalAlignment="Left" Margin="187,19,0,0" VerticalAlignment="Top" Width="134"/>
 
         <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1145,20,0,0" VerticalAlignment="Top" Width="181" Height="40" FontWeight="Normal" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">

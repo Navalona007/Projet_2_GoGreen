@@ -20,7 +20,7 @@ namespace Projet_2_GoGreen
         public string status { get; set; }
 
         private Reference_entreprise reference;
-        ConnectDB conx = new ConnectDB();
+        
 
         public static List<ClientClass> list_client = new List<ClientClass>();
         public static Dictionary<String, ClientClass> list_pass_client = new Dictionary<string, ClientClass>();
@@ -51,9 +51,8 @@ namespace Projet_2_GoGreen
 
         private void liste_client()
         {
-
-
-           conx.launchReader("SELECT * FROM client_table;");
+            ConnectDB conx = new ConnectDB();
+            conx.launchReader("SELECT * FROM client_table;");
 
             while (conx.read.Read())
             {
@@ -84,6 +83,14 @@ namespace Projet_2_GoGreen
             }
 
             conx.read.Close();
+            conx.close();
+        }
+
+        public string toString()
+        {
+            string client = name +" "+lastname+" "+ adress +" "+email+" "+dateInscription+" "+mobile+" "+status;
+            client.ToLower();
+            return client;
         }
     }
 }

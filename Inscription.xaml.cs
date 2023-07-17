@@ -101,7 +101,7 @@ namespace Projet_2_GoGreen
         {
             if(liste_id_ref.ContainsValue(valueTofind))
             {
-                MessageBox.Show("Cette référence existe déjà. \nMerci de saisir votre réference d'entreprise.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Cette référence existe déjà. \nMerci de saisir votre référence d'entreprise.", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return true;
             }
             else
@@ -157,8 +157,9 @@ namespace Projet_2_GoGreen
                 {
 
                     
-                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, date_inscrip, prenom_client) VALUES ('"+int.Parse(reference)+"', '" + nom + "','" + mail + "','" + hash_mdp + "', '"+date_inscription+"','" + prenom + "')";
-                    
+                    String requete = @"INSERT INTO public.client(reference_entrepriseid, nom_client, mail_client, pass_client, date_inscrip, prenom_client, status_client) "+
+                        "VALUES ('"+int.Parse(reference)+"', '" + nom + "','" + mail + "','" + hash_mdp + "', '"+date_inscription+"','" + prenom + "', 'actif')";//client inscrit doit etre toujours actif
+
                     var cmd = new NpgsqlCommand(requete, conn);
                         try
                         {
@@ -230,7 +231,7 @@ namespace Projet_2_GoGreen
                 }
                 else if (!liste_id_ref.ContainsKey(reference) || liste_label_ref.ContainsKey(reference))
                 {
-                    MessageBox.Show("Cette référence est invalide. \nVeuillez entrer une référence valide", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Cette référence est invalide. \nVeuillez entrer une référe nce valide", "ERREUR", MessageBoxButton.OK, MessageBoxImage.Error);
                     tb_reference_inscription.Text = "";
                 }
                 conn.Close();

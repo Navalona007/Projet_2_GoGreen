@@ -30,7 +30,7 @@ namespace Projet_2_GoGreen
             statut = v;
         }
 
-        ConnectDB conx = new ConnectDB();
+        
 
         public static List<OperateurClass> list_oper = new List<OperateurClass>();
         //public static Dictionary<String, OperateurClass> list_pass_operateur = new Dictionary<string, OperateurClass>();
@@ -174,6 +174,7 @@ namespace Projet_2_GoGreen
 
         private void liste_operateur_fromDB()
         {
+            ConnectDB conx = new ConnectDB();
             list_oper.Clear();
             list_login_operateur.Clear();
 
@@ -200,6 +201,7 @@ namespace Projet_2_GoGreen
                 list_oper.Add(oper);
                 list_login_operateur.Add(mail, oper);
             }
+            conx.close();
         }
 
 
@@ -222,11 +224,20 @@ namespace Projet_2_GoGreen
 
         public void insert_operateur_db(OperateurClass oper)
         {
+            ConnectDB conx = new ConnectDB();
             oper = new OperateurClass();
             conx.executeRequest("INSERT INTO public.opérateur_de_saisi(statut_opérateurid, lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"+
                 " VALUES('', '', '', '', '', '', ''); ");
             string lieu = (string)conx.read["name_lieu"];
-            //return lieu;
+            
+            conx.close();
+        }
+
+        public string toString()
+        {
+            string oper = name + " " + lastname + " " + workplace + " " + email + " " + mobile + " " + statut;
+            oper.ToLower();
+            return oper;
         }
     }
 }
