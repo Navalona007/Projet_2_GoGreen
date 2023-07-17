@@ -252,16 +252,26 @@ namespace Projet_2_GoGreen
 
         private void bt_suppr_oper_Click(object sender, RoutedEventArgs e)
         {
+            if (id_selected != null)
+            {
+                MessageBox.Show("Voulez-vous vraiment supprimer cette élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
+               // grid_oper.SelectedItems.Clear();
+                delete_oper_DB(int.Parse(id_selected));
+                lecture_ecriture();
+            }
+        }
 
+        private void delete_oper_DB(int id)
+        {
+            ConnectDB con = new ConnectDB();
             try
             {
-                GetConnection();
-
+                con.executeRequest("DELETE FROM public.opérateur_de_saisi WHERE id='" + id + "';");
 
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Erreur de suppression de l'opérateur de saisi", MessageBoxButton.OK);
             }
         }
 
@@ -383,7 +393,7 @@ namespace Projet_2_GoGreen
                                 "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-                BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
+               // BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -392,7 +402,7 @@ namespace Projet_2_GoGreen
 
                     OperateurClass operateur = new OperateurClass();
 
-                    grid_oper.ItemsSource = bindingList;
+                   // grid_oper.ItemsSource = bindingList;
 
                     operateur.setId(reader["id"].ToString());
                     operateur.setName(reader["nom_oper"].ToString());
@@ -491,6 +501,14 @@ namespace Projet_2_GoGreen
                 tb_mobile_oper.Text = selectedOperateur.mobile;
                 tb_email_oper.Text = selectedOperateur.email;
 
+            }
+            else
+            {
+                tb_nom_oper.Text = "";
+                tb_prenom_oper.Text = "";
+                tb_lieu.Text ="";
+                tb_mobile_oper.Text = "";
+                tb_email_oper.Text = "";
             }
 
         }
