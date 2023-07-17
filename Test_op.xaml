@@ -281,10 +281,9 @@
             <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <!--<ColumnDefinition Width="101*"/>
-                        <ColumnDefinition Width="1273*"/>-->
                         <ColumnDefinition Width="46*"/>
                         <ColumnDefinition Width="641*"/>
+                        <ColumnDefinition Width="1273*"/>
                     </Grid.ColumnDefinitions>
                     <Image HorizontalAlignment="Left" Height="28" Margin="897,10,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449" Grid.Column="1"/>
                     <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="932,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8" Grid.Column="1"/>

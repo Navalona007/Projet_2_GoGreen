@@ -34,13 +34,13 @@ namespace Projet_2_GoGreen
             return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
         }
 
+
         public Administrateur()
         {
             InitializeComponent();
             lecture_ecriture();
             LoadClientData();
-            tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
-            tb_email_oper.LostFocus += tb_mail_oper_LostFocus;
+
         }
 
 
@@ -120,17 +120,11 @@ namespace Projet_2_GoGreen
         {
             tb_nom_oper.Text = string.Empty;
             tb_prenom_oper.Text = string.Empty;
-            //tb_email_oper.Text = string.Empty;           
+            tb_email_oper.Text = string.Empty;           
             tb_lieu.Text = string.Empty;
             tb_mobile_oper.Text = string.Empty;
             pwd_oper.Password = "";
             pwd_oper_confirm.Password = "";
-            //faire revenir le mot "adresse mail" dans le text box
-            if (!string.IsNullOrEmpty(tb_email_oper.Text))
-            {
-                tb_email_oper.Text = "Adresse mail";
-                tb_email_oper.GotFocus += tb_mail_oper_GotFocus;
-            }//fin if
         }
 
 
@@ -252,6 +246,7 @@ namespace Projet_2_GoGreen
 
         private void bt_suppr_oper_Click(object sender, RoutedEventArgs e)
         {
+
             if (id_selected != null)
             {
                 MessageBox.Show("Voulez-vous vraiment supprimer cette élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -273,20 +268,13 @@ namespace Projet_2_GoGreen
             {
                 MessageBox.Show(ex.Message, "Erreur de suppression de l'opérateur de saisi", MessageBoxButton.OK);
             }
+
         }
 
         private void bt_modifier_oper_Click(object sender, RoutedEventArgs e)
         {
             string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
-
-            //string query = "UPDATE opérateur_de_saisi SET colonne1 = @valeur1, colonne2 = @valeur2 WHERE id = @valeur_id;";
-
-            //string query = "UPDATE opérateur_de_saisi SET nom_oper = tb_nom_oper.Text, prenom_oper = tb_prenom_oper.Text, mail_oper =tb_email_oper.Text WHERE id=@id;";
-
-
-            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "' WHERE id="+id_selected+" ;";
-
-
+            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "' WHERE id=" + id_selected + " ;";
             NpgsqlConnection conn = new NpgsqlConnection(connString);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@nom_oper", tb_nom_oper.Text);
@@ -338,43 +326,15 @@ namespace Projet_2_GoGreen
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
         {
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
-        }
-
-        private void grid_oper_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-
-        private void tb_mail_oper_GotFocus(object sender, RoutedEventArgs e)
-        {
-            //modification 
-            TextBox tb = (TextBox)sender;
-            if (tb.Text == "Adresse mail")
-            {
-                tb.Text = string.Empty;
-                tb.Foreground = Brushes.Black;
+           MessageBoxResult result = MessageBox.Show(Application.Current.MainWindow, "Voulez-vous vraiment vous déconnecter?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {                
+                Authentification authentification = new Authentification();
+                authentification.Show();                
+                this.Hide();
             }
         }
-
-        private void tb_mail_oper_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            if (string.IsNullOrEmpty(tb.Text))
-            {
-                tb.Text = "Adresse mail";
-                tb.GotFocus += tb_mail_oper_GotFocus;
-                tb.Foreground = Brushes.Red;
-            }
-            else
-            {
-                tb.Foreground = Brushes.Black;
-            }
-        }
-
+  
         private void lecture_ecriture()
         {
             ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
@@ -387,13 +347,11 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
-                String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status " +
+                String query = "SELECT opérateur_de_saisi.id, nom_oper, prenom_oper, mail_oper, mobile_oper, name_lieu, status_oper " +
                                 "FROM opérateur_de_saisi " +
-                                "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id " +
-                                "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
+                                "INNER JOIN lieu_travail ON opérateur_de_saisi.lieu_travailid = lieu_travail.id "; //+
+                                                                                                                   // "INNER JOIN statut_opérateur ON opérateur_de_saisi.statut_opérateurid = statut_opérateur.id";
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-               // BindingList<OperateurClass> bindingList = new BindingList<OperateurClass>(listeOperateurs);
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -401,29 +359,74 @@ namespace Projet_2_GoGreen
                 {
 
                     OperateurClass operateur = new OperateurClass();
-
-                   // grid_oper.ItemsSource = bindingList;
-
-                    operateur.setId(reader["id"].ToString());
-                    operateur.setName(reader["nom_oper"].ToString());
-                    operateur.setLastname(reader.GetString(reader.GetOrdinal("prenom_oper")));
-                    operateur.setEmail(reader.GetString(reader.GetOrdinal("mail_oper")));
-                    operateur.setMobile(reader.GetString(reader.GetOrdinal("mobile_oper")));
-                    operateur.setWorkplace(reader.GetString(reader.GetOrdinal("name_lieu")));
-                    operateur.setStatut(reader.GetString(reader.GetOrdinal("status")));
-
+                    operateur.id = reader["id"].ToString();
+                    operateur.name = reader["nom_oper"].ToString();
+                    operateur.lastname = reader["prenom_oper"].ToString();
+                    operateur.email = reader["mail_oper"].ToString();
+                    operateur.mobile = reader["mobile_oper"].ToString();
+                    operateur.workplace = reader["name_lieu"].ToString();
+                    operateur.statut = reader["status_oper"].ToString();
                     listeOperateurs.Add(operateur);
 
                 }
                 grid_oper.ItemsSource = listeOperateurs;
 
                 conn.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
+        private void ButtonStatus_oper_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedOperateur = grid_oper.SelectedItem as OperateurClass;
+            string idO = selectedOperateur.id;
+            string status_oper = null; ;
+            string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+
+            if (selectedOperateur.statut == "actif")
+            {
+                status_oper = "suspendu";
+            }
+
+            else if (selectedOperateur.statut == "suspendu")
+            {
+                status_oper = "actif";
+            }
+
+            string query = "UPDATE opérateur_de_saisi SET status_oper = '" + status_oper + "' WHERE id=" + idO + " ;";
+            NpgsqlConnection conn = new NpgsqlConnection(connString);
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                Console.WriteLine("=================opened====================");
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("=================write====================");
+                conn.Close();
+                Console.WriteLine("=================closed====================");
+                lecture_ecriture();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        //----------------------------------------------------------ONGLET CLIENT----------------------------------------------------------------------
+        //Navalona
+        //Début . . .
+        //*****Méthodes********:*********Afficher la liste client dans le tableau de grid_client*******************************************************
+        //*******************************Sélectionner client dans le tableau de grid_client************************************************************
+        //*******************************Modifier le statut du client dans le tableau de grid_client***************************************************
+        //*******************************Mettre à jour la table client dans la BdD*********************************************************************
+
 
         public string connectionString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
@@ -441,6 +444,7 @@ namespace Projet_2_GoGreen
                     {
                         List<ClientClass> clients = new List<ClientClass>();
 
+
                         while (reader.Read())
                         {
                             ClientClass client = new ClientClass();
@@ -455,8 +459,9 @@ namespace Projet_2_GoGreen
 
                             clients.Add(client);
                         }
-
+                        reader.Close();
                         grid_client.ItemsSource = clients;
+
                     }
                 }
 
@@ -464,27 +469,51 @@ namespace Projet_2_GoGreen
             }
         }
 
-        private void ButtonStatus_Click(object sender, RoutedEventArgs e)
+        public void refresh_client()
         {
-            Button button = (Button)sender;
-            string id = button.Tag.ToString();
+            grid_client.ItemsSource = null;
+            LoadClientData();
+        }
 
-            // Find the corresponding client object in the DataGrid's underlying data source
-            ClientClass client = grid_client.Items.OfType<ClientClass>().FirstOrDefault(c => c.id == id);
+        private void ButtonStatusClient_Click(object sender, RoutedEventArgs e)
+        {
+            string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
+            var selectedClient = grid_client.SelectedItem as ClientClass;
+            string idC = selectedClient.id;
+            string status_client = null;
 
-            //Update the status value and button content based on the current status
-            if (client.status == "actif")
+            if (selectedClient.status == "actif")
             {
-                client.status = "suspendu";
-                button.Content = "Réactiver";
+                status_client = "suspendu";
+
             }
-            else if (client.status == "suspendu")
+            else if (selectedClient.status == "suspendu")
             {
-                client.status = "actif";
-                button.Content = "Suspendre";
+                status_client = "actif";
+            }
+
+            string query = "UPDATE client SET status_client = '" + status_client + "' WHERE id=" + idC + " ;";
+            NpgsqlConnection conn = new NpgsqlConnection(connString);
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                Console.WriteLine("=================opened====================");
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("=================write====================");
+                conn.Close();
+                Console.WriteLine("=================closed====================");
+                refresh_client();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
+        //. . . Fin
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
         private void grid_oper_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -493,7 +522,7 @@ namespace Projet_2_GoGreen
             {
                 var selectedOperateur = grid_oper.SelectedItem as OperateurClass; // grid_oper.SelectedItem se comporte comme une instance de la Classe  OperateurClass
 
-                 id_selected = selectedOperateur.id;
+                id_selected = selectedOperateur.id;
 
                 tb_nom_oper.Text = selectedOperateur.name;
                 tb_prenom_oper.Text = selectedOperateur.lastname;
@@ -515,23 +544,10 @@ namespace Projet_2_GoGreen
 
         private void selected_cells(object sender, SelectedCellsChangedEventArgs e)
         {
-            //if (grid_oper.SelectedItem != null)
-            //{
-            //    Console.WriteLine("----------------------");
-            //    Console.WriteLine(grid_oper.SelectedItem);
-            //    Console.WriteLine("----------------------");
-            //    var selectedOperateur = grid_oper.SelectedItem as OperateurClass;
-
-            //    id_selected = selectedOperateur.id;
-
-            //    MessageBox.Show(selectedOperateur.id.ToString());
-            //    tb_nom_oper.Text = selectedOperateur.name;
-            //    tb_prenom_oper.Text = selectedOperateur.lastname;
-            //    tb_lieu.Text = selectedOperateur.workplace;
-            //    tb_mobile_oper.Text = selectedOperateur.mobile;
-            //    tb_email_oper.Text = selectedOperateur.email;
-
-            //}
+        
+        }
+        private void rechercheOperateur()
+        {
 
         }
 

@@ -24,7 +24,7 @@
 
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
 
-                    <DataGrid x:Name="grid_oper"  Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
+                    <DataGrid x:Name="grid_oper" CanUserAddRows="False" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
                         <DataGrid.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </DataGrid.Effect>
@@ -60,7 +60,7 @@
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Mobile" Binding="{Binding mobile}" FontSize="12" Width="*" >
-                            
+
 
 
                                 <DataGridTextColumn.ElementStyle>
@@ -97,11 +97,24 @@
                             <DataGridTemplateColumn Header="Action" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Suspendre"/>
+                                        <Button Click="ButtonStatus_oper_Click" Tag="{Binding id}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Content" Value=""/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding statut}" Value="actif">
+                                                            <Setter Property="Content" Value="Suspendre"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding statut}" Value="suspendu">
+                                                            <Setter Property="Content" Value="Réactiver"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -136,7 +149,7 @@
                         </TextBox.Effect>
                     </TextBox>
 
-                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" GotFocus="tb_mail_oper_GotFocus" LostFocus="tb_mail_oper_LostFocus" Text="Adresse mail" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                    <TextBox x:Name="tb_email_oper" HorizontalAlignment="Left" Margin="47,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Height="37" FontSize="16" FontFamily="Global User Interface" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -169,7 +182,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
+                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>
@@ -187,7 +200,7 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
-                    <PasswordBox x:Name="pwd_oper" HorizontalAlignment="Left" Margin="47,421,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
+                    <PasswordBox x:Name="pwd_oper_confirm" HorizontalAlignment="Left" Margin="47,492,0,0" VerticalAlignment="Top" Width="417" Height="37" VerticalContentAlignment="Center" FontSize="16" FontFamily="Global User Interface" Padding="10,0,0,0">
                         <PasswordBox.Effect>
                             <DropShadowEffect Opacity="0.5"/>
                         </PasswordBox.Effect>
@@ -260,9 +273,9 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8">
+                    <DataGrid x:Name="grid_client" CanUserAddRows="False" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>
                             <DataGridTextColumn Header="Prénom" Width="*" Binding="{Binding lastname}"/>
                             <DataGridTextColumn Header="Mail" Width="*" Binding="{Binding email}"/>
@@ -273,10 +286,25 @@
                             <DataGridTemplateColumn Header="Action" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Suspendre" Click="ButtonStatus_Click" Tag="{Binding id}"/>
+                                        <Button Click="ButtonStatusClient_Click" Tag="{Binding id}">
+                                            <Button.Style>
+                                                <Style TargetType="Button">
+                                                    <Setter Property="Content" Value=""/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding status}" Value="actif">
+                                                            <Setter Property="Content" Value="Suspendre"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding status}" Value="suspendu">
+                                                            <Setter Property="Content" Value="Réactiver"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
 

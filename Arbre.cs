@@ -22,13 +22,35 @@ namespace Projet_2_GoGreen
         public string latitude { get; set; }
         public string longitude { get; set; }
 
+      
         public Arbre(string id_arbre, DateTime date_plantation, DateTime date_creation, string statut)
-        {
+           {
             this.id_arbre = id_arbre;
             this.date_plantation = date_plantation;
             this.date_creation = date_creation;
             this.statut = statut;
         }
+
+        public Arbre(string id_arbre, DateTime date_plantation, DateTime date_creation, DateTime date_mise_a_jour, string statut, string diametre, string hauteur, string etat_de_feuillage, string espece,
+            string type, string zone, string latitude, string longitude)
+
+        {
+            this.id_arbre = id_arbre;
+            this.date_plantation = date_plantation;
+            this.date_creation = date_creation;
+            this.date_mise_a_jour = date_mise_a_jour;
+            this.statut = statut;
+            this.diametre = diametre;
+            this.hauteur = hauteur;
+            this.etat_de_feuillage = etat_de_feuillage;
+            this.espece = espece;
+            this.type = type;
+            this.zone = zone;
+            this.latitude = latitude;
+            this.longitude = longitude;
+
+        }
+
 
         public Arbre()
         {
@@ -54,28 +76,6 @@ namespace Projet_2_GoGreen
         {
             statut = value;
         }
-
-
-
-
-        //public Arbre1(string id_arbre, DateTime date_plantation, DateTime date_creation, DateTime date_mise_a_jour, string statut, string diametre, string hauteur, string etat_de_feuillage, string espece,
-        //    string type, string zone, string latitude, string longitude)
-        //{
-        //    this.id_arbre = id_arbre;
-        //    this.date_plantation = date_plantation;
-        //    this.date_creation = date_creation;
-        //    this.date_mise_a_jour = date_mise_a_jour;
-        //    this.statut = statut;
-        //    this.diametre = diametre;
-        //    this.hauteur = hauteur;
-        //    this.etat_de_feuillage = etat_de_feuillage;
-        //    this.espece = espece;
-        //    this.type = type;
-        //    this.zone = zone;
-        //    this.latitude = latitude;
-        //    this.longitude = longitude;
-
-        //}
 
     }
 }

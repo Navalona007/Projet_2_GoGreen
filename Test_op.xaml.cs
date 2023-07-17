@@ -28,7 +28,6 @@ namespace Projet_2_GoGreen
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
@@ -37,7 +36,6 @@ namespace Projet_2_GoGreen
             authentification.Show();
             this.Hide();
         }
-
 
         private void lecture_ecriture_arbre()
         {
@@ -112,7 +110,12 @@ namespace Projet_2_GoGreen
 
         private void bt_inserer_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
