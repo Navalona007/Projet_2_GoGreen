@@ -375,6 +375,7 @@
                 <DropShadowEffect Opacity="0.5"/>
             </Button.Effect>
         </Button>
+        <Label x:Name="lb_id_admin" Content="Label" HorizontalAlignment="Left" Margin="19,-8,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
 
     </Grid>
 </Window>

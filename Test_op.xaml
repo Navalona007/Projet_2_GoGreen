@@ -13,12 +13,10 @@
             <!--<ColumnDefinition Width="84*"/>-->
             <!--<ColumnDefinition Width="3*"/>-->
         </Grid.ColumnDefinitions>
-        <TabControl Margin="0,56,-10,-56" Height="768" Grid.ColumnSpan="4">
+        <TabControl Margin="0,27,-10,0">
             <TabItem Header="Insertion" Margin="-2,-2,-56,0" FontSize="20">
                 <Grid Background="White" Height="730">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+
                     <Rectangle HorizontalAlignment="Left" Height="306" Margin="932,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
 
                     </Rectangle>
@@ -26,7 +24,7 @@
                     <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
 
                     </Rectangle>
-                    <Rectangle HorizontalAlignment="Left" Height="310" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White">
+                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,364,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White">
 
                     </Rectangle>
                     <DatePicker x:Name="dp_plantation" HorizontalAlignment="Left" Margin="966,82,0,0" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}" Text="" Height="40" FontSize="18" Background="White">
@@ -40,11 +38,12 @@
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
                     <Viewbox Margin="77,463,1217,238">
-                        <RadioButton x:Name="rb_vert"  VerticalAlignment="Center">
+                        <RadioButton x:Name="rb_vert"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14">
 
                         </RadioButton>
                     </Viewbox>
                     <Rectangle HorizontalAlignment="Left" Height="307" Margin="488,383,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
+
 
                     </Rectangle>
                     <Label Content="Espèce" HorizontalAlignment="Left" Margin="513,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="18" Foreground="#FF010101">
@@ -154,18 +153,18 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Viewbox Height="35" Margin="292,460,1051,235">
-                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Center">
+                    <Viewbox Margin="268,460,1031,235">
+                        <RadioButton x:Name="rb_marron"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14" RenderTransformOrigin="0.5,0.5">
 
                         </RadioButton>
                     </Viewbox>
                     <Viewbox Margin="76,555,1214,147">
-                        <RadioButton x:Name="rb_jaune"  VerticalAlignment="Center">
+                        <RadioButton x:Name="rb_jaune"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14">
 
                         </RadioButton>
                     </Viewbox>
-                    <Viewbox Height="35" Margin="292,552,1051,142">
-                        <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Center">
+                    <Viewbox Margin="273,539,1051,118">
+                        <RadioButton x:Name="rb_feuille"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14">
 
                         </RadioButton>
                     </Viewbox>
@@ -263,7 +262,7 @@
                         </Button.Resources>
 
                     </Button>
-                    <Image HorizontalAlignment="Left" Height="151" Margin="0,578,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png" Grid.ColumnSpan="2"/>
+                    <Image HorizontalAlignment="Left" Height="151" Margin="0,572,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/>
                 </Grid>
             </TabItem>
             <TabItem HorizontalAlignment="Center" Height="33" Header="Suivi" VerticalAlignment="Center" Width="81" FontSize="20">
@@ -311,8 +310,8 @@
                     </Rectangle>
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
-                    <Viewbox Margin="77,463,1217,237">
-                        <RadioButton x:Name="rb_vert1"  VerticalAlignment="Center" GroupName="etat_feuillage"/>
+                    <Viewbox Margin="77,463,1217,196">
+                        <RadioButton x:Name="rb_vert1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Width="15" Height="14"/>
                     </Viewbox>
                     <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="972,591,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FF5AE4A8" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Foreground="White">
                         <Button.Resources>
@@ -344,7 +343,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image HorizontalAlignment="Left" Height="67" Margin="132,520,0,0" VerticalAlignment="Top" Width="95" Source="/green (1).png" RenderTransformOrigin="0.5,0.5">
+                    <Image HorizontalAlignment="Left" Height="67" Margin="132,532,0,0" VerticalAlignment="Top" Width="95" Source="/green (1).png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -364,14 +363,14 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Viewbox Height="35" Margin="292,460,1051,234">
-                        <RadioButton x:Name="rb_marron1"  VerticalAlignment="Center" GroupName="etat_feuillage"/>
+                    <Viewbox Margin="273,460,1051,190">
+                        <RadioButton x:Name="rb_marron1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Height="14" Width="15"/>
                     </Viewbox>
-                    <Viewbox Margin="76,555,1214,146">
-                        <RadioButton x:Name="rb_jaune1"  VerticalAlignment="Center" GroupName="etat_feuillage"/>
+                    <Viewbox Margin="76,555,1214,105">
+                        <RadioButton x:Name="rb_jaune1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Width="15" Height="14"/>
                     </Viewbox>
-                    <Viewbox Height="35" Margin="292,552,1051,142">
-                        <RadioButton x:Name="rb_sans_feuille1"  VerticalAlignment="Center" GroupName="etat_feuillage"/>
+                    <Viewbox Margin="273,552,1051,105">
+                        <RadioButton x:Name="rb_sans_feuille1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Height="14" Width="15"/>
                     </Viewbox>
 
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103" FontFamily="Global User Interface"/>
@@ -385,17 +384,18 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="Arbre " HorizontalAlignment="Left" Margin="902,15,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bookman Old Style" Width="127" FontSize="36"/>
-        <Image HorizontalAlignment="Left" Height="60" Margin="823,2,0,0" VerticalAlignment="Top" Width="78" Source="/forest.png">
+        <Label Content="Arbre " HorizontalAlignment="Left" Margin="904,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bookman Old Style" Width="127" FontSize="36"/>
+        <Image HorizontalAlignment="Left" Height="60" Margin="825,0,0,0" VerticalAlignment="Top" Width="78" Source="/forest.png">
             <Image.Effect>
                 <DropShadowEffect Opacity="0.5"/>
             </Image.Effect>
         </Image>
-        <Image HorizontalAlignment="Left" Height="46" Margin="245,8,0,0" VerticalAlignment="Top" Width="69" Source="/user_1.png"/>
-        <Label x:Name="lb_nom_operateur" Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="298,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
-        <Label x:Name="tb_opérateur" Content="" HorizontalAlignment="Left" Margin="187,19,0,0" VerticalAlignment="Top" Width="134"/>
+        <Image HorizontalAlignment="Left" Height="46" Margin="469,8,0,0" VerticalAlignment="Top" Width="69" Source="/user_1.png"/>
+        <Label x:Name="lb_nom_operateur" Content="Nom de l'opérateur :" HorizontalAlignment="Left" Margin="522,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18"/>
+        <Label x:Name="tb_id_opérateur" Content="" HorizontalAlignment="Left" Margin="27,-7,0,0" VerticalAlignment="Top" Width="134" Visibility="Hidden"/>
 
-        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1145,20,0,0" VerticalAlignment="Top" Width="181" Height="40" FontWeight="Normal" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface" Background="White" Foreground="#FF5AE4A8">
+        <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1147,10,0,0" VerticalAlignment="Top" Width="181" Height="40" FontWeight="Normal" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">
+
 
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
