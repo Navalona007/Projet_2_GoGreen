@@ -338,6 +338,7 @@ namespace Projet_2_GoGreen
             tb_email_proprietaire.Text = "";
             tb_latitude.Text = "";
             tb_longitude.Text = "";
+            lb_message.Content = "";
         }
     }
 }
