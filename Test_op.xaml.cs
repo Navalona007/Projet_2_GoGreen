@@ -338,6 +338,7 @@ namespace Projet_2_GoGreen
             tb_email_proprietaire.Text = "";
             tb_latitude.Text = "";
             tb_longitude.Text = "";
+            lb_message.Content = "";
         }
 
         private void trouverId_client(string nom_client, string mail_client)

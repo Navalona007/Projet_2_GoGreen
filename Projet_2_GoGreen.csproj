@@ -169,6 +169,9 @@
     <Compile Include="Demande_validation.cs" />
     <Compile Include="Espece.cs" />
     <Compile Include="Etat_arbre.cs" />
+    <Compile Include="GoogleMap.xaml.cs">
+      <DependentUpon>GoogleMap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lieu_de_travail.cs" />
     <Compile Include="Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
@@ -194,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Authentification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GoogleMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

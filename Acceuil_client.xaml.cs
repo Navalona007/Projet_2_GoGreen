@@ -35,7 +35,6 @@ namespace Projet_2_GoGreen
             }
             conx.close();
             lb_nbr_arbre.Content = nb;
-            //return nb ;
         }
 
         private void bt_localiser_arbre_client_Click(object sender, RoutedEventArgs e)

@@ -42,7 +42,8 @@
 
                         </RadioButton>
                     </Viewbox>
-                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="488,367,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
+                    <Rectangle HorizontalAlignment="Left" Height="307" Margin="488,383,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
+
 
                     </Rectangle>
                     <Label Content="Espèce" HorizontalAlignment="Left" Margin="513,40,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="138" FontSize="18" Foreground="#FF010101">
@@ -70,7 +71,7 @@
                         <ComboBoxItem Content="Autres" />
 
                     </ComboBox>
-                    <Label Content="Position" HorizontalAlignment="Left" Margin="783,395,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Height="34">
+                    <Label Content="Position" HorizontalAlignment="Left" Margin="783,395,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF070908" Height="34">
 
                     </Label>
                     <Label Content="Zone" HorizontalAlignment="Left" Margin="515,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="18" Foreground="#FF010101">
@@ -84,10 +85,10 @@
                         </TextBox.Resources>
 
                     </TextBox>
-                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="515,445,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White" Height="33">
+                    <Label Content="Latitude" HorizontalAlignment="Left" Margin="515,445,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="#FF070908" Height="33">
 
                     </Label>
-                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="515,535,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White" Height="34">
+                    <Label Content="Longitude" HorizontalAlignment="Left" Margin="515,535,0,0" VerticalAlignment="Top" Width="107" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="#FF070908" Height="34">
 
                     </Label>
                     <TextBox x:Name="tb_latitude" HorizontalAlignment="Left" Margin="624,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" BorderBrush="#FF5AE4A8" Height="40">
@@ -106,25 +107,21 @@
                         </TextBox.Resources>
 
                     </TextBox>
-                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,551,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click">
+                    <Button x:Name="bt_inserer" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,551,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FF5AE4A8" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click" Foreground="White">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
-                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,551,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18" FontFamily="Global User Interface" Click="bt_annuler_Click">
+                    <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,551,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="White" FontSize="18" FontFamily="Global User Interface" Click="bt_annuler_Click" Foreground="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
                     <Image HorizontalAlignment="Left" Height="65" Margin="136,439,0,0" VerticalAlignment="Top" Width="79" Source="/green.png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -193,10 +190,10 @@
 
                     </TextBox>
                     <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="173,47,0,0" VerticalAlignment="Top" Width="197" FontWeight="Bold" FontFamily="Global User Interface" FontSize="20" FontStyle="Italic"/>
-                    <Rectangle HorizontalAlignment="Left" Height="232" Margin="33,102,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5"/>
-                    <Label Content="Nom" HorizontalAlignment="Left" Margin="59,132,0,0" VerticalAlignment="Top" Width="64" FontSize="18" FontFamily="Global User Interface" FontWeight="Bold"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="62,227,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18"/>
-                    <TextBox x:Name="tb_nom_proprietaire" HorizontalAlignment="Left" Height="42" Margin="62,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}">
+                    <Rectangle HorizontalAlignment="Left" Height="232" Margin="33,102,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
+                    <Label Content="Nom" HorizontalAlignment="Left" Margin="59,132,0,0" VerticalAlignment="Top" Width="64" FontSize="18" FontFamily="Global User Interface" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="62,227,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18" Foreground="White"/>
+                    <TextBox x:Name="tb_nom_proprietaire" HorizontalAlignment="Left" Height="42" Margin="62,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="353" BorderBrush="{x:Null}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -216,7 +213,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Liste" Margin="136,-2,-192,0" FontSize="20">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFD6F9E5">
                     <Grid.ColumnDefinitions>
                         <!--<ColumnDefinition Width="46*"/>
                         <ColumnDefinition Width="641*"/>
@@ -246,28 +243,24 @@
                             <DataGridTextColumn Header="Position"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Rectangle HorizontalAlignment="Center" Height="441" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5"/>
-                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="638,632,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Rectangle HorizontalAlignment="Left" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="2"/>
+                    <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="638,606,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="White" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Foreground="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
 
-                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="973,632,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_demander_suppr" Content="Demander la suppression" HorizontalAlignment="Left" BorderThickness="2" Margin="973,606,0,0" VerticalAlignment="Top" Width="260" Height="37" FontWeight="Bold" Background="White" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Foreground="#FF5AE4A8">
 
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
                     <Image HorizontalAlignment="Left" Height="151" Margin="0,572,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/>
                 </Grid>
@@ -320,25 +313,21 @@
                     <Viewbox Margin="77,463,1217,196">
                         <RadioButton x:Name="rb_vert1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Width="15" Height="14"/>
                     </Viewbox>
-                    <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,591,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="972,591,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FF5AE4A8" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Foreground="White">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
-                    <Button x:Name="bt_annuler_Copy" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,591,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" FontSize="18" FontFamily="Global User Interface">
+                    <Button x:Name="bt_annuler_Copy" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1156,591,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="White" FontSize="18" FontFamily="Global User Interface" Foreground="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+
                     </Button>
 
                     <Label Content="Remarques et recommandations :" HorizontalAlignment="Left" Margin="981,75,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White" FontFamily="Global User Interface" Height="62"/>
@@ -386,12 +375,10 @@
 
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103" FontFamily="Global User Interface"/>
                     <Label x:Name="lb_message_Copy" Content="" HorizontalAlignment="Left" Margin="524,624,0,0" VerticalAlignment="Top" Width="351" Foreground="#FF8E0E0E"/>
-                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="34,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="34,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
 
                     </Rectangle>
-                    <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="170,42,0,0" VerticalAlignment="Top" Width="153" FontWeight="Bold" FontStyle="Italic"/>
-                    <Label Content="Nom " HorizontalAlignment="Left" Margin="60,127,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Global User Interface"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="62,219,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Global User Interface"/>
+                    <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="170,42,0,0" VerticalAlignment="Top" Width="153" FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
                     <Label x:Name="lb_nom_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,165,0,0" VerticalAlignment="Top" Width="367"/>
                     <Label x:Name="lb_email_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="350"/>
                 </Grid>
@@ -409,14 +396,13 @@
 
         <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1147,10,0,0" VerticalAlignment="Top" Width="181" Height="40" FontWeight="Normal" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">
 
+
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
-            <Button.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </Button.Effect>
+
         </Button>
         <Label x:Name="lb_id_operateur" Content="" HorizontalAlignment="Left" Margin="79,20,0,0" VerticalAlignment="Top" Width="59" Visibility="Hidden"/>
 
