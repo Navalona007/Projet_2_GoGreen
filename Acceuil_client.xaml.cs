@@ -26,11 +26,11 @@ namespace Projet_2_GoGreen
 
         public void nombre_arbre(int id_client)
         {
-            ConnectDB conx = new ConnectDB();
-            conx.launchReader("SELECT count (*) nombre FROM arbre JOIN client ON arbre.clientid=client.id WHERE client.id ='"+id_client+"'");
-            string nb = conx.read.GetInt32(0).ToString();
-            conx.close();
-            lb_nbr_arbre.Content = nb;
+            //ConnectDB conx = new ConnectDB();
+            //conx.launchReader("SELECT count (*) nombre FROM arbre JOIN client ON arbre.clientid=client.id WHERE client.id ='"+id_client+"'");
+            //string nb = conx.read.GetInt32(0).ToString();
+            //conx.close();
+            //lb_nbr_arbre.Content = nb;
             //return nb ;
         }
 
