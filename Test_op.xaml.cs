@@ -339,5 +339,27 @@ namespace Projet_2_GoGreen
             tb_latitude.Text = "";
             tb_longitude.Text = "";
         }
+
+        private void trouverId_client(string nom_client, string mail_client)
+        {
+            ConnectDB conx = new ConnectDB();
+            Dictionary<string, ClientClass> list_nom_client = new Dictionary<string, ClientClass>();
+            Dictionary<string, ClientClass> list_mail_client = new Dictionary<string, ClientClass>();
+            conx.launchReader("SELECT id, nom_client, prenom_client, mail_client FROM client WHERE opérateur_de_saisiid = '"+lb_id_operateur+"'");
+            while (conx.read.Read())
+            {
+                ClientClass client = new ClientClass();
+                
+                client.name = conx.read.GetString(conx.read.GetOrdinal("nom_client"));
+                client.lastname = conx.read.GetString(conx.read.GetOrdinal("prenom_client"));
+                client.email = conx.read.GetString(conx.read.GetOrdinal("mail_client"));
+                
+                list_nom_client.Add(client.name, client);
+                list_mail_client.Add(client.email, client);
+            }
+            conx.close();
+
+            //if()
+        }
     }
 }

@@ -47,10 +47,11 @@ namespace Projet_2_GoGreen
                         adminCmd.Parameters.AddWithValue("@pass_admin", mdp);
                         using (var adminReader = adminCmd.ExecuteReader())
                         {
-                            if (adminReader.Read())
+                            while (adminReader.Read())
                             {
                                 Administrateur administrateur = new Administrateur();
-                                administrateur.lb_badge_admin.Content = adminReader.GetString(adminReader.GetOrdinal("nom_admin")) + " de " + adminReader.GetString(adminReader.GetOrdinal("label_ref"));
+                                administrateur.lb_badge_admin.Content = adminReader.GetString(adminReader.GetOrdinal("nom_admin")) + " de <<" + adminReader.GetString(adminReader.GetOrdinal("label_ref"))+">>";
+                                administrateur.lb_id_admin.Content = adminReader.GetInt32(adminReader.GetOrdinal("id"));
                                 administrateur.Show();
                                 this.Hide();
 
@@ -69,60 +70,58 @@ namespace Projet_2_GoGreen
 
                         using (var clientReader = ClientCmd.ExecuteReader())
                         {
-                            //while (clientReader.Read())
-                            //{
-
-
-                                if ((clientReader.Read()) && (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "actif"))
+                            while (clientReader.Read())
+                            {
+                                if (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "actif")
                                 {
                                     Acceuil_client acc = new Acceuil_client();
                                     acc.nombre_arbre(clientReader.GetInt32(clientReader.GetOrdinal("id")));
                                     acc.lb_nom_client.Content = clientReader.GetString(clientReader.GetOrdinal("nom_client")) + " " + clientReader.GetString(clientReader.GetOrdinal("prenom_client"));
+                                    
                                     acc.Show();
                                     this.Hide();
-                                    //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information);
                                     tb_login.Text = "";
                                     pwd_auth.Password = "";
                                     return;
                                 }
-                                //else //if (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "suspendu")
-                                //{
-                                //    MessageBox.Show("Echec de connexion! \n Merci de contacter votre prestataire", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                //    return;
-                                //}
-                            //}
+                                else
+                                {
+                                    MessageBox.Show("Echec de connexion! \n Merci de contacter votre prestataire", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    return;
+                                }
+                            }
                         }
                     }
 
                     // Vérifier si l'utilisateur est un opérateur de saisi // remaque sur pwd_auth
-                    using (NpgsqlCommand OperCmd = new NpgsqlCommand("SELECT nom_oper, prenom_oper, mail_oper, pass_oper, status_oper FROM opérateur_de_saisi WHERE mail_oper = '" + tb_login.Text + "' AND pass_oper = '" + mdp + "'", conn))
+                    using (NpgsqlCommand OperCmd = new NpgsqlCommand("SELECT id, nom_oper, prenom_oper, mail_oper, pass_oper, status_oper FROM opérateur_de_saisi WHERE mail_oper = '" + tb_login.Text + "' AND pass_oper = '" + mdp + "'", conn))
                     {
                         OperCmd.Parameters.AddWithValue("@mail_oper", tb_login.Text);
                         OperCmd.Parameters.AddWithValue("@pass_oper", mdp);
 
                         using (var operReader = OperCmd.ExecuteReader())
                         {
-                            //while (operReader.Read())
-                            //{
+                            while (operReader.Read())
+                            {
 
 
-                                if ((operReader.Read()) && (operReader.GetString(operReader.GetOrdinal("status_oper")) == "actif"))
+                                if (operReader.GetString(operReader.GetOrdinal("status_oper")) == "actif")
                                 {
                                     Test_op test_op = new Test_op();
-                                    test_op.lb_nom_operateur.Content = operReader.GetString(operReader.GetOrdinal("nom_oper"));
+                                    test_op.lb_nom_operateur.Content = operReader.GetString(operReader.GetOrdinal("nom_oper"))+" "+ operReader.GetString(operReader.GetOrdinal("prenom_oper"));
+                                    test_op.lb_id_operateur.Content = operReader.GetInt32(operReader.GetOrdinal("id"));
                                     test_op.Show();
                                     this.Hide();
-                                    //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information );
                                     tb_login.Text = "";
                                     pwd_auth.Password = "";
                                     return;
                                 }
-                                //else //if (operReader.GetString(operReader.GetOrdinal("status_oper")) == "suspendu")
-                                //{
-                                //    MessageBox.Show("Echec de connexion! \n Merci de contacter votre administrateur", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                //return;
-                                //}
-                            //}
+                                else
+                                {
+                                    MessageBox.Show("Echec de connexion! \n Merci de contacter votre administrateur", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    return;
+                                }
+                            }
                         }
                     }
 
