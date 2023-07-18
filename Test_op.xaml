@@ -379,7 +379,7 @@
                             <DropShadowEffect Opacity="0.5"/>
                         </TextBox.Effect>
                     </TextBox>
-                    <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,587,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface" Click="bt_inserer_Click">
+                    <Button x:Name="bt_inserer_Copy" Content="Insérer" HorizontalAlignment="Left" BorderThickness="2" Margin="976,587,0,0" VerticalAlignment="Top" Width="159" Height="40" FontWeight="Bold" BorderBrush="#FF5AE4A8" Background="#FFDDDDDD" RenderTransformOrigin="0.437,0.489" FontSize="18" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />

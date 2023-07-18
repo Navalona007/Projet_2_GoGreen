@@ -51,13 +51,13 @@ namespace Projet_2_GoGreen
             var conn = GetConnection();
             conn.Open();
 
-            String query = "SELECT id, name FROM espece";
+            String query = "SELECT id, name_espece FROM espece";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
             NpgsqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                liste_espece.Add((string)reader["name"], (int)reader["id"]);
+                liste_espece.Add((string)reader["name_espece"], (int)reader["id"]);
             }
             conn.Close();
         }
@@ -67,7 +67,7 @@ namespace Projet_2_GoGreen
             var conn = GetConnection();
             conn.Open();
 
-            String query = "INSERT INTO public.espece (typeid, name)    VALUES ('"+id+"','" + valueInsert + "');";
+            String query = "INSERT INTO public.espece (typeid, name_espece)    VALUES ('"+id+"','" + valueInsert + "');";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.ExecuteNonQuery();
         }
@@ -107,8 +107,8 @@ namespace Projet_2_GoGreen
             NpgsqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                liste_id_type.Add(reader["id"].ToString(), (string)reader["name"]);
-                liste_type.Add((string)reader["name"], (int)reader["id"]);
+                liste_id_type.Add(reader["id"].ToString(), (string)reader["name_type"]);
+                liste_type.Add((string)reader["name_type"], (int)reader["id"]);
             }
             conn.Close();
         }
@@ -117,7 +117,7 @@ namespace Projet_2_GoGreen
             var conn = GetConnection();
             conn.Open();
 
-            String query = "INSERT INTO public.type (name) VALUES ('" + valueInsert + "'); ";
+            String query = "INSERT INTO public.type (name_type) VALUES ('" + valueInsert + "'); ";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.ExecuteNonQuery();
         }
@@ -265,8 +265,8 @@ namespace Projet_2_GoGreen
                 //String query = "SELECT id, date_plantation, date_creation, status FROM public.arbre;";
                 //String query = "SELECT id, status FROM public.arbre;";
 
-                String query = "SELECT arbre.id, arbre.status, type.name, espece.name, etat.height, etat.trunk.diameter ," +
-                                ".etat_feuillage.description, position.latitude , position.longitude, zone.name  FROM public.position" +
+                String query = "SELECT arbre.id, arbre.status_arbre, type.name_type, espece.name_espece, etat.height, etat.trunk.diameter ," +
+                                ".etat_feuillage.description, position.latitude , position.longitude, zone.name_zone  FROM public.position" +
                                 "INNER JOIN public.arbre ON public.position.arbreid = public.arbre.id" +
                                 "INNER JOIN public.client ON arbre.clientid = client.id " +
                                 "INNER JOIN public.espece ON arbre.especeid = espece.id INNER JOIN public.type ON espece.typeid = type.id";
@@ -284,7 +284,7 @@ namespace Projet_2_GoGreen
                     Arbre arbreGG = new Arbre();
 
                     arbreGG.setId_arbre(reader["id"].ToString());
-                    arbreGG.setStatut(reader["status"].ToString());
+                    arbreGG.setStatut(reader["status_arbre"].ToString());
                     //arbreGG.setStatut(reader.GetString(reader.GetOrdinal("status")));
 
 
@@ -319,10 +319,6 @@ namespace Projet_2_GoGreen
             
         }
 
-        private void bt_inserer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
         {

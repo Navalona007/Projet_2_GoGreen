@@ -56,7 +56,7 @@ namespace Projet_2_GoGreen
 
                                 tb_login.Text = "";
                                 pwd_auth.Password = "";
-                                //return;
+                                return;
                             }
                         }
                     }
@@ -69,11 +69,11 @@ namespace Projet_2_GoGreen
 
                         using (var clientReader = ClientCmd.ExecuteReader())
                         {
-                            while (clientReader.Read())
-                            {
+                            //while (clientReader.Read())
+                            //{
 
 
-                                if (clientReader.Read() && clientReader.GetString(clientReader.GetOrdinal("status_client")) == "actif")
+                                if ((clientReader.Read()) && (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "actif"))
                                 {
                                     Acceuil_client acc = new Acceuil_client();
                                     acc.nombre_arbre(clientReader.GetInt32(clientReader.GetOrdinal("id")));
@@ -85,11 +85,12 @@ namespace Projet_2_GoGreen
                                     pwd_auth.Password = "";
                                     return;
                                 }
-                                else //if (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "suspendu")
-                                {
-                                    MessageBox.Show("Echec de connexion! \n Merci de contacter votre prestataire", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
-                            }
+                                //else //if (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "suspendu")
+                                //{
+                                //    MessageBox.Show("Echec de connexion! \n Merci de contacter votre prestataire", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                //    return;
+                                //}
+                            //}
                         }
                     }
 
@@ -101,31 +102,32 @@ namespace Projet_2_GoGreen
 
                         using (var operReader = OperCmd.ExecuteReader())
                         {
-                            while (operReader.Read())
-                            {
+                            //while (operReader.Read())
+                            //{
 
 
-                                if (operReader.Read() && operReader.GetString(operReader.GetOrdinal("status_oper")) == "actif")
+                                if ((operReader.Read()) && (operReader.GetString(operReader.GetOrdinal("status_oper")) == "actif"))
                                 {
                                     Test_op test_op = new Test_op();
-                                    test_op.lb_nom_operateur.Content = operReader.GetString(operReader.GetOrdinal("nom_"));
+                                    test_op.lb_nom_operateur.Content = operReader.GetString(operReader.GetOrdinal("nom_oper"));
                                     test_op.Show();
                                     this.Hide();
                                     //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information );
                                     tb_login.Text = "";
                                     pwd_auth.Password = "";
-                                    //return;
+                                    return;
                                 }
-                                else //if (operReader.GetString(operReader.GetOrdinal("status_oper")) == "suspendu")
-                                {
-                                    MessageBox.Show("Echec de connexion! \n Merci de contacter votre administrateur", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
-                            }
+                                //else //if (operReader.GetString(operReader.GetOrdinal("status_oper")) == "suspendu")
+                                //{
+                                //    MessageBox.Show("Echec de connexion! \n Merci de contacter votre administrateur", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                //return;
+                                //}
+                            //}
                         }
                     }
 
                     // Si aucun utilisateur correspondant n'est trouvé
-                    MessageBox.Show("Votre identifiant et mot de passe ne correspondent pas. Réessayez", "Erreur");
+                    MessageBox.Show("Votre identifiant et mot de passe ne correspondent pas. Réessayez", "ERREUR");
                     conn.Close();
                 }
             }
