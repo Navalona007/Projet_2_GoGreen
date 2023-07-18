@@ -44,7 +44,7 @@ namespace Projet_2_GoGreen
         }
 
         Dictionary<string, int> liste_espece;
-        public void list_espece ()
+        public void list_espece()
         {
             liste_espece = null;
             liste_espece = new Dictionary<string, int>();
@@ -67,7 +67,7 @@ namespace Projet_2_GoGreen
             var conn = GetConnection();
             conn.Open();
 
-            String query = "INSERT INTO public.espece (typeid, name_espece)    VALUES ('"+id+"','" + valueInsert + "');";
+            String query = "INSERT INTO public.espece (typeid, name_espece)    VALUES ('" + id + "','" + valueInsert + "');";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.ExecuteNonQuery();
         }
@@ -90,6 +90,7 @@ namespace Projet_2_GoGreen
             return key;
         }
 
+
         Dictionary<string, string> liste_id_type;
         Dictionary<string, int> liste_type;
         public void list_type()
@@ -97,7 +98,7 @@ namespace Projet_2_GoGreen
             liste_id_type = null;
             liste_type = null;
             liste_id_type = new Dictionary<string, string>();
-            liste_type = new Dictionary<string, int> ();            
+            liste_type = new Dictionary<string, int>();
             var conn = GetConnection();
             conn.Open();
 
@@ -167,14 +168,14 @@ namespace Projet_2_GoGreen
                     string.IsNullOrWhiteSpace(latitude) ||
                     string.IsNullOrWhiteSpace(longitude))
                 {
-                    lb_message.Content = "Veuillez remplir tous les champs!";                   
-                } 
+                    lb_message.Content = "Veuillez remplir tous les champs!";
+                }
                 else if (liste_type.ContainsKey(type) && !liste_espece.ContainsKey(espece))
                 {
-                   
+
                     int key_type = hasKey_type(type);
                     insert_espece(key_type, espece);
-                    list_espece();                    
+                    list_espece();
                     int key_espece = hasKey_espece(espece);
 
                     string requete = "INSERT INTO arbre ( especeid, date_plantation)"
@@ -234,9 +235,9 @@ namespace Projet_2_GoGreen
 
                 }
 
-            } 
-
             }
+
+        }
 
         List<string> valeurs = new List<string>();
 
@@ -247,7 +248,7 @@ namespace Projet_2_GoGreen
             {
                 valeurs.Add(nouvelleValeur);
             }
-         }
+        }
         private void lecture_ecriture_arbre()
         {
             ObservableCollection<Arbre> listeArbres = new ObservableCollection<Arbre>();
@@ -260,7 +261,7 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
- 
+
 
                 //String query = "SELECT id, date_plantation, date_creation, status FROM public.arbre;";
                 //String query = "SELECT id, status FROM public.arbre;";
@@ -274,7 +275,7 @@ namespace Projet_2_GoGreen
 
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
-                
+
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -316,13 +317,27 @@ namespace Projet_2_GoGreen
 
         private void bt_demander_modif_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
 
         private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void bt_annuler_Click(object sender, RoutedEventArgs e)
+        {
+            cb_espece.Text = "";
+            cb_type.Text = "";
+            tb_zone.Text = "";
+            dp_plantation.Text = "";
+            tb_hauteur.Text = "";
+            tb_diametre.Text = "";
+            tb_nom_proprietaire.Text = "";
+            tb_email_proprietaire.Text = "";
+            tb_latitude.Text = "";
+            tb_longitude.Text = "";
         }
     }
 }
