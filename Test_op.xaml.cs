@@ -21,7 +21,7 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Test_op : Window
     {
-
+        string id_operateur = null;
         private NpgsqlConnection GetConnection()
         {
             return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
@@ -38,9 +38,10 @@ namespace Projet_2_GoGreen
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
         {
-            Authentification authentification = new Authentification();
-            authentification.Show();
-            this.Hide();
+            //Authentification authentification = new Authentification();
+            //authentification.Show();
+            //this.Hide();
+            option.Visibility = Visibility.Visible;
         }
 
         Dictionary<string, int> liste_espece;
@@ -323,6 +324,26 @@ namespace Projet_2_GoGreen
         private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void get_Value_init(object sender, EventArgs e)
+        {
+            id_operateur = lb_id_operateur.Content.ToString();
+        }
+
+        private void bt_logout_Click(object sender, RoutedEventArgs e)
+        {
+            Authentification authentification = new Authentification();
+            authentification.Show();
+            this.Hide();
+        }
+
+        private void bt_showmap_Click(object sender, RoutedEventArgs e)
+        {
+            GoogleMap map = new GoogleMap();
+            map.lb_id_user.Content = lb_id_operateur.Content;
+            map.Show();
+            this.Hide();
         }
     }
 }

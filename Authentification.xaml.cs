@@ -76,8 +76,9 @@ namespace Projet_2_GoGreen
                                 if ((clientReader.Read()) && (clientReader.GetString(clientReader.GetOrdinal("status_client")) == "actif"))
                                 {
                                     Acceuil_client acc = new Acceuil_client();
-                                    acc.nombre_arbre(clientReader.GetInt32(clientReader.GetOrdinal("id")));
+                                    //acc.nombre_arbre(clientReader.GetInt32(clientReader.GetOrdinal("id")));
                                     acc.lb_nom_client.Content = clientReader.GetString(clientReader.GetOrdinal("nom_client")) + " " + clientReader.GetString(clientReader.GetOrdinal("prenom_client"));
+                                    acc.lb_id_client.Content = clientReader.GetInt32(clientReader.GetOrdinal("id"));
                                     acc.Show();
                                     this.Hide();
                                     //MessageBox.Show("Bienvenu sur votre plateforme", "Reussi", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -188,6 +189,25 @@ namespace Projet_2_GoGreen
                 tb.Foreground = Brushes.Black;
             }
         }
-       
+
+        private void ConnecterEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void ConnecterLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
+
+        private void SInscrireEnter(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void SInscrireLeave(object sender, MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = Cursors.Arrow;
+        }
     }
 }

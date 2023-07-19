@@ -75,12 +75,12 @@ namespace Projet_2_GoGreen
             //conx.executeRequest("Select * from administateur;");
             conx.launchReader("Select * from administateur;");
 
-            while (conx.read.Read())
+            while (conx.reader.Read())
             {
-                string mail = (string)conx.read["mail_admin"];
-                string pass = (string)conx.read["pass_admin"];
-                string nom = (string)conx.read["nom_admin"];
-                string prenom = (string)conx.read["prenom_admin"];
+                string mail = (string)conx.reader["mail_admin"];
+                string pass = (string)conx.reader["pass_admin"];
+                string nom = (string)conx.reader["nom_admin"];
+                string prenom = (string)conx.reader["prenom_admin"];
                 //string 
                 list_pass_admin.Add(pass, new AdminClass(nom, prenom, mail, pass));
                 list_login_admin.Add(mail, new AdminClass(nom, prenom, mail, pass));

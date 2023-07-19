@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Activated="get_Value_init">
     <Grid Margin="0,0,10,-30" Height="768">
         <Grid.ColumnDefinitions>
             <!--<ColumnDefinition Width="598*"/>-->
@@ -41,13 +41,13 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </DatePicker.Resources>
-                       
+
                     </DatePicker>
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
                     <Viewbox Margin="77,463,1217,238">
                         <RadioButton x:Name="rb_vert"  VerticalAlignment="Center">
-                            
+
                         </RadioButton>
                     </Viewbox>
                     <Rectangle HorizontalAlignment="Left" Height="308" Margin="937,26,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
@@ -62,14 +62,14 @@
                         <ComboBoxItem Content="Oranger" />
                         <ComboBoxItem Content="Manguier" />
                         <ComboBoxItem Content="Eucalyptus" />
-                        
+
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </ComboBox.Background>
-                        
+
                     </ComboBox>
                     <Label Content="Type" HorizontalAlignment="Left" Margin="515,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="67" FontSize="18" Foreground="#FF010101" >
 
@@ -78,10 +78,10 @@
                         <ComboBoxItem Content="Forestier" />
                         <ComboBoxItem Content="Fruitier" />
                         <ComboBoxItem Content="Autres" />
-                        
+
                     </ComboBox>
                     <Label Content="Position" HorizontalAlignment="Left" Margin="1232,38,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White">
-                       
+
                     </Label>
                     <Label Content="Zone" HorizontalAlignment="Left" Margin="515,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="69" FontSize="18" Foreground="#FF010101">
 
@@ -92,7 +92,7 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        
+
                     </TextBox>
                     <Label Content="Latitude" HorizontalAlignment="Left" Margin="964,88,0,0" VerticalAlignment="Top" Width="97" FontStyle="Italic" FontWeight="Bold" FontSize="18" Foreground="White">
 
@@ -191,7 +191,7 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                       
+
                     </TextBox>
                     <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="64,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18"/>
                     <TextBox x:Name="tb_diametre" HorizontalAlignment="Left" Margin="64,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}">
@@ -200,7 +200,7 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-                        
+
                     </TextBox>
 
                 </Grid>
@@ -532,6 +532,11 @@
                 <DropShadowEffect Opacity="0.5"/>
             </Button.Effect>
         </Button>
+        <Label x:Name="lb_id_operateur" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Grid x:Name="option" HorizontalAlignment="Left" Height="115" Margin="1145,65,0,0" VerticalAlignment="Top" Width="186" Visibility="Hidden">
+            <Button x:Name="bt_logout" Content="Button" HorizontalAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Height="20" Width="166" Click="bt_logout_Click"/>
+            <Button x:Name="bt_showmap" Content="Button" HorizontalAlignment="Center" Margin="0,83,0,0" VerticalAlignment="Top" Width="166" Click="bt_showmap_Click"/>
+        </Grid>
 
     </Grid>
 </Window>
