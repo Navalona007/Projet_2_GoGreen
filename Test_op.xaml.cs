@@ -32,10 +32,12 @@ namespace Projet_2_GoGreen
         public Test_op()
         {
             InitializeComponent();
+            lecture_ecriture_arbre();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
         }
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
@@ -447,21 +449,12 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
-
-
-                //String query = "SELECT id, date_plantation, date_creation, status FROM public.arbre;";
-                //String query = "SELECT id, status FROM public.arbre;";
-
-                String query = "SELECT arbre.id, arbre.status_arbre, type.name_type, espece.name_espece, etat.height, etat.trunk.diameter ," +
-                                ".etat_feuillage.description, position.latitude , position.longitude, zone.name_zone  FROM public.position" +
-                                "INNER JOIN public.arbre ON public.position.arbreid = public.arbre.id" +
-                                "INNER JOIN public.client ON arbre.clientid = client.id " +
-                                "INNER JOIN public.espece ON arbre.especeid = espece.id INNER JOIN public.type ON espece.typeid = type.id";
-
+                String query = "SELECT arbre.id, arbre.status_arbre, espece.name_espece, client.nom_client, arbre.date_plantation " +
+                                "FROM public.arbre " +
+                                "JOIN public.espece ON public.espece.id = public.arbre.especeid " +
+                                "JOIN public.client ON public.client.id = public.arbre.clientid";// WHERE arbre.opérateur_de_saisiid = '+lb_id_operateur.Content+'";//id_operatezur_de saisi ne cours
 
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
-
-
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -470,26 +463,13 @@ namespace Projet_2_GoGreen
 
                     Arbre arbreGG = new Arbre();
 
-                    arbreGG.setId_arbre(reader["id"].ToString());
-                    arbreGG.setStatut(reader["status_arbre"].ToString());
-                    //arbreGG.setStatut(reader.GetString(reader.GetOrdinal("status")));
-
-
-
-                    //if (DateTime.TryParse(reader["date_plantation"].ToString(), out DateTime datePlantation))
-                    //{
-                    //    arbreGG.setDate_plantation(datePlantation);
-                    //}
-
-                    //if (DateTime.TryParse(reader["date_création"].ToString(), out DateTime dateCreation))
-                    //{
-                    //    arbreGG.setDate_creation(datePlantation);
-                    //}
-
-
+                    arbreGG.id_arbre = reader["id"].ToString();
+                    arbreGG.statut = reader["status_arbre"].ToString();
+                    arbreGG.espece = reader.GetString(reader.GetOrdinal("name_espece"));
+                    arbreGG.nom_client = reader.GetString(reader.GetOrdinal("nom_client"));
+                    arbreGG.date_plantation = reader.GetString(reader.GetOrdinal("date_plantation"));
 
                     listeArbres.Add(arbreGG);
-
                 }
                 grid_liste.ItemsSource = listeArbres;
 
@@ -499,6 +479,60 @@ namespace Projet_2_GoGreen
             {
                 MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+
+        private void lecture_etat_arbre()
+        {
+            ObservableCollection<Etat_arbre> liste_Etat = new ObservableCollection<Etat_arbre>();
+            var selection = grid_liste.SelectedItem as Arbre;
+            string id_arbre = selection.id_arbre;
+            NpgsqlConnection GetConnection()
+            {
+                return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
+            }
+            try
+            {
+                var conn = GetConnection();
+                conn.Open();
+
+                String requete = "SELECT public.zone.name_zone, public.etat.date_create_etat, public.etat_feuillage.description, public.etat.height, public.etat.trunk_diameter, type.name_type " +
+                                "FROM public.arbre " +
+                                "join espece on espece.id=arbre.especeid "+
+                                "join type on type.id=espece.typeid "+
+                                "join public.etat on public.arbre.id= public.etat.arbreid " +
+                                "join public.etat_feuillage on etat_feuillage.id=etat.etat_feuillageid2 " +
+                                "join public.position on public.arbre.id=public.position.arbreid " +
+                                "join public.zone on public.zone.id=public.position.zoneid WHERE arbre.id='"+id_arbre+"'";
+
+
+                NpgsqlCommand command = new NpgsqlCommand(requete, conn);
+
+                NpgsqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Etat_arbre etatGG = new Etat_arbre();
+
+                    etatGG.zone=reader["name_zone"].ToString();
+                    MessageBox.Show(etatGG.zone);
+                    etatGG.type=reader["name_type"].ToString();
+                    etatGG.hauteur = reader.GetFloat(reader.GetOrdinal("height"));
+                    etatGG.diametre_tronc = reader.GetFloat(reader.GetOrdinal("trunk_diameter"));
+                    etatGG.date_mis_a_jour = reader.GetString(reader.GetOrdinal("date_create_etat"));
+                    etatGG.etat_feuillage = reader.GetString(reader.GetOrdinal("description"));
+
+                    liste_Etat.Add(etatGG);
+                }
+                grid_etat.ItemsSource = liste_Etat;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void bt_demander_modif_Click(object sender, RoutedEventArgs e)
@@ -635,6 +669,25 @@ namespace Projet_2_GoGreen
             conx.close();
 
             //if()
+        }
+
+        private void bt_inserer_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void selected_cells(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void grid_etat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void grid_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

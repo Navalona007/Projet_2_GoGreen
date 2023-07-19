@@ -9,7 +9,7 @@ namespace Projet_2_GoGreen
     internal class Arbre
     {
         public string id_arbre { get; set; }
-        public DateTime date_plantation { get; set; }
+        public string date_plantation { get; set; }
         public DateTime date_creation { get; set; }
         public DateTime date_mise_a_jour { get; set; }
         public string statut { get; set; }
@@ -21,11 +21,12 @@ namespace Projet_2_GoGreen
         public string zone { get; set; }
         public string latitude { get; set; }
         public string longitude { get; set; }
+        public string nom_client { get; set; }
 
         public Arbre(string id_arbre, DateTime date_plantation, DateTime date_creation, string statut)
            {
             this.id_arbre = id_arbre;
-            this.date_plantation = date_plantation;
+            //this.date_plantation = date_plantation;
             this.date_creation = date_creation;
             this.statut = statut;
         }
@@ -34,7 +35,7 @@ namespace Projet_2_GoGreen
             string type, string zone, string latitude, string longitude)
         {
             this.id_arbre = id_arbre;
-            this.date_plantation = date_plantation;
+            //this.date_plantation = date_plantation;
             this.date_creation = date_creation;
             this.date_mise_a_jour = date_mise_a_jour;
             this.statut = statut;
@@ -63,10 +64,10 @@ namespace Projet_2_GoGreen
             date_creation = value;
         }
 
-        public void setDate_plantation(DateTime value)
-        {
-            date_plantation = value;
-        }
+        //public void setDate_plantation(DateTime value)
+        //{
+        //    date_plantation = value;
+        //}
 
         public void setStatut(string value)
         {

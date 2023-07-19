@@ -36,7 +36,6 @@
            
         </TextBox>
         <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1" VerticalContentAlignment="Center" Padding="10,0,0,0">
-            
             <PasswordBox.Style>
                 <Style TargetType="{x:Type PasswordBox}">
                     <Setter Property="Template">
