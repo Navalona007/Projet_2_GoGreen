@@ -11,7 +11,7 @@
 
         <TabControl Background="#FFF4FAF3" Margin="0,31,0,0">
             <TabItem Header="Opérateur de saisi" BorderBrush="#FFCFCBCB" FontSize="14">
-                <Grid Background="#FF5AE4A8">
+                <Grid Background="#FFEDF9F9">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -24,9 +24,7 @@
 
 
                     <DataGrid x:Name="grid_oper" CanUserAddRows="False" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
-                        <DataGrid.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </DataGrid.Effect>
+                       
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding id}" IsReadOnly="True" FontSize="12" Width="50">
                                 <DataGridTextColumn.HeaderStyle>
@@ -117,7 +115,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <TextBox x:Name="tb_search_oper" Margin="919,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged" Padding="10,0,0,0">
+                    <TextBox x:Name="tb_search_oper" Margin="919,4,22,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Background="White" FontSize="14" TextChanged="tb_search_oper_TextChanged" Padding="10,0,0,0" BorderBrush="#FF5AE4A8">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -197,25 +195,21 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
-                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="80,616,0,0" VerticalAlignment="Top" Width="165" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_add_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_add_oper" Content="AJOUTER" HorizontalAlignment="Left" Height="41" Margin="80,616,0,0" VerticalAlignment="Top" Width="165" Background="#FF5AE4A8" FontSize="16" FontWeight="Bold" BorderBrush="#FF5AE4A8" Foreground="White" Click="bt_add_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+                       
                     </Button>
-                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="271,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_cancel_oper" Content="ANNULER" HorizontalAlignment="Left" Height="41" Margin="271,617,0,0" VerticalAlignment="Top" Width="169" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="#FF5AE4A8" Foreground="#FF5AE4A8" Click="bt_cancel_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+                        
                     </Button>
                     <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="47,392,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="136" FontFamily="Global User Interface" FontWeight="Bold"/>
                     <Label Content="Confirmer Mot de passe" HorizontalAlignment="Left" Margin="45,465,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="228" FontFamily="Global User Interface" FontWeight="Bold"/>
@@ -225,25 +219,21 @@
                     <Label Content="Prénom" HorizontalAlignment="Left" Margin="47,105,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="88" FontFamily="Global User Interface" FontWeight="Bold"/>
                     <Label Content="Nom" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="63" FontFamily="Global User Interface" FontWeight="Bold"/>
                     <Label Content="Rechercher :" Margin="808,-2,459,0" VerticalAlignment="Top" FontSize="16"/>
-                    <Button x:Name="bt_supprimer_oper" Content="SUPPRIMER" HorizontalAlignment="Left" Height="40" Margin="792,617,0,0" VerticalAlignment="Top" Width="156" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_suppr_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_supprimer_oper" Content="SUPPRIMER" HorizontalAlignment="Left" Height="40" Margin="792,617,0,0" VerticalAlignment="Top" Width="156" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="#FF5AE4A8" Foreground="#FF5AE4A8" Click="bt_suppr_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+                       
                     </Button>
-                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Center" Height="40" Margin="0,617,0,0" VerticalAlignment="Top" Width="166" Background="White" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF3E603B" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
+                    <Button x:Name="bt_modifier_oper" Content="MODIFIER" HorizontalAlignment="Center" Height="40" Margin="0,617,0,0" VerticalAlignment="Top" Width="166" Background="#FF5AE4A8" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Click="bt_modifier_oper_Click" FontFamily="Global User Interface">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="15"/>
                             </Style>
                         </Button.Resources>
-                        <Button.Effect>
-                            <DropShadowEffect Opacity="0.5"/>
-                        </Button.Effect>
+                       
                     </Button>
                     <Label x:Name="lb_message_oper" Content="" HorizontalAlignment="Left" Margin="47,535,0,0" VerticalAlignment="Top" Width="417" FontSize="16" Height="37" FontFamily="Global User Interface"/>
 
@@ -385,6 +375,7 @@
                 <DropShadowEffect Opacity="0.5"/>
             </Button.Effect>
         </Button>
+        <Label x:Name="lb_id_admin" Content="Label" HorizontalAlignment="Left" Margin="19,-8,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
 
     </Grid>
 </Window>

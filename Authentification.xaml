@@ -11,9 +11,7 @@
 
 
         <Path StrokeThickness="5" Margin="938,15,0,14" Fill="#FF5AE4A8" Stretch="Fill" HorizontalAlignment="Left" Width="412" Stroke="WhiteSmoke">
-            <Path.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </Path.Effect>
+           
 
             <Path.Data>
                 <RectangleGeometry Rect="0,0,340,300" RadiusX="40" RadiusY="20"/>
@@ -23,14 +21,10 @@
 
 
         <Label Content="Identifiant :" HorizontalAlignment="Left" Height="42" Margin="981,0,0,480" VerticalAlignment="Bottom" Width="180" Foreground="White" FontWeight="Bold" FontSize="20">
-            <Label.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </Label.Effect>
+           
         </Label>
         <Label Content="Mot de passe :" HorizontalAlignment="Left" Margin="981,345,0,0" Width="180" Background="Transparent" Foreground="White" FontWeight="Bold" RenderTransformOrigin="0.502,0.468" FontSize="20" Height="43" VerticalAlignment="Top">
-            <Label.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </Label.Effect>
+          
         </Label>
         <TextBox x:Name="tb_login" HorizontalAlignment="Left" Margin="981,0,0,444" TextWrapping="Wrap" Width="331" BorderBrush="{x:Null}" Height="41" VerticalAlignment="Bottom" FontSize="16" Grid.Row="1" GotFocus="tb_login_GotFocus" Text="Email" TextAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0" LostFocus="tb_login_LostFocus">
 
@@ -39,14 +33,9 @@
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
-            <TextBox.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </TextBox.Effect>
+           
         </TextBox>
-        <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1" VerticalContentAlignment="Center" Padding="10,0,0,0">
-            <PasswordBox.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </PasswordBox.Effect>
+        <PasswordBox x:Name="pwd_auth" Margin="981,385,0,0" Password="" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="331" Height="41" VerticalAlignment="Top" FontSize="16" Grid.Row="1" VerticalContentAlignment="Center" Padding="10,0,0,0">
             <PasswordBox.Style>
                 <Style TargetType="{x:Type PasswordBox}">
                     <Setter Property="Template">
@@ -69,13 +58,11 @@
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
-            <Button.Effect>
-                <DropShadowEffect Opacity="0.5"/>
-            </Button.Effect>
+           
         </Button>
 
-        <Label Content="Vous n'avez pas de compte?" HorizontalAlignment="Left" Height="48" Margin="957,627,0,0" VerticalAlignment="Top" Width="261" FontStyle="Italic" FontSize="20"/>
-        <Button Content="S'inscrire" HorizontalAlignment="Left" Height="29" Margin="1218,629,0,0" VerticalAlignment="Top" Width="98" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click" FontSize="20"/>
+        <Label Content="Vous n'avez pas de compte?" HorizontalAlignment="Left" Height="48" Margin="957,627,0,0" VerticalAlignment="Top" Width="261" FontStyle="Italic" FontSize="20" Foreground="White"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Left" Height="29" Margin="1218,629,0,0" VerticalAlignment="Top" Width="98" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.392,1.281" FontWeight="Bold" Click="Button_Click" FontSize="20"/>
         <Image Height="75" Margin="0,73,194,0" VerticalAlignment="Top" Source="/user_1.png" HorizontalAlignment="Right" Width="70"/>
         <Path StrokeThickness="1.5" Margin="299,0,0,0" Stretch="Fill" Stroke="#FF5AE4A8" HorizontalAlignment="Left" Width="330" Height="337" VerticalAlignment="Center">
 
