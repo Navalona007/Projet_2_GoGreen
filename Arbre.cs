@@ -11,7 +11,7 @@ namespace Projet_2_GoGreen
         public string id_arbre { get; set; }
         public string date_plantation { get; set; }
         public DateTime date_creation { get; set; }
-        public DateTime date_mise_a_jour { get; set; }
+        public string date_mise_a_jour { get; set; }
         public string statut { get; set; }
         public string diametre { get; set; }
         public string hauteur { get; set; }
@@ -37,7 +37,7 @@ namespace Projet_2_GoGreen
             this.id_arbre = id_arbre;
             //this.date_plantation = date_plantation;
             this.date_creation = date_creation;
-            this.date_mise_a_jour = date_mise_a_jour;
+            //this.date_mise_a_jour = date_mise_a_jour;
             this.statut = statut;
             this.diametre = diametre;
             this.hauteur = hauteur;

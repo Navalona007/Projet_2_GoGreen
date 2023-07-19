@@ -23,6 +23,7 @@ namespace Projet_2_GoGreen
     {
 
         public string id_selected { get; set; }
+        string id_oper = null;
 
         private NpgsqlConnection GetConnection()
         {
@@ -32,6 +33,12 @@ namespace Projet_2_GoGreen
         public Test_op()
         {
             InitializeComponent();
+            //lecture_ecriture_arbre();
+             
+        }
+        private void get_Value_init(object sender, EventArgs e)
+        {
+            id_oper = lb_id_operateur.Content.ToString();
             lecture_ecriture_arbre();
         }
 
@@ -75,6 +82,7 @@ namespace Projet_2_GoGreen
             String query = "INSERT INTO public.espece (typeid, name_espece)    VALUES ('" + id + "','" + valueInsert + "');";
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
             command.ExecuteNonQuery();
+            conn.Close();
         }
 
         public int hasKey_espece(string valuetofind) //verifier si clé existe
@@ -440,6 +448,8 @@ namespace Projet_2_GoGreen
         private void lecture_ecriture_arbre()
         {
             ObservableCollection<Arbre> listeArbres = new ObservableCollection<Arbre>();
+            string id = lb_id_operateur.Content.ToString();
+            //lb_nom_proprietaire.Content = id;
             NpgsqlConnection GetConnection()
             {
                 return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
@@ -449,10 +459,10 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
-                String query = "SELECT arbre.id, arbre.status_arbre, espece.name_espece, client.nom_client, arbre.date_plantation " +
-                                "FROM public.arbre " +
-                                "JOIN public.espece ON public.espece.id = public.arbre.especeid " +
-                                "JOIN public.client ON public.client.id = public.arbre.clientid";// WHERE arbre.opérateur_de_saisiid = '+lb_id_operateur.Content+'";//id_operatezur_de saisi ne cours
+                string query = "SELECT arbre.id, arbre.status_arbre, espece.name_espece, client.nom_client, arbre.date_plantation " +
+                                " FROM public.arbre " +
+                                " JOIN public.espece ON public.espece.id = public.arbre.especeid " +
+                                " JOIN public.client ON public.client.id = public.arbre.clientid WHERE arbre.opérateur_de_saisiid = '"+id_oper+"' ;"; //id_operatezur_de saisi ne cours
 
                 NpgsqlCommand command = new NpgsqlCommand(query, conn);
 
@@ -463,8 +473,9 @@ namespace Projet_2_GoGreen
 
                     Arbre arbreGG = new Arbre();
 
-                    arbreGG.id_arbre = reader["id"].ToString();
-                    arbreGG.statut = reader["status_arbre"].ToString();
+                    arbreGG.id_arbre = reader.GetInt32(reader.GetOrdinal("id")).ToString();
+                    //MessageBox.Show(lb_id_operateur.Content + " " +arbreGG.id_arbre);
+                    arbreGG.statut = reader.GetString(reader.GetOrdinal("status_arbre"));//.ToString();
                     arbreGG.espece = reader.GetString(reader.GetOrdinal("name_espece"));
                     arbreGG.nom_client = reader.GetString(reader.GetOrdinal("nom_client"));
                     arbreGG.date_plantation = reader.GetString(reader.GetOrdinal("date_plantation"));
@@ -477,16 +488,14 @@ namespace Projet_2_GoGreen
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "erreur request", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "ERREUR CHARGEMENT", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
 
-        private void lecture_etat_arbre()
+        private void lecture_etat_arbre(string id)
         {
             ObservableCollection<Etat_arbre> liste_Etat = new ObservableCollection<Etat_arbre>();
-            var selection = grid_liste.SelectedItem as Arbre;
-            string id_arbre = selection.id_arbre;
             NpgsqlConnection GetConnection()
             {
                 return new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db");
@@ -496,14 +505,14 @@ namespace Projet_2_GoGreen
                 var conn = GetConnection();
                 conn.Open();
 
-                String requete = "SELECT public.zone.name_zone, public.etat.date_create_etat, public.etat_feuillage.description, public.etat.height, public.etat.trunk_diameter, type.name_type " +
+                string requete = "SELECT public.zone.name_zone, public.etat.date_create_etat, public.etat_feuillage.description, public.etat.height, public.etat.trunk_diameter, type.name_type " +
                                 "FROM public.arbre " +
                                 "join espece on espece.id=arbre.especeid "+
                                 "join type on type.id=espece.typeid "+
                                 "join public.etat on public.arbre.id= public.etat.arbreid " +
                                 "join public.etat_feuillage on etat_feuillage.id=etat.etat_feuillageid2 " +
                                 "join public.position on public.arbre.id=public.position.arbreid " +
-                                "join public.zone on public.zone.id=public.position.zoneid WHERE arbre.id='"+id_arbre+"'";
+                                "join public.zone on public.zone.id=public.position.zoneid WHERE arbre.id='"+id+"'";
 
 
                 NpgsqlCommand command = new NpgsqlCommand(requete, conn);
@@ -515,7 +524,7 @@ namespace Projet_2_GoGreen
                     Etat_arbre etatGG = new Etat_arbre();
 
                     etatGG.zone=reader["name_zone"].ToString();
-                    MessageBox.Show(etatGG.zone);
+                    //MessageBox.Show(etatGG.zone);
                     etatGG.type=reader["name_type"].ToString();
                     etatGG.hauteur = reader.GetFloat(reader.GetOrdinal("height"));
                     etatGG.diametre_tronc = reader.GetFloat(reader.GetOrdinal("trunk_diameter"));
@@ -604,15 +613,16 @@ namespace Projet_2_GoGreen
 
         private void bt_demander_suppr_Click(object sender, RoutedEventArgs e)
         {
-            var arbre_select = grid_liste.SelectedItem as Arbre;
-            string id_arbre_select = arbre_select.id_arbre;
+            //var arbre_select = grid_liste.SelectedItem as Arbre;
+            //string id_arbre_select = arbre_select.id_arbre;
 
-            if (id_arbre_select != null)
-            {
-                MessageBox.Show("Voulez-vous vraiment supprimer cet élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                delete_arbre_DB(int.Parse(id_arbre_select));
-                // lecture_ecriture();
-            }
+            //if (id_arbre_select != null)
+            //{
+            //    MessageBox.Show("Voulez-vous vraiment supprimer cet élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            //    delete_arbre_DB(int.Parse(id_arbre_select));
+            //    // lecture_ecriture();
+            //}
+            lecture_ecriture_arbre();
         }
 
         private void delete_arbre_DB(int id)
@@ -673,7 +683,65 @@ namespace Projet_2_GoGreen
 
         private void grid_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (grid_liste.SelectedItem != null)
+            {
+                var selectedArbre = grid_liste.SelectedItem as Arbre; // grid_oper.SelectedItem se comporte comme une instance de la Classe  OperateurClass
+
+                id_selected = selectedArbre.id_arbre;
+
+                //tb_nom_oper.Text = selectedArbre.name;
+                //tb_prenom_oper.Text = selectedArbre.lastname;
+                //tb_lieu.Text = selectedArbre.workplace;
+                //tb_mobile_oper.Text = selectedArbre.mobile;
+                //tb_email_oper.Text = selectedArbre.email;
+                lecture_etat_arbre(id_selected);
+
+            }
+            else
+            {
+                
+            }
+        }
+
+        private void tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (tabcontrol_oper.SelectedItem is TabItem tab_liste)
+            //{
+            //    id_oper = lb_id_operateur.Content.ToString();
+            //    lecture_ecriture_arbre(id_oper);
+            //}
+        }
+
+        private void test(object sender, SelectionChangedEventArgs e)
+        {
             
+        }
+
+        private void test1(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void grid_liste_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (grid_liste.SelectedItem != null)
+            {
+                var selectedArbre = grid_liste.SelectedItem as Arbre; // grid_oper.SelectedItem se comporte comme une instance de la Classe  OperateurClass
+
+                id_selected = selectedArbre.id_arbre;
+
+                lecture_etat_arbre(id_selected);
+
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void bt_demander_suppr_Click_1(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
