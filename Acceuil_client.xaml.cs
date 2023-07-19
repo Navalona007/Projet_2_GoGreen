@@ -42,8 +42,6 @@ namespace Projet_2_GoGreen
             Map map = new Map();
             map.Show();
             this.Hide();
-            Mapform mapform = new Mapform();
-            mapform.Show();
 
         }
 
