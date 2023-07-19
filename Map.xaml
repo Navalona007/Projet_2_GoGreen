@@ -7,7 +7,7 @@
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="Projet_2_GoGreen.Map"
         xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         mc:Ignorable="d"
-        Title="Map" Height="768" Width="1380" ResizeMode="NoResize" Activated="get_value_label">
+        Title="Map" Height="768" Width="1380" ResizeMode="NoResize" Activated="get_value_label" WindowStartupLocation="CenterScreen">
 
     <Grid Height="767.5">
         <GridSplitter HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="254" Foreground="#FFFFB5B5" Background="#FFD6F9E5" />

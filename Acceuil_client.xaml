@@ -39,5 +39,6 @@
         </Button>
         <GridSplitter HorizontalAlignment="Left" Height="684" Margin="499,37,0,0" VerticalAlignment="Top" Width="3" Background="White"/>
         <Label x:Name="lb_id_client" Content="Label" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+
     </Grid>
 </Window>
