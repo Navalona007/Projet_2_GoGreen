@@ -634,20 +634,6 @@ namespace Projet_2_GoGreen
             raz();
         }
 
-        private void bt_annuler_Click(object sender, RoutedEventArgs e)
-        {
-            cb_espece.Text = "";
-            cb_type.Text = "";
-            tb_zone.Text = "";
-            dp_plantation.Text = "";
-            tb_hauteur.Text = "";
-            tb_diametre.Text = "";
-            tb_nom_proprietaire.Text = "";
-            tb_email_proprietaire.Text = "";
-            tb_latitude.Text = "";
-            tb_longitude.Text = "";
-            lb_message.Content = "";
-        }
 
         private void trouverId_client(string nom_client, string mail_client)
         {

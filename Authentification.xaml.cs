@@ -77,7 +77,7 @@ namespace Projet_2_GoGreen
                                     Acceuil_client acc = new Acceuil_client();
                                     acc.nombre_arbre(clientReader.GetInt32(clientReader.GetOrdinal("id")));
                                     acc.lb_nom_client.Content = clientReader.GetString(clientReader.GetOrdinal("nom_client")) + " " + clientReader.GetString(clientReader.GetOrdinal("prenom_client"));
-                                    
+                                    acc.lb_id_client.Content = clientReader.GetInt32(clientReader.GetOrdinal("id")).ToString();
                                     acc.Show();
                                     this.Hide();
                                     tb_login.Text = "";
@@ -109,7 +109,7 @@ namespace Projet_2_GoGreen
                                 {
                                     Test_op test_op = new Test_op();
                                     test_op.lb_nom_operateur.Content = operReader.GetString(operReader.GetOrdinal("nom_oper"))+" "+ operReader.GetString(operReader.GetOrdinal("prenom_oper"));
-                                    test_op.lb_id_operateur.Content = operReader.GetInt32(operReader.GetOrdinal("id"));
+                                    test_op.lb_id_operateur.Content = operReader.GetInt32(operReader.GetOrdinal("id")).ToString();
                                     test_op.Show();
                                     this.Hide();
                                     tb_login.Text = "";

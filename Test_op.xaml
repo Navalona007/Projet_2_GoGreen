@@ -212,34 +212,31 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Liste" Margin="58,-2,-114,0" FontSize="20">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Liste" Margin="138,-3,-194,1" FontSize="20">
+                <Grid Background="#FFD6F9E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="47*"/>
-                        <ColumnDefinition Width="75*"/>
-                        <ColumnDefinition Width="510*"/>
-                        <ColumnDefinition Width="742*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Image HorizontalAlignment="Left" Height="28" Margin="235,8,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449" Grid.Column="2"/>
-                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="270,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" BorderBrush="#FF5AE4A8" Grid.ColumnSpan="2" Grid.Column="2"/>
+                    <Image HorizontalAlignment="Left" Height="28" Margin="621,8,0,0" VerticalAlignment="Top" Width="27" Source="/search-interface-symbol.png" OpacityMask="#FF5AE4A8" RenderTransformOrigin="1.779,0.449"/>
+                    <TextBox x:Name="tb_rechercher" HorizontalAlignment="Left" Height="30" Margin="656,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" BorderBrush="#FF5AE4A8"/>
 
-                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="2,47,40,412" AutoGenerateColumns="False" SelectionChanged="grid_liste_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4" CanUserAddRows="False" SelectedCellsChanged="selected_cells" Grid.ColumnSpan="3" >
+                    <DataGrid x:Name="grid_liste" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="292,43,238,416" AutoGenerateColumns="False" SelectionChanged="grid_liste_SelectionChanged" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4" CanUserAddRows="False" SelectedCellsChanged="selected_cells" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding id_arbre}" Foreground="#FF5AE4A8" FontWeight="Bold">
+                            <!--DataGridTextColumn Header="Id" Binding="{Binding id_arbre}" Foreground="#FF5AE4A8" FontWeight="Bold">
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style/>
                                 </DataGridTextColumn.HeaderStyle>
-                            </DataGridTextColumn>
+                            </DataGridTextColumn-->
                             <DataGridTextColumn Header="Espèce" Binding="{Binding espece}" Width="*"/>
                             <DataGridTextColumn Header="Propriétaire" Binding="{Binding nom_client}" Width="*"/>
                             <DataGridTextColumn Header="Date de plantation" Binding="{Binding date_plantation}" Width="*"/>
                             <DataGridTextColumn Header="Statut"  Binding="{Binding statut}" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Rectangle HorizontalAlignment="Left" Height="399" Margin="0,320,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="4"/>
-                    
-                    <Image HorizontalAlignment="Left" Height="151" Margin="0,578,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png" Grid.ColumnSpan="3"/>
-                    <DataGrid x:Name="grid_etat" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,50,7,429" AutoGenerateColumns="False" SelectionChanged="grid_etat_SelectionChanged" HorizontalGridLinesBrush="Black" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4" Grid.Column="3">
+                    <Rectangle HorizontalAlignment="Center" Height="399" Margin="0,320,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5"/>
+
+                    <Image HorizontalAlignment="Left" Height="151" Margin="0,578,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/>
+                    <DataGrid x:Name="grid_etat" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="193,350,105,129" AutoGenerateColumns="False" SelectionChanged="grid_etat_SelectionChanged" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" Foreground="Black" FontWeight="Bold" BorderBrush="#FFC8CED4">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Dernière mis à jour" Binding="{Binding date_mis_a_jour}" Width="*"/>
                             <DataGridTextColumn Header="Type" Binding="{Binding type}" Width="*"/>
@@ -249,7 +246,7 @@
                             <DataGridTextColumn Header="Zone" Binding="{Binding zone}" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                  <!--Rectangle HorizontalAlignment="Left" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="2"/-->
+                    <!--Rectangle HorizontalAlignment="Left" Height="469" Margin="0,250,0,0" VerticalAlignment="Top" Width="1374" Fill="#FFD6F9E5" Grid.ColumnSpan="2"/-->
                     <Button x:Name="bt_demander_modif" Content="Demander la modification" HorizontalAlignment="Left" BorderThickness="2" Margin="638,606,0,0" VerticalAlignment="Top" Width="286" Height="37" FontWeight="Bold" Background="White" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" FontFamily="Global User Interface" Foreground="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
@@ -268,19 +265,15 @@
                         </Button.Resources>
 
                     </Button>
-                    <Image HorizontalAlignment="Left" Height="151" Margin="0,572,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/>
+                    <!--Image HorizontalAlignment="Left" Height="151" Margin="0,572,0,0" VerticalAlignment="Top" Width="180" Source="/Go Green.png"/-->
                 </Grid>
             </TabItem>
-            <TabItem Header="Suivi" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Center" Width="81" FontSize="20">
+            <TabItem Header="Suivi" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="81" FontSize="20" Margin="0,-1,0,0">
                 <Grid Background="White">
-                    <Rectangle HorizontalAlignment="Left" Height="254" Margin="489,377,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
-                    </Rectangle>
-                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
-
-                    </Rectangle>
-                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White">
-
-                    </Rectangle>
+                    <Rectangle HorizontalAlignment="Left" Height="252" Margin="33,380,0,0" VerticalAlignment="Top" Width="409" StrokeThickness="3" Stroke="#FF5AE4A8" Fill="White"/>
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5"/>
+                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="34,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
+                    <Rectangle HorizontalAlignment="Left" Height="254" Margin="489,377,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5"/>
                     <Label Content="Statut" HorizontalAlignment="Left" Margin="518,393,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="86" FontSize="18" FontFamily="Global User Interface" Height="26"/>
                     <ComboBox x:Name="cb_statut_Copy" HorizontalAlignment="Left" Margin="517,430,0,0" VerticalAlignment="Top" Width="353" Height="33"/>
                     <Label Content="Hauteur" HorizontalAlignment="Left" Margin="511,223,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="136" FontSize="18"/>
@@ -292,8 +285,8 @@
                         </TextBox.Resources>
 
                     </TextBox>
-                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="203,129,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18" Grid.Column="1"/>
-                    <TextBox x:Name="tb_diametre_Copy" HorizontalAlignment="Left" Margin="203,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}" Grid.Column="1">
+                    <Label Content="Diamètre du tronc" HorizontalAlignment="Left" Margin="513,129,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="223" FontSize="18"/>
+                    <TextBox x:Name="tb_diametre_Copy" HorizontalAlignment="Left" Margin="514,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="40" BorderBrush="{x:Null}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -301,8 +294,8 @@
                         </TextBox.Resources>
 
                     </TextBox>
-                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="202,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" FontSize="18" Grid.Column="1"/>
-                    <DatePicker x:Name="dp_mise_a_jour_Copy" HorizontalAlignment="Left" Margin="203,80,0,0" VerticalAlignment="Top" Width="354" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White" Grid.Column="1">
+                    <Label Content="Date de mise à jour" HorizontalAlignment="Left" Margin="512,42,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="215" FontSize="18"/>
+                    <DatePicker x:Name="dp_mise_a_jour_Copy" HorizontalAlignment="Left" Margin="514,80,0,0" VerticalAlignment="Top" Width="354" BorderBrush="{x:Null}" Height="40" FontSize="18" Background="White">
                         <DatePicker.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -310,9 +303,7 @@
                         </DatePicker.Resources>
 
                     </DatePicker>
-                    <Rectangle HorizontalAlignment="Left" Height="516" Margin="935,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
-
-                    </Rectangle>
+                    <Rectangle HorizontalAlignment="Left" Height="516" Margin="935,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
                     <Label Content="Etat de feuillage" HorizontalAlignment="Left" Margin="62,389,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" FontFamily="Global User Interface"/>
                     <!--<RadioButton x:Name="rb_vert" Content="" HorizontalAlignment="Left" Margin="75,462,0,0" VerticalAlignment="Top" Height="18" Width="35"/>-->
                     <Viewbox Margin="77,463,1217,196">
@@ -359,7 +350,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Image HorizontalAlignment="Left" Height="67" Margin="17,441,0,0" VerticalAlignment="Top" Width="89" Source="/green (2).png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                    <Image HorizontalAlignment="Left" Height="67" Margin="321,439,0,0" VerticalAlignment="Top" Width="89" Source="/green (2).png" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -382,12 +373,11 @@
 
                     <Label Content="Sans feuille" HorizontalAlignment="Left" Margin="326,557,0,0" VerticalAlignment="Top" FontSize="18" Width="103" FontFamily="Global User Interface"/>
                     <Label x:Name="lb_message_Copy" Content="" HorizontalAlignment="Left" Margin="524,624,0,0" VerticalAlignment="Top" Width="351" Foreground="#FF8E0E0E"/>
-                    <Rectangle HorizontalAlignment="Left" Height="306" Margin="34,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8">
-
-                    </Rectangle>
                     <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="170,42,0,0" VerticalAlignment="Top" Width="153" FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
                     <Label x:Name="lb_nom_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,165,0,0" VerticalAlignment="Top" Width="367"/>
                     <Label x:Name="lb_email_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="350"/>
+                    <Label Content="Nom" HorizontalAlignment="Left" Margin="59,132,0,0" VerticalAlignment="Top" Width="64" FontSize="18" FontFamily="Global User Interface" FontWeight="Bold" Foreground="White"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="62,229,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18" Foreground="White"/>
                 </Grid>
             </TabItem>
         </TabControl>
