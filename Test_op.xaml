@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Test_op" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Activated="get_Value_init">
     <Grid Margin="0,0,10,-30" Height="768">
         <Grid.ColumnDefinitions>
             -->
@@ -191,7 +191,6 @@
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
-
                     </TextBox>
                     <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="173,47,0,0" VerticalAlignment="Top" Width="197" FontWeight="Bold" FontFamily="Global User Interface" FontSize="20" FontStyle="Italic"/>
                     <Rectangle HorizontalAlignment="Left" Height="232" Margin="33,102,0,0" VerticalAlignment="Top" Width="409" Fill="#FF5AE4A8"/>
@@ -940,9 +939,7 @@
         <Label x:Name="tb_id_opérateur" Content="" HorizontalAlignment="Left" Margin="27,-7,0,0" VerticalAlignment="Top" Width="134" Visibility="Hidden"/>
 
         <Button x:Name="bt_se_déconnecter" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="1147,10,0,0" VerticalAlignment="Top" Width="181" Height="40" FontWeight="Normal" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontSize="18" Click="bt_se_déconnecter_Click" FontFamily="Global User Interface">
-
-
-            <Button.Resources>
+           <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
@@ -950,6 +947,5 @@
 
         </Button>
         <Label x:Name="lb_id_operateur" Content="" HorizontalAlignment="Left" Margin="64,4,0,0" VerticalAlignment="Top" Width="60" Visibility="Visible" Height="2"/>
-
     </Grid>
 </Window>

@@ -183,17 +183,17 @@ namespace Projet_2_GoGreen
                 " join lieu_travail on opérateur_de_saisi.lieu_travailid = lieu_travail.id "+
                 "join statut_opérateur on opérateur_de_saisi.statut_opérateurid = statut_opérateur.id;");
 
-            while (conx.read.Read())
+            while (conx.reader.Read())
             {
 
 
-              int id_oper = (int)conx.read["id"];//used by samira
-                string nom = (string)conx.read["nom_oper"];
-                string prenom = (string)conx.read["prenom_oper"];
-                string mail = (string)conx.read["mail_oper"];
-                string mobile = (string)conx.read["mobile_oper"];
-                string lieu = (string)conx.read["name_lieu"];
-                string state = (string)conx.read["satus"];
+              int id_oper = (int)conx.reader["id"];//used by samira
+                string nom = (string)conx.reader["nom_oper"];
+                string prenom = (string)conx.reader["prenom_oper"];
+                string mail = (string)conx.reader["mail_oper"];
+                string mobile = (string)conx.reader["mobile_oper"];
+                string lieu = (string)conx.reader["name_lieu"];
+                string state = (string)conx.reader["satus"];
 
 
                 OperateurClass oper = new OperateurClass(id, nom, prenom, mail, mobile, lieu, statut) ;
@@ -228,7 +228,7 @@ namespace Projet_2_GoGreen
             oper = new OperateurClass();
             conx.executeRequest("INSERT INTO public.opérateur_de_saisi(statut_opérateurid, lieu_travailid, nom_oper, prenom_oper, mail_oper, pass_oper, mobile_oper)"+
                 " VALUES('', '', '', '', '', '', ''); ");
-            string lieu = (string)conx.read["name_lieu"];
+            string lieu = (string)conx.reader["name_lieu"];
             
             conx.close();
         }

@@ -7,17 +7,11 @@
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="Projet_2_GoGreen.Map"
         xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         mc:Ignorable="d"
-        Title="Map" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Map" Height="768" Width="1380" ResizeMode="NoResize" Activated="get_value_label" WindowStartupLocation="CenterScreen">
+
     <Grid Height="767.5">
         <GridSplitter HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="254" Foreground="#FFFFB5B5" Background="#FFD6F9E5" />
-        <Button x:Name="bt_se_deconnecter_map" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="59,680,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_se_deconnecter_map_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="bt_retour_map" Content="Retour" HorizontalAlignment="Left" BorderThickness="2" Margin="59,625,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_retour_map_Click">
+        <Button x:Name="bt_retour_map" Content="Retour" HorizontalAlignment="Left" BorderThickness="2" Margin="59,681,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_retour_map_Click" Background="#FF5AE4A8" Foreground="White" MouseEnter="Mouse_sur_retour" MouseLeave="Mouse_leave_retour">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
@@ -37,7 +31,8 @@
         <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="42" Margin="73,111,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
 
         <!--<Wpf:WebView2 x:Name="webView"   HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115"/>-->
-        <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115" />
+        <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" HorizontalAlignment="Left" Height="746" Margin="259,0,0,18" VerticalAlignment="Bottom" Width="1117" />
+        <Label x:Name="lb_id_user" Content="Label" HorizontalAlignment="Left" Margin="14,4,0,0" VerticalAlignment="Top" Visibility="Hidden" />
 
     </Grid>
 </Window>

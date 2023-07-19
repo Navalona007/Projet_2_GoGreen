@@ -5,47 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         mc:Ignorable="d"
-        Title="Acceuil_client" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Acceuil_client" Height="768" Width="1380" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Activated="get_id_value_Activation">
     <Grid Background="#FFD6F9E5">
-        <Image HorizontalAlignment="Left" Height="72" Margin="267,79,0,0" VerticalAlignment="Top" Width="60" Source="/user (1).png"/>
-        <Label Content="Bienvennue" HorizontalAlignment="Left" Height="36" Margin="247,160,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="42" Margin="247,202,0,0" VerticalAlignment="Top" Width="236" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="lb_nbr_arbre" Content="XXXX" HorizontalAlignment="Left" Height="36" Margin="261,364,0,0" VerticalAlignment="Top" Width="54" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="#FF2E7556"/>
+        <Image HorizontalAlignment="Left" Height="75" Margin="208,61,0,0" VerticalAlignment="Top" Width="90" Source="/user (1).png"/>
+        <Label Content="Bienvenue" HorizontalAlignment="Left" Height="38" Margin="202,145,0,0" VerticalAlignment="Top" Width="153" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="49" Margin="192,188,0,0" VerticalAlignment="Top" Width="371" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface"/>
+        <Label x:Name="lb_nbr_arbre" Content="XXXX" HorizontalAlignment="Left" Height="38" Margin="228,318,0,0" VerticalAlignment="Top" Width="71" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="#FF2E7556"/>
         <Image HorizontalAlignment="Left" Height="708" Margin="548,26,0,0" VerticalAlignment="Top" Width="809" Stretch="Fill" Source="/Journey-amico.png" StretchDirection="Both"/>
         <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1172,560,0,0" HorizontalAlignment="Left" Width="185" VerticalAlignment="Top" Height="174"/>
-        <Button x:Name="bt_se_deconnecter_client" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="378,629,0,0" VerticalAlignment="Top" Width="136" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_se_deconnecter_client_Click">
+        <Button x:Name="bt_se_deconnecter_client" Content="Se déconnecter" HorizontalAlignment="Left" BorderThickness="2" Margin="147,656,0,0" VerticalAlignment="Top" Width="204" Height="26" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16" Click="bt_se_deconnecter_client_Click" Background="#FFFBF9F9" Foreground="#FF368965">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="bt_localiser_arbre_client" Content="Localiser vos arbres" HorizontalAlignment="Left" BorderThickness="2" Margin="855,361,0,0" VerticalAlignment="Top" Width="195" Height="28" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="Transparent" Background="#FF368965" Foreground="#FFFBF9F9" FontFamily="Global User Interface" FontSize="16" Click="bt_localiser_arbre_client_Click" >
+        <Button x:Name="bt_localiser_arbre_client" Content="Localiser vos arbres" HorizontalAlignment="Left" BorderThickness="2" Margin="80,546,0,0" VerticalAlignment="Top" Width="344" Height="39" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="Transparent" Background="#FF368965" Foreground="#FFFBF9F9" FontFamily="Global User Interface" FontSize="16" Click="bt_localiser_arbre_client_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
-            <Button.Effect>
-                <DropShadowEffect Color="#FF0E0606" ShadowDepth="10" Opacity="0.5"/>
-            </Button.Effect>
+
         </Button>
-        <Label Content="Vous avez" HorizontalAlignment="Left" Height="32" Margin="175,364,0,0" VerticalAlignment="Top" Width="86" FontStyle="Normal" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Foreground="#FF2E7556"/>
-        <Label Content="arbres actifs" HorizontalAlignment="Left" Height="32" Margin="312,364,0,0" VerticalAlignment="Top" Width="106" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="#FF2E7556" RenderTransformOrigin="0.391,0.534"/>
-        <Button x:Name="bt_se_deconnecter_client_Copy" Content="Télecharger le rapport" HorizontalAlignment="Left" BorderThickness="2" Margin="62,629,0,0" VerticalAlignment="Top" Width="180" Height="25" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="#FF5AE4A8" FontFamily="Global User Interface" FontSize="16">
+        <Label Content="Vous avez" HorizontalAlignment="Left" Height="34" Margin="114,318,0,0" VerticalAlignment="Top" Width="114" FontStyle="Normal" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Foreground="#FF2E7556"/>
+        <Label Content="arbres actifs" HorizontalAlignment="Left" Height="34" Margin="295,318,0,0" VerticalAlignment="Top" Width="139" FontFamily="Global User Interface" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="#FF2E7556" RenderTransformOrigin="0.391,0.534"/>
+        <Button x:Name="bt_se_deconnecter_client_Copy" Content="Télécharger le rapport" HorizontalAlignment="Left" BorderThickness="2" Margin="80,485,0,0" VerticalAlignment="Top" Width="344" Height="37" FontWeight="Bold" RenderTransformOrigin="0.437,0.489" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontSize="16" Background="#FF368965" Foreground="#FFFBF9F9">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
         </Button>
-        <ProgressBar HorizontalAlignment="Left" Height="23" Margin="143,493,0,0" VerticalAlignment="Top" Width="308" Foreground="#FF368965" BorderBrush="#FF6AE7B1">
-            <ProgressBar.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </ProgressBar.Resources>
-        </ProgressBar>
-        <Label x:Name="lb_id_client" Content="Label" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <GridSplitter HorizontalAlignment="Left" Height="684" Margin="499,37,0,0" VerticalAlignment="Top" Width="3" Background="White"/>
+        <Label x:Name="lb_id_client" Content="Label" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+
     </Grid>
 </Window>
