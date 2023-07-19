@@ -19,12 +19,14 @@ namespace Projet_2_GoGreen
     /// </summary>
     public partial class Acceuil_client : Window
     {
+        string id_client = null;
         public Acceuil_client()
         {
             InitializeComponent();
+            nombre_arbre();
         }
 
-        public void nombre_arbre(int id_client)
+        public void nombre_arbre()
         {
             ConnectDB conx = new ConnectDB();
             conx.launchReader("SELECT count (*) nombre FROM arbre JOIN client ON arbre.clientid=client.id WHERE client.id ='"+id_client+"'");
@@ -40,6 +42,8 @@ namespace Projet_2_GoGreen
         private void bt_localiser_arbre_client_Click(object sender, RoutedEventArgs e)
         {
             Map map = new Map();
+            map.lb_nom_client.Content = lb_nom_client.Content;
+            map.lb_id_user.Content = lb_id_client.Content;
             map.Show();
             this.Hide();
 
@@ -47,9 +51,18 @@ namespace Projet_2_GoGreen
 
         private void bt_se_deconnecter_client_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Voulez-vous vraiment vous déconnecter ?", "Deconnexion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes) 
+            { 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Hide();
+            }
+        }
+
+        private void get_id_value_Activation(object sender, EventArgs e)
+        {
+            id_client = lb_id_client.Content.ToString();
         }
     }
 }

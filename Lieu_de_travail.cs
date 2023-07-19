@@ -38,10 +38,10 @@ namespace Projet_2_GoGreen
             list_lieu.Clear();
             conx.launchReader("SELECT * FROM public.lieu_travail");
 
-            while (conx.read.Read())
+            while (conx.reader.Read())
             {
-                int id = (int)conx.read["id"];
-                string lieu = (string)conx.read["id"];
+                int id = (int)conx.reader["id"];
+                string lieu = (string)conx.reader["id"];
                 Lieu_de_travail workplace = new Lieu_de_travail(id, lieu);
                 list_lieu.Add(lieu, workplace);
             }

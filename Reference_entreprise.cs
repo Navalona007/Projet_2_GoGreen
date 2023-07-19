@@ -28,17 +28,17 @@ namespace Projet_2_GoGreen
         //{
 
         //    var cmd = conx.createRequest("Select * from reference_entreprise;");
-        //    var read = cmd.ExecuteReader();
+        //    var reader = cmd.ExecuteReader();
 
-        //    while (read.Read())
+        //    while (reader.Read())
         //    {
-        //        int id = (int)read["id"];
-        //        string label = (string)read["label"];
+        //        int id = (int)reader["id"];
+        //        string label = (string)reader["label"];
         //        list_id_reference.Add(id, new Reference_entreprise(id, label));
         //        list_label_reference.Add(label, new Reference_entreprise(id, label));
         //    }
 
-        //    read.Close();
+        //    reader.Close();
 
         //    for (int i=0; i<list_id_reference.Count; i++)
         //        Console.Out.WriteLine(list_id_reference[i]);

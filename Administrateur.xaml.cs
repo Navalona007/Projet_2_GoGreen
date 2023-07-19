@@ -112,7 +112,7 @@ namespace Projet_2_GoGreen
         {
             tb_nom_oper.Text = string.Empty;
             tb_prenom_oper.Text = string.Empty;
-            tb_email_oper.Text = string.Empty;           
+            tb_email_oper.Text = string.Empty;
             tb_lieu.Text = string.Empty;
             tb_mobile_oper.Text = string.Empty;
             pwd_oper.Password = "";
@@ -225,7 +225,7 @@ namespace Projet_2_GoGreen
                         MessageBox.Show(ex.Message, "Erreur lors de l'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                 conx.Close();
+                    conx.Close();
 
                 }
                 lecture_ecriture();
@@ -279,10 +279,33 @@ namespace Projet_2_GoGreen
 
             if (id_select != null)
             {
-                MessageBox.Show("Voulez-vous vraiment supprimer cet élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Voulez-vous vraiment supprimer cet élément ?", "CONFIRMATION", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 // grid_oper.SelectedItems.Clear();
-                delete_oper_DB(int.Parse(id_select));
-                lecture_ecriture();
+
+                // Handle the button click based on the result
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        delete_oper_DB(int.Parse(id_select));
+                        lecture_ecriture();
+                        tb_nom_oper.Text = string.Empty;
+                        tb_prenom_oper.Text = string.Empty;
+                        tb_email_oper.Text = string.Empty;
+                        tb_lieu.Text = string.Empty;
+                        tb_mobile_oper.Text = string.Empty;
+                        pwd_oper.Password = "";
+                        pwd_oper_confirm.Password = "";
+                        break;
+                    case MessageBoxResult.No:
+                        tb_nom_oper.Text = string.Empty;
+                        tb_prenom_oper.Text = string.Empty;
+                        tb_email_oper.Text = string.Empty;
+                        tb_lieu.Text = string.Empty;
+                        tb_mobile_oper.Text = string.Empty;
+                        pwd_oper.Password = "";
+                        pwd_oper_confirm.Password = "";
+                        break;
+                }
             }
         }
 
@@ -320,11 +343,11 @@ namespace Projet_2_GoGreen
 
             string connString = @"Server=localhost;Port=5432;User Id=postgres;Password=root;Database=gg_db;";
 
-            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "', lieu_travailid = '"+key+"' WHERE id=" + id_selected + " ;";//ajouter id_lieu modifié
+            string query = "UPDATE opérateur_de_saisi SET nom_oper ='" + tb_nom_oper.Text + "', prenom_oper = '" + tb_prenom_oper.Text + "', mail_oper = '" + tb_email_oper.Text + "', lieu_travailid = '" + key + "' WHERE id=" + id_selected + " ;";//ajouter id_lieu modifié
 
             NpgsqlConnection conn = new NpgsqlConnection(connString);
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            
+
             try
             {
                 conn.Open();
@@ -407,15 +430,15 @@ namespace Projet_2_GoGreen
 
         private void bt_se_déconnecter_Click(object sender, RoutedEventArgs e)
         {
-           MessageBoxResult result = MessageBox.Show(Application.Current.MainWindow, "Voulez-vous vraiment vous déconnecter?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(Application.Current.MainWindow, "Voulez-vous vraiment vous déconnecter?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.OK)
-            {                
+            {
                 Authentification authentification = new Authentification();
-                authentification.Show();                
+                authentification.Show();
                 this.Hide();
             }
         }
-  
+
         ObservableCollection<OperateurClass> listeOperateurs = new ObservableCollection<OperateurClass>();
         private void lecture_ecriture()
         {
@@ -625,7 +648,7 @@ namespace Projet_2_GoGreen
 
         private void selected_cells(object sender, SelectedCellsChangedEventArgs e)
         {
-        
+
         }
     }
 

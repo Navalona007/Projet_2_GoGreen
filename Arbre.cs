@@ -19,8 +19,8 @@ namespace Projet_2_GoGreen
         public string espece { get; set; }
         public string type { get; set; }
         public string zone { get; set; }
-        public string latitude { get; set; }
-        public string longitude { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
         public string nom_client { get; set; }
 
         public Arbre(string id_arbre, DateTime date_plantation, DateTime date_creation, string statut)
@@ -45,8 +45,8 @@ namespace Projet_2_GoGreen
             this.espece = espece;
             this.type = type;
             this.zone = zone;
-            this.latitude = latitude;
-            this.longitude = longitude;
+            //this.latitude = latitude;
+            //this.longitude = longitude;
 
         }
         public Arbre()

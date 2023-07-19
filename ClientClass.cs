@@ -54,17 +54,17 @@ namespace Projet_2_GoGreen
             ConnectDB conx = new ConnectDB();
             conx.launchReader("SELECT * FROM client_table;");
 
-            while (conx.read.Read())
+            while (conx.reader.Read())
             {
-                string id = conx.read["id"].ToString();
-                string nom = (string)conx.read["nom_client"];
-                string prenom = (string)conx.read["prenom_client"];
-                string mail = (string)conx.read["mail_client"];
-                string pass = (string)conx.read["pass_client"];
-                string adresse = (string)conx.read["adresse_client"];
-                DateTime dateInscription = (DateTime)conx.read["date_inscrip"];
-                string mobile = (string)conx.read["mobile_client"];
-                string status = (string)conx.read["status_client"];
+                string id = conx.reader["id"].ToString();
+                string nom = (string)conx.reader["nom_client"];
+                string prenom = (string)conx.reader["prenom_client"];
+                string mail = (string)conx.reader["mail_client"];
+                string pass = (string)conx.reader["pass_client"];
+                string adresse = (string)conx.reader["adresse_client"];
+                DateTime dateInscription = (DateTime)conx.reader["date_inscrip"];
+                string mobile = (string)conx.reader["mobile_client"];
+                string status = (string)conx.reader["status_client"];
 
                 list_client.Add(new ClientClass
                 {
@@ -82,7 +82,7 @@ namespace Projet_2_GoGreen
                 list_login_client.Add(email, new ClientClass(nom, prenom, mail, pass));
             }
 
-            conx.read.Close();
+            conx.reader.Close();
             conx.close();
         }
 

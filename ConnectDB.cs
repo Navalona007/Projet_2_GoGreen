@@ -14,7 +14,7 @@ namespace Projet_2_GoGreen
     {
         NpgsqlConnection conx;
         public NpgsqlCommand cmd;
-        public NpgsqlDataReader read;
+        public NpgsqlDataReader reader;
         
                
         public ConnectDB()
@@ -36,9 +36,9 @@ namespace Projet_2_GoGreen
         }
         public NpgsqlDataReader getRead()
         {
-            if (read == null)
+            if (reader == null)
                 return null;
-            return read;
+            return reader;
         }
         public NpgsqlConnection getConx()
         {
@@ -55,7 +55,7 @@ namespace Projet_2_GoGreen
         public void launchReader(string request)
         {
             cmd = new NpgsqlCommand(request, conx); 
-            read = cmd.ExecuteReader();
+            reader = cmd.ExecuteReader();
         }
 
         public void close()

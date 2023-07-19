@@ -22,6 +22,8 @@ namespace Projet_2_GoGreen
     public partial class Test_op : Window
     {
 
+        string id_operateur = null;
+
         public string id_selected { get; set; }
 
         private NpgsqlConnection GetConnection()
@@ -45,6 +47,7 @@ namespace Projet_2_GoGreen
             Authentification authentification = new Authentification();
             authentification.Show();
             this.Hide();
+            //option.Visibility = Visibility.Visible;
         }
 
         Dictionary<string, int> liste_espece;
@@ -675,5 +678,11 @@ namespace Projet_2_GoGreen
         {
             
         }
+
+        private void get_Value_init(object sender, EventArgs e)
+        {
+            id_operateur = lb_id_operateur.Content.ToString();
+        }
+
     }
 }
