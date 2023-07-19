@@ -23,7 +23,7 @@
                     <Image Source="/Go Green.png" Stretch="Fill" RenderTransformOrigin="0.506,0.415" Margin="1217,538,0,0" HorizontalAlignment="Left" Width="207" Height="202" VerticalAlignment="Top"/>
 
 
-                    <DataGrid x:Name="grid_oper" CanUserAddRows="False" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
+                    <DataGrid x:Name="grid_oper" CanUserReorderColumns="False" CanUserAddRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" Margin="534,38,22,100" Background="#FF5AE4A8" AutoGenerateColumns="False" MinColumnWidth="50" SelectionChanged="grid_oper_SelectionChanged_1" SelectedCellsChanged="selected_cells">
                        
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding id}" IsReadOnly="True" FontSize="12" Width="50">
@@ -242,7 +242,7 @@
             </TabItem>
             <TabItem Header="Client" BorderBrush="#FFEDE9E9" FontSize="14">
                 <Grid Background="#FF5AE4A8">
-                    <DataGrid x:Name="grid_client" CanUserAddRows="False" Margin="27,42,22,152" Background="#FF5AE4A8" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" >
+                    <DataGrid x:Name="grid_client" CanUserAddRows="False" Margin="27,42,22,152" Background="#FF5AE4A8" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" AutoGenerateColumns="False" AlternatingRowBackground="#FFE2F7E8" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50" IsReadOnly="True" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Nom" Width="*" Binding="{Binding name}"/>

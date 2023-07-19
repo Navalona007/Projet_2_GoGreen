@@ -17,11 +17,6 @@ namespace Projet_2_GoGreen
 
         public double latitude { get; set; }
 
-        public void setLatitude (float value)
-        {
-            latitude = value;
-        }
-
         public double longitude { get; set; }
 
         public Etat_arbre(string zone, string type, float latitude, float longitude)
