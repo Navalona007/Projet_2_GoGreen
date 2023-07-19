@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_2_GoGreen"
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="Projet_2_GoGreen.Map"
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         mc:Ignorable="d"
         Title="Map" Height="768" Width="1380" ResizeMode="NoResize">
     <Grid Height="767.5">
@@ -35,7 +36,8 @@
         <Image HorizontalAlignment="Left" Height="72" Margin="97,37,0,0" VerticalAlignment="Top" Width="60" Source="/user (1).png"/>
         <Label x:Name="lb_nom_client" Content="Nom_prenom" HorizontalAlignment="Left" Height="42" Margin="73,111,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.508,-0.172" AutomationProperties.IsOffscreenBehavior="Default" FontSize="16" FontWeight="Bold"/>
 
-        <Wpf:WebView2 x:Name="webView"   HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115"/>
+        <!--<Wpf:WebView2 x:Name="webView"   HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115"/>-->
+        <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" HorizontalAlignment="Left" Height="746" Margin="261,0,0,18" VerticalAlignment="Bottom" Width="1115" />
 
     </Grid>
 </Window>

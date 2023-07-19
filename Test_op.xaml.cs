@@ -93,6 +93,7 @@ namespace Projet_2_GoGreen
             return key;
         }
 
+
         Dictionary<string, string> liste_id_type;
         Dictionary<string, int> liste_type;
         public void list_type()
@@ -405,6 +406,7 @@ namespace Projet_2_GoGreen
             }
             raz();
 
+
         }
 
         public void raz()
@@ -501,6 +503,7 @@ namespace Projet_2_GoGreen
 
         private void bt_demander_modif_Click(object sender, RoutedEventArgs e)
         {
+
             string date_plantation = dp_plantation.Text;
             string diametre = tb_diametre.Text;
             string hauteur = tb_hauteur.Text;
@@ -561,6 +564,7 @@ namespace Projet_2_GoGreen
                 // lecture_ecriture();
                 conn.Close();
             }
+
         }
 
 
@@ -596,6 +600,41 @@ namespace Projet_2_GoGreen
             raz();
         }
 
+        private void bt_annuler_Click(object sender, RoutedEventArgs e)
+        {
+            cb_espece.Text = "";
+            cb_type.Text = "";
+            tb_zone.Text = "";
+            dp_plantation.Text = "";
+            tb_hauteur.Text = "";
+            tb_diametre.Text = "";
+            tb_nom_proprietaire.Text = "";
+            tb_email_proprietaire.Text = "";
+            tb_latitude.Text = "";
+            tb_longitude.Text = "";
+            lb_message.Content = "";
+        }
 
+        private void trouverId_client(string nom_client, string mail_client)
+        {
+            ConnectDB conx = new ConnectDB();
+            Dictionary<string, ClientClass> list_nom_client = new Dictionary<string, ClientClass>();
+            Dictionary<string, ClientClass> list_mail_client = new Dictionary<string, ClientClass>();
+            conx.launchReader("SELECT id, nom_client, prenom_client, mail_client FROM client WHERE opérateur_de_saisiid = '"+lb_id_operateur+"'");
+            while (conx.read.Read())
+            {
+                ClientClass client = new ClientClass();
+                
+                client.name = conx.read.GetString(conx.read.GetOrdinal("nom_client"));
+                client.lastname = conx.read.GetString(conx.read.GetOrdinal("prenom_client"));
+                client.email = conx.read.GetString(conx.read.GetOrdinal("mail_client"));
+                
+                list_nom_client.Add(client.name, client);
+                list_mail_client.Add(client.email, client);
+            }
+            conx.close();
+
+            //if()
+        }
     }
 }

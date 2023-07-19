@@ -134,9 +134,9 @@ namespace Projet_2_GoGreen
                 String nom = (string)tb_nom_inscription.Text;
                 String prenom = (string)tb_prenom_inscription.Text;
                 String mail = (string)tb_mail_inscription.Text;
-                String mot_de_passe = (string)tb_mdp_inscription.Text;
+                String mot_de_passe = (string)pb_mdp_inscription.Password;
                 String hash_mdp = CalculateMD5Hash(mot_de_passe);
-                String confirmation = (string)tb_confirmer_mdp_inscription.Text;
+                String confirmation = (string)pb_confirmer_mdp_inscription.Password;
                 String reference = tb_reference_inscription.Text;
                 DateTime date_inscription = DateTime.Now;
 
@@ -172,8 +172,8 @@ namespace Projet_2_GoGreen
                                 tb_prenom_inscription.Text = string.Empty;
                                 tb_mail_inscription.Text = string.Empty;
                                 tb_reference_inscription.Text = string.Empty;
-                                tb_mdp_inscription.Text = string.Empty;
-                                tb_confirmer_mdp_inscription.Text = string.Empty;
+                                pb_mdp_inscription.Password = string.Empty;
+                                pb_confirmer_mdp_inscription.Password = string.Empty;
                                 MessageBox.Show("Inscription avec succès!", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                                 Authentification authentification = new Authentification();
                                 authentification.Show();
@@ -211,8 +211,8 @@ namespace Projet_2_GoGreen
                                 tb_prenom_inscription.Text = string.Empty;
                                 tb_mail_inscription.Text = string.Empty;
                                 tb_reference_inscription.Text = string.Empty;
-                                tb_mdp_inscription.Text = string.Empty;
-                                tb_confirmer_mdp_inscription.Text = string.Empty;
+                                pb_mdp_inscription.Password = string.Empty;
+                                pb_confirmer_mdp_inscription.Password = string.Empty;
                                 MessageBox.Show("Inscription réussie! \n Votre clé de référence à partager avec vos clients est : "+key , "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                                 Authentification authentification = new Authentification();
                                 authentification.Show();
@@ -245,8 +245,8 @@ namespace Projet_2_GoGreen
             tb_nom_inscription.Text = "";
             tb_prenom_inscription.Text = "";
             tb_mail_inscription.Text = "";
-            tb_mdp_inscription.Text = "";
-            tb_confirmer_mdp_inscription.Text = "";
+            pb_mdp_inscription.Password = "";
+            pb_confirmer_mdp_inscription.Password = "";
             tb_reference_inscription.Text = "";
 
             Authentification authentification = new Authentification();
