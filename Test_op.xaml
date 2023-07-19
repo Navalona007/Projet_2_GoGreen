@@ -13,12 +13,12 @@
             <!--<ColumnDefinition Width="84*"/>-->
             <!--<ColumnDefinition Width="3*"/>-->
         </Grid.ColumnDefinitions>
+
         <TabControl Margin="0,27,-10,0">
             <TabItem Header="Insertion" Margin="-2,-2,-56,0" FontSize="20">
                 <Grid Background="White" Height="730">
 
                     <Rectangle HorizontalAlignment="Left" Height="306" Margin="932,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
-
                     </Rectangle>
                     <Label Content="Date de plantation" HorizontalAlignment="Left" Margin="961,42,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Width="185" FontSize="18" FontFamily="Global User Interface"/>
                     <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
@@ -66,9 +66,9 @@
 
                     </Label>
                     <ComboBox x:Name="cb_type" HorizontalAlignment="Left" Margin="515,0,0,517" VerticalAlignment="Bottom" Width="353" Height="40">
-                        <ComboBoxItem Content="Forestier" />
-                        <ComboBoxItem Content="Fruitier" />
-                        <ComboBoxItem Content="Autres" />
+                        <ComboBoxItem Content="forestier" />
+                        <ComboBoxItem Content="fruitier" />
+                        <ComboBoxItem Content="ornement" />
 
                     </ComboBox>
                     <Label Content="Position" HorizontalAlignment="Left" Margin="783,395,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF070908" Height="34">
@@ -115,6 +115,7 @@
                         </Button.Resources>
 
                     </Button>
+
                     <Button x:Name="bt_annuler" Content="Annuler" HorizontalAlignment="Left" BorderThickness="2" Margin="1160,551,0,0" VerticalAlignment="Top" Width="159" Height="40" BorderBrush="#FF5AE4A8" Background="White" FontSize="18" FontFamily="Global User Interface" Click="bt_annuler_Click" Foreground="#FF5AE4A8">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
@@ -164,8 +165,7 @@
                         </RadioButton>
                     </Viewbox>
                     <Viewbox Margin="273,539,1051,118">
-                        <RadioButton x:Name="rb_feuille"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14">
-
+                        <RadioButton x:Name="rb_sans_feuille"  VerticalAlignment="Stretch" GroupName="etat_feuillage" Width="15" Height="14">
                         </RadioButton>
                     </Viewbox>
 
@@ -268,7 +268,6 @@
             <TabItem HorizontalAlignment="Center" Height="33" Header="Suivi" VerticalAlignment="Center" Width="81" FontSize="20">
                 <Grid Background="White">
                     <Rectangle HorizontalAlignment="Left" Height="254" Margin="489,377,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
-
                     </Rectangle>
                     <Rectangle HorizontalAlignment="Left" Height="306" Margin="484,28,0,0" VerticalAlignment="Top" Width="409" Fill="#FFD6F9E5">
 
@@ -363,6 +362,7 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
+
                     <Viewbox Margin="273,460,1051,190">
                         <RadioButton x:Name="rb_marron1"  VerticalAlignment="Stretch" GroupName="etat_feuillage1" Height="14" Width="15"/>
                     </Viewbox>
@@ -381,6 +381,7 @@
                     <Label Content="Le propriétaire" HorizontalAlignment="Left" Margin="170,42,0,0" VerticalAlignment="Top" Width="153" FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
                     <Label x:Name="lb_nom_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,165,0,0" VerticalAlignment="Top" Width="367"/>
                     <Label x:Name="lb_email_proprietaire" Content="" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="350"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

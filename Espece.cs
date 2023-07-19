@@ -8,5 +8,6 @@ namespace Projet_2_GoGreen
 {
     internal class Espece
     {
+
     }
 }
